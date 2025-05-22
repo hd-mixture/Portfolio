@@ -1818,8 +1818,15 @@ body.dark-mode .footer-socials a:hover {
 }
 .testimonial-card .author {
     font-weight: 600;
-    color: #52489C;
-    font-size: 1rem;
+    margin-top: 1rem;
+    color: var(--primary-color);
+}
+
+.testimonial-card .designation {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+    font-style: italic;
 }
 
 /* Achievements Section */
