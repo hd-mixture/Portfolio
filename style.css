@@ -1238,7 +1238,7 @@ li a:hover {
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 1.2rem 1.5rem 1.2rem 3rem;
+    padding: 1.2rem 1.5rem 1.2rem 1rem;
     border: 2px solid #e0def7;
     border-radius: 12px;
     font-size: 1rem;
