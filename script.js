@@ -386,3 +386,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Add this function to generate MD5 hash for Gravatar
+function md5(str) {
+    return CryptoJS.MD5(str).toString();
+}
+
+// Modify your form submission code to include the email hash
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitButton = this.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Sending...';
+    submitButton.disabled = true;
+
+    const email = this.querySelector('[name="email"]').value;
+    const formData = {
+        name: this.querySelector('[name="name"]').value,
+        email: email,
+        message: this.querySelector('[name="message"]').value,
+        email_hash: md5(email.toLowerCase().trim()),
+        sent_date: new Date().toLocaleString()
+    };
+
+    // Rest of your existing code...
+});
