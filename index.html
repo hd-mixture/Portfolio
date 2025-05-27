@@ -466,6 +466,27 @@
     </div>
     <!-- Add EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .sending-spinner {
+            display: inline-block;
+            animation: pulse 1s infinite;
+        }
+        .sending-spinner i {
+            margin-right: 8px;
+        }
+        .contact-form button[type="submit"] {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .contact-form button[type="submit"]:disabled {
+            cursor: not-allowed;
+        }
+    </style>
     <script>
         // Initialize EmailJS with your public key
         (function() {
@@ -473,54 +494,72 @@
         })();
 
         // Handle form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading state
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                
+                // Create spinner HTML
+                const spinnerHTML = `
+                    <span class="sending-spinner">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                    </span>
+                    Sending...
+                `;
+                
+                // Update button
+                submitButton.innerHTML = spinnerHTML;
+                submitButton.disabled = true;
+                submitButton.style.opacity = '0.8';
 
-            // Get form data
-            const formData = {
-                name: this.querySelector('[name="name"]').value,
-                email: this.querySelector('[name="email"]').value,
-                message: this.querySelector('[name="message"]').value
-            };
+                // Get form data
+                const formData = {
+                    name: this.querySelector('[name="name"]').value,
+                    email: this.querySelector('[name="email"]').value,
+                    message: this.querySelector('[name="message"]').value
+                };
 
-            // Send email using EmailJS
-            emailjs.send('service_0x9isti', 'template_pn7n1mc', formData)
-                .then(function() {
-                    // Show success message on button
-                    submitButton.textContent = 'Message Sent! ✓';
-                    submitButton.style.backgroundColor = '#4CAF50'; // Green color for success
-                    
-                    // Reset form
-                    document.querySelector('.contact-form').reset();
-                    
-                    // Reset button after 3 seconds
-                    setTimeout(() => {
-                        submitButton.textContent = originalText;
-                        submitButton.style.backgroundColor = ''; // Reset to original color
-                        submitButton.disabled = false;
-                    }, 3000);
-                })
-                .catch(function(error) {
-                    // Show error message on button
-                    submitButton.textContent = 'Failed to Send ✗';
-                    submitButton.style.backgroundColor = '#f44336'; // Red color for error
-                    
-                    console.error('EmailJS error:', error);
-                    
-                    // Reset button after 3 seconds
-                    setTimeout(() => {
-                        submitButton.textContent = originalText;
-                        submitButton.style.backgroundColor = ''; // Reset to original color
-                        submitButton.disabled = false;
-                    }, 3000);
-                });
-        });
+                // Send email using EmailJS
+                emailjs.send('service_0x9isti', 'template_pn7n1mc', formData)
+                    .then(function() {
+                        // Show success message
+                        submitButton.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+                        submitButton.style.backgroundColor = '#4CAF50';
+                        submitButton.style.opacity = '1';
+                        
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Reset button after 3 seconds
+                        setTimeout(() => {
+                            submitButton.innerHTML = originalText;
+                            submitButton.style.backgroundColor = '';
+                            submitButton.style.opacity = '1';
+                            submitButton.disabled = false;
+                        }, 3000);
+                    })
+                    .catch(function(error) {
+                        // Show error message
+                        submitButton.innerHTML = '<i class="fa-solid fa-xmark"></i> Failed to Send';
+                        submitButton.style.backgroundColor = '#f44336';
+                        submitButton.style.opacity = '1';
+                        
+                        console.error('EmailJS error:', error);
+                        
+                        // Reset button after 3 seconds
+                        setTimeout(() => {
+                            submitButton.innerHTML = originalText;
+                            submitButton.style.backgroundColor = '';
+                            submitButton.style.opacity = '1';
+                            submitButton.disabled = false;
+                        }, 3000);
+                    });
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', function() {
             const phrases = [
