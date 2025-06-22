@@ -507,3 +507,57 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
   // Initialize on page load
   toggleBackToTop();
 })();
+
+// Achievement Counter Animation - Animates once when visible
+document.addEventListener('DOMContentLoaded', function() {
+    const achievementSection = document.getElementById('achievements');
+    if (!achievementSection) return;
+
+    const numberElements = achievementSection.querySelectorAll('.number');
+
+    // Store the original values in a data attribute
+    numberElements.forEach(el => {
+        el.setAttribute('data-original-value', el.textContent);
+    });
+
+    function animateCounters() {
+        numberElements.forEach(el => {
+            const originalValue = el.getAttribute('data-original-value');
+            const targetNumber = parseInt(originalValue.replace(/\D/g, ''));
+            const hasPlus = originalValue.includes('+');
+
+            let currentNumber = 0;
+            const duration = 800; // Animation duration in ms
+            const stepTime = 16; // Roughly 60fps
+            const increment = targetNumber / (duration / stepTime);
+
+            el.textContent = hasPlus ? '0+' : '0'; // Start from 0
+
+            function updateCounter() {
+                currentNumber += increment;
+                if (currentNumber >= targetNumber) {
+                    el.textContent = originalValue; // Set to final value
+                    return;
+                }
+                el.textContent = hasPlus ? `${Math.floor(currentNumber)}+` : Math.floor(currentNumber);
+                requestAnimationFrame(updateCounter);
+            }
+            updateCounter();
+        });
+    }
+
+    // Use Intersection Observer to trigger the animation once
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                // Stop observing the element once animation has been triggered
+                observer.unobserve(achievementSection);
+            }
+        });
+    }, {
+        threshold: 0.5 // Start when 50% of the element is visible
+    });
+
+    observer.observe(achievementSection);
+});
