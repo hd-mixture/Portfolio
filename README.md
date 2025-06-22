@@ -6,7 +6,7 @@ A modern, responsive portfolio website showcasing web development, mobile applic
 
 ## 🌟 Live Demo
 
-**[View Portfolio](https://hd-mixture.github.io/portfolio)**
+**[View Portfolio](https://hd-mixture.github.io/Portfolio)**
 
 ## ✨ Features
 
