@@ -121,6 +121,64 @@ const darkModeToggle = document.getElementById('darkModeToggle');
   }
 })();
 
+// --- Desktop nav auto-hide logic (only for .desktop-nav) ---
+(function() {
+  const header = document.querySelector('header');
+  const desktopNav = document.querySelector('.desktop-nav');
+  
+  if (!header || !desktopNav) {
+    return;
+  }
+  
+  let lastScrollY = window.scrollY;
+  let scrollThreshold = 100;
+
+  function showNav() {
+    header.style.transform = 'translateY(0)';
+    header.style.transition = 'transform 0.3s ease-in-out';
+  }
+
+  function hideNav() {
+    header.style.transform = 'translateY(-100%)';
+    header.style.transition = 'transform 0.3s ease-in-out';
+  }
+
+  window.addEventListener('scroll', function() {
+    if (window.innerWidth <= 600) return; // Only for desktop
+    
+    const currentScrollY = window.scrollY;
+    const scrollDelta = currentScrollY - lastScrollY;
+    
+    // Show nav when scrolling up or at the top
+    if (currentScrollY <= scrollThreshold || scrollDelta < 0) {
+      showNav();
+    } 
+    // Hide nav when scrolling down and not at the top
+    else if (scrollDelta > 0 && currentScrollY > scrollThreshold) {
+      hideNav();
+    }
+    
+    lastScrollY = currentScrollY;
+  });
+
+  // Show nav on mouse move or click (desktop only)
+  ['mousemove', 'click'].forEach(evt => {
+    window.addEventListener(evt, function() {
+      if (window.innerWidth <= 600) return;
+      showNav();
+    });
+  });
+
+  // Show nav when hovering over the top area
+  document.addEventListener('mouseenter', function(e) {
+    if (window.innerWidth <= 600) return;
+    if (e.clientY <= 100) { // Top 100px of the viewport
+      showNav();
+    }
+  });
+
+})();
+
 // Timeline scroll-triggered animation
 function revealOnScroll() {
   const revealElements = document.querySelectorAll('.section-reveal, .timeline-dot, .timeline-date, .timeline-content');
@@ -412,3 +470,40 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
 
     // Rest of your existing code...
 });
+
+// Back to Top Button Functionality
+(function() {
+  const backToTopBtn = document.getElementById('backToTop');
+  
+  if (!backToTopBtn) return;
+  
+  // Show/hide button based on scroll position
+  function toggleBackToTop() {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.style.display = 'flex';
+      setTimeout(() => {
+        backToTopBtn.classList.add('visible');
+      }, 10);
+    } else {
+      backToTopBtn.classList.remove('visible');
+      setTimeout(() => {
+        backToTopBtn.style.display = 'none';
+      }, 300);
+    }
+  }
+  
+  // Smooth scroll to top
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+  
+  // Event listeners
+  window.addEventListener('scroll', toggleBackToTop);
+  backToTopBtn.addEventListener('click', scrollToTop);
+  
+  // Initialize on page load
+  toggleBackToTop();
+})();
