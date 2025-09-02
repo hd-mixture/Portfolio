@@ -14,7 +14,6 @@ const projects = [
     behanceLink: "https://www.behance.net/hd_mixture",
     icon: <i className="fa-solid fa-palette"></i>,
     timelineIcon: <i className="fa-solid fa-palette"></i>,
-    side: "right",
     status: 'ongoing' as ProjectStatus,
   },
   {
@@ -25,18 +24,6 @@ const projects = [
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine-2",
     icon: <Image src="/Project Logo/Campus_Cuisine_Logo_.2.0.png" alt="Campus Cuisine 2.0 Logo" width={48} height={48} data-ai-hint="modern food" />,
     timelineIcon: <i className="fa-solid fa-utensils"></i>,
-    side: "right",
-    status: 'completed' as ProjectStatus,
-  },
-  {
-    date: "Apr 2025 - Apr 2025",
-    title: "BitTRiX AI : Automated Test Agent – Group Project (Python)",
-    description: "Developed a smart testing system to generate and integrate with CI/CD tools.",
-    liveLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
-    codeLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
-    icon: <Image src="/Project Logo/BitTRix Logo.jpg" alt="BitTRiX AI Logo" width={48} height={48} data-ai-hint="ai logo" />,
-    timelineIcon: <i className="fa-solid fa-microchip"></i>,
-    side: "left",
     status: 'completed' as ProjectStatus,
   },
   {
@@ -47,7 +34,6 @@ const projects = [
     codeLink: "https://github.com/100rabx23/Save-Share.git",
     icon: <Image src="/Project Logo/save_share_logo.png" alt="Save & Share Logo" width={48} height={48} data-ai-hint="charity logo" />,
     timelineIcon: <i className="fa-solid fa-hand-holding-heart"></i>,
-    side: "right",
     status: 'completed' as ProjectStatus,
   },
   {
@@ -58,8 +44,17 @@ const projects = [
     codeLink: "https://github.com/EPICPJM05/ABHAR.git",
     icon: <Image src="/Project Logo/ABHAR Orange Resize Logo.png" alt="ABHAR Logo" width={48} height={48} data-ai-hint="robot logo" />,
     timelineIcon: <i className="fa-solid fa-robot"></i>,
-    side: "left",
     status: 'live' as ProjectStatus,
+  },
+  {
+    date: "Apr 2025 - Apr 2025",
+    title: "BitTRiX AI : Automated Test Agent – Group Project (Python)",
+    description: "Developed a smart testing system to generate and integrate with CI/CD tools.",
+    liveLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
+    codeLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
+    icon: <Image src="/Project Logo/BitTRix Logo.jpg" alt="BitTRiX AI Logo" width={48} height={48} data-ai-hint="ai logo" />,
+    timelineIcon: <i className="fa-solid fa-microchip"></i>,
+    status: 'completed' as ProjectStatus,
   },
   {
     date: "Mar 2024 - Jun 2024",
@@ -69,7 +64,6 @@ const projects = [
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine.git",
     icon: <Image src="/Project Logo/Campus Cuisin Logo Black.png" alt="Campus Cuisine Logo" width={48} height={48} data-ai-hint="food logo" />,
     timelineIcon: <i className="fa-solid fa-utensils"></i>,
-    side: "left",
     status: 'completed' as ProjectStatus,
   },
   {
@@ -80,7 +74,6 @@ const projects = [
     codeLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
     icon: <Image src="/Project Logo/Driving Licence App Logo.png" alt="Driving Licence App Logo" width={48} height={48} data-ai-hint="card document" />,
     timelineIcon: <i className="fa-solid fa-id-card"></i>,
-    side: "right",
     status: 'completed' as ProjectStatus,
   },
   {
@@ -91,7 +84,6 @@ const projects = [
     codeLink: "https://github.com/hd-mixture/Nearby-Places.git",
     icon: <Image src="/Project Logo/Nearby Places Logo.png" alt="Nearby Places App Logo" width={48} height={48} data-ai-hint="map pin" />,
     timelineIcon: <i className="fa-solid fa-location-dot"></i>,
-    side: "left",
     status: 'completed' as ProjectStatus,
   }
 ];
@@ -244,71 +236,74 @@ export default function Projects() {
             <section id="projects" className="projects-section section-reveal">
                 <h2>Projects</h2>
                 <div className="projects-timeline">
-                    {projects.map((project, index) => (
-                        <div key={index} className="timeline-event" data-side={project.side}>
-                            {project.side === 'left' ? (
-                                <>
-                                    <div className="timeline-col left">
-                                        <div className="project-card-zoom">
-                                            <div className="timeline-content section-reveal">
-                                                <div className={`project-icon ${project.side}`}>{project.icon}</div>
-                                                <div className="project-date-badge">{project.date}</div>
-                                                <div className="project-info">
-                                                    <h3>{project.title}</h3>
-                                                    <p>{project.description}</p>
-                                                    <div className="project-links">
-                                                        {project.portfolioLink ? (
-                                                            <>
-                                                                <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
-                                                                {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
-                                                            </>
-                                                        ) : (
-                                                            <>
-                                                                {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
-                                                                {project.codeLink && <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i> View Code</Link>}
-                                                            </>
-                                                        )}
+                    {projects.map((project, index) => {
+                        const side = index % 2 === 0 ? 'right' : 'left';
+                        return (
+                            <div key={index} className="timeline-event" data-side={side}>
+                                {side === 'left' ? (
+                                    <>
+                                        <div className="timeline-col left">
+                                            <div className="project-card-zoom">
+                                                <div className="timeline-content section-reveal">
+                                                    <div className={`project-icon ${side}`}>{project.icon}</div>
+                                                    <div className="project-date-badge">{project.date}</div>
+                                                    <div className="project-info">
+                                                        <h3>{project.title}</h3>
+                                                        <p>{project.description}</p>
+                                                        <div className="project-links">
+                                                            {project.portfolioLink ? (
+                                                                <>
+                                                                    <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
+                                                                    {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
+                                                                    {project.codeLink && <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i> View Code</Link>}
+                                                                </>
+                                                            )}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.timelineIcon}</span></div></div>
-                                    <div className="timeline-col right"></div>
-                                </>
-                            ) : (
-                                <>
-                                    <div className="timeline-col left"></div>
-                                    <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.timelineIcon}</span></div></div>
-                                    <div className="timeline-col right">
-                                        <div className="project-card-zoom">
-                                            <div className="timeline-content section-reveal">
-                                                <div className={`project-icon ${project.side}`}>{project.icon}</div>
-                                                <div className="project-date-badge">{project.date}</div>
-                                                <div className="project-info">
-                                                    <h3>{project.title}</h3>
-                                                    <p>{project.description}</p>
-                                                    <div className="project-links">
-                                                      {project.portfolioLink ? (
-                                                          <>
-                                                              <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
-                                                              {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
-                                                          </>
-                                                      ) : (
-                                                        <>
-                                                          {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
-                                                          {project.codeLink && <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i> View Code</Link>}
-                                                        </>
-                                                      )}
+                                        <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.timelineIcon}</span></div></div>
+                                        <div className="timeline-col right"></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="timeline-col left"></div>
+                                        <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.timelineIcon}</span></div></div>
+                                        <div className="timeline-col right">
+                                            <div className="project-card-zoom">
+                                                <div className="timeline-content section-reveal">
+                                                    <div className={`project-icon ${side}`}>{project.icon}</div>
+                                                    <div className="project-date-badge">{project.date}</div>
+                                                    <div className="project-info">
+                                                        <h3>{project.title}</h3>
+                                                        <p>{project.description}</p>
+                                                        <div className="project-links">
+                                                          {project.portfolioLink ? (
+                                                              <>
+                                                                  <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
+                                                                  {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
+                                                              </>
+                                                          ) : (
+                                                            <>
+                                                              {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
+                                                              {project.codeLink && <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i> View Code</Link>}
+                                                            </>
+                                                          )}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                    ))}
+                                    </>
+                                )}
+                            </div>
+                        )
+                    })}
                 </div>
 
                 <div className="projects-grid mobile-only">
