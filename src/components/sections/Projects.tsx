@@ -12,7 +12,8 @@ const projects = [
     description: "Created an Android app using Google Maps API to display nearby essential locations like ATMs, hospitals, and restaurants.",
     liveLink: "https://github.com/hd-mixture/Nearby-Places.git",
     codeLink: "https://github.com/hd-mixture/Nearby-Places.git",
-    icon: <i className="fa-solid fa-location-dot"></i>,
+    icon: <Image src="/Project Logo/Nearby Places Logo.png" alt="Nearby Places App Logo" width={48} height={48} data-ai-hint="map pin" />,
+    timelineIcon: <i className="fa-solid fa-location-dot"></i>,
     side: "right",
     status: 'completed' as ProjectStatus,
   },
@@ -23,6 +24,7 @@ const projects = [
     liveLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
     codeLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
     icon: <Image src="/Project Logo/Driving Licence App Logo.png" alt="Driving Licence App Logo" width={48} height={48} data-ai-hint="card document" />,
+    timelineIcon: <i className="fa-solid fa-id-card"></i>,
     side: "left",
     status: 'completed' as ProjectStatus,
   },
@@ -33,6 +35,7 @@ const projects = [
     liveLink: "https://hd-mixture.github.io/Campus-Cuisine/",
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine.git",
     icon: <Image src="/Project Logo/Campus Cuisin Logo Black.png" alt="Campus Cuisine Logo" width={48} height={48} data-ai-hint="food logo" />,
+    timelineIcon: <i className="fa-solid fa-utensils"></i>,
     side: "right",
     status: 'completed' as ProjectStatus,
   },
@@ -43,6 +46,7 @@ const projects = [
     liveLink: "https://epicpjm05.github.io/ABHAR/WEb",
     codeLink: "https://github.com/EPICPJM05/ABHAR.git",
     icon: <Image src="/Project Logo/ABHAR Orange Resize Logo.png" alt="ABHAR Logo" width={48} height={48} data-ai-hint="robot logo" />,
+    timelineIcon: <i className="fa-solid fa-robot"></i>,
     side: "left",
     status: 'live' as ProjectStatus,
   },
@@ -53,6 +57,7 @@ const projects = [
     liveLink: "https://github.com/100rabx23/Save-Share.git",
     codeLink: "https://github.com/100rabx23/Save-Share.git",
     icon: <Image src="/Project Logo/save_share_logo.png" alt="Save & Share Logo" width={48} height={48} data-ai-hint="charity logo" />,
+    timelineIcon: <i className="fa-solid fa-hand-holding-heart"></i>,
     side: "right",
     status: 'completed' as ProjectStatus,
   },
@@ -63,6 +68,7 @@ const projects = [
     liveLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
     codeLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
     icon: <Image src="/Project Logo/BitTRix Logo.jpg" alt="BitTRiX AI Logo" width={48} height={48} data-ai-hint="ai logo" />,
+    timelineIcon: <i className="fa-solid fa-microchip"></i>,
     side: "left",
     status: 'completed' as ProjectStatus,
   },
@@ -73,6 +79,7 @@ const projects = [
     liveLink: "https://hd-mixture.github.io/Campus-Cuisine-2/",
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine-2",
     icon: <Image src="/Project Logo/Campus_Cuisine_Logo_.2.0.png" alt="Campus Cuisine 2.0 Logo" width={48} height={48} data-ai-hint="modern food" />,
+    timelineIcon: <i className="fa-solid fa-utensils"></i>,
     side: "right",
     status: 'completed' as ProjectStatus,
   },
@@ -83,6 +90,7 @@ const projects = [
     portfolioLink: true,
     behanceLink: "https://www.behance.net/hd_mixture",
     icon: <i className="fa-solid fa-palette"></i>,
+    timelineIcon: <i className="fa-solid fa-palette"></i>,
     side: "left",
     status: 'ongoing' as ProjectStatus,
   }
@@ -258,13 +266,13 @@ export default function Projects() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.icon}</span></div></div>
+                                    <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.timelineIcon}</span></div></div>
                                     <div className="timeline-col right"></div>
                                 </>
                             ) : (
                                 <>
                                     <div className="timeline-col left"></div>
-                                    <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.icon}</span></div></div>
+                                    <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.timelineIcon}</span></div></div>
                                     <div className="timeline-col right">
                                         <div className="project-card-zoom">
                                             <div className="timeline-content section-reveal">

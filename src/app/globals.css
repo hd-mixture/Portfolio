@@ -651,13 +651,26 @@ li a:hover {
 .dark-mode .category-btn.active, .dark-mode .category-btn:hover { background-color: #fff; color: #1f252e; }
 .dark-mode .design-item-overlay { background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); }
 
+.timeline-dot.live {
+    position: relative;
+}
+
 .timeline-dot.live .timeline-dot-icon {
     animation: pulse-live 2s infinite;
     color: var(--accent-color);
 }
 
 @keyframes pulse-live {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7); }
-    70% { transform: scale(1.2); box-shadow: 0 0 10px 10px rgba(255, 87, 34, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 87, 34, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 87, 34, 0);
+    }
 }
