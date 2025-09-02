@@ -233,7 +233,7 @@ export default function Projects() {
                                     <div className="timeline-col left">
                                         <div className="project-card-zoom">
                                             <div className="timeline-content section-reveal">
-                                                <div className="project-icon section-reveal">{project.icon}</div>
+                                                <div className="project-icon left section-reveal">{project.icon}</div>
                                                 <div className="project-date-badge">{project.date}</div>
                                                 <div className="project-info">
                                                     <h3>{project.title}</h3>
@@ -258,7 +258,7 @@ export default function Projects() {
                                     <div className="timeline-col right">
                                         <div className="project-card-zoom">
                                             <div className="timeline-content section-reveal">
-                                                <div className="project-icon section-reveal">{project.icon}</div>
+                                                <div className="project-icon right section-reveal">{project.icon}</div>
                                                 <div className="project-date-badge">{project.date}</div>
                                                 <div className="project-info">
                                                     <h3>{project.title}</h3>
