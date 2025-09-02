@@ -18,17 +18,6 @@ const projects = [
     status: 'ongoing' as ProjectStatus,
   },
   {
-    date: "Oct 2024 - Present",
-    title: "ABHAR : AI-Based Home Automation Robot – Group Project (G-Code, C++)",
-    description: "Built an automation robot to control home appliances via voice commands and sensors. Programmed using G-Code and C++ with smart features for real-time response.",
-    liveLink: "https://epicpjm05.github.io/ABHAR/WEb",
-    codeLink: "https://github.com/EPICPJM05/ABHAR.git",
-    icon: <Image src="/Project Logo/ABHAR Orange Resize Logo.png" alt="ABHAR Logo" width={48} height={48} data-ai-hint="robot logo" />,
-    timelineIcon: <i className="fa-solid fa-robot"></i>,
-    side: "left",
-    status: 'live' as ProjectStatus,
-  },
-  {
     date: "Jan 2025 - May 2025",
     title: "Campus Cuisine 2.0 – Web Application (Enhanced Version)",
     description: "Upgraded the UI/UX, added real-time ordering features, and role-based admin functionalities.",
@@ -60,6 +49,17 @@ const projects = [
     timelineIcon: <i className="fa-solid fa-hand-holding-heart"></i>,
     side: "right",
     status: 'completed' as ProjectStatus,
+  },
+  {
+    date: "Oct 2024 - Present",
+    title: "ABHAR : AI-Based Home Automation Robot – Group Project (G-Code, C++)",
+    description: "Built an automation robot to control home appliances via voice commands and sensors. Programmed using G-Code and C++ with smart features for real-time response.",
+    liveLink: "https://epicpjm05.github.io/ABHAR/WEb",
+    codeLink: "https://github.com/EPICPJM05/ABHAR.git",
+    icon: <Image src="/Project Logo/ABHAR Orange Resize Logo.png" alt="ABHAR Logo" width={48} height={48} data-ai-hint="robot logo" />,
+    timelineIcon: <i className="fa-solid fa-robot"></i>,
+    side: "left",
+    status: 'live' as ProjectStatus,
   },
   {
     date: "Mar 2024 - Jun 2024",
@@ -94,18 +94,7 @@ const projects = [
     side: "left",
     status: 'completed' as ProjectStatus,
   }
-].sort((a, b) => {
-  if (a.status === 'ongoing' || a.status === 'live') return -1;
-  if (b.status === 'ongoing' || b.status === 'live') return 1;
-
-  const aDate = a.date.includes('Present') ? new Date() : new Date(a.date.split(' - ')[1] || a.date);
-  const bDate = b.date.includes('Present') ? new Date() : new Date(b.date.split(' - ')[1] || b.date);
-
-  if (isNaN(aDate.getTime())) return 1;
-  if (isNaN(bDate.getTime())) return -1;
-
-  return bDate.getTime() - aDate.getTime();
-});
+];
 
 const designData = {
     android: [
