@@ -19,7 +19,7 @@ const projects = [
     description: "Designed a user-friendly interface to apply, check documents, and track driving licence.",
     liveLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
     codeLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
-    icon: <Image src="https://picsum.photos/seed/dlapp/48/48" alt="Driving Licence App Logo" width={48} height={48} data-ai-hint="card document" />,
+    icon: <Image src="/Project Logo/Driving Licence App Logo.png" alt="Driving Licence App Logo" width={48} height={48} data-ai-hint="card document" />,
     side: "left"
   },
   {
@@ -28,7 +28,7 @@ const projects = [
     description: "Built a web app for students to discover and review affordable meals on campus.",
     liveLink: "https://hd-mixture.github.io/Campus-Cuisine/",
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine.git",
-    icon: <Image src="https://picsum.photos/seed/cc1/48/48" alt="Campus Cuisine Logo" width={48} height={48} data-ai-hint="food logo" />,
+    icon: <Image src="/Project Logo/Campus Cuisin Logo Black.png" alt="Campus Cuisine Logo" width={48} height={48} data-ai-hint="food logo" />,
     side: "right"
   },
   {
@@ -37,7 +37,7 @@ const projects = [
     description: "Built an automation robot to control home appliances via voice commands and sensors. Programmed using G-Code and C++ with smart features for real-time response.",
     liveLink: "https://epicpjm05.github.io/ABHAR/WEb",
     codeLink: "https://github.com/EPICPJM05/ABHAR.git",
-    icon: <Image src="https://picsum.photos/seed/abhar/48/48" alt="ABHAR Logo" width={48} height={48} data-ai-hint="robot logo" />,
+    icon: <Image src="/Project Logo/ABHAR Orange Resize Logo.png" alt="ABHAR Logo" width={48} height={48} data-ai-hint="robot logo" />,
     side: "left"
   },
   {
@@ -46,7 +46,7 @@ const projects = [
     description: "Designed a donation network connecting food donors, NGOs, and volunteers.",
     liveLink: "https://github.com/100rabx23/Save-Share.git",
     codeLink: "https://github.com/100rabx23/Save-Share.git",
-    icon: <Image src="https://picsum.photos/seed/saveshare/48/48" alt="Save & Share Logo" width={48} height={48} data-ai-hint="charity logo" />,
+    icon: <Image src="/Project Logo/save_share_logo.png" alt="Save & Share Logo" width={48} height={48} data-ai-hint="charity logo" />,
     side: "right"
   },
   {
@@ -55,7 +55,7 @@ const projects = [
     description: "Developed a smart testing system to generate and integrate with CI/CD tools.",
     liveLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
     codeLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
-    icon: <Image src="https://picsum.photos/seed/bittrix/48/48" alt="BitTRiX AI Logo" width={48} height={48} data-ai-hint="ai logo" />,
+    icon: <Image src="/Project Logo/BitTRix Logo.jpg" alt="BitTRiX AI Logo" width={48} height={48} data-ai-hint="ai logo" />,
     side: "left"
   },
   {
@@ -64,7 +64,7 @@ const projects = [
     description: "Upgraded the UI/UX, added real-time ordering features, and role-based admin functionalities.",
     liveLink: "https://hd-mixture.github.io/Campus-Cuisine-2/",
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine-2",
-    icon: <Image src="https://picsum.photos/seed/cc2/48/48" alt="Campus Cuisine 2.0 Logo" width={48} height={48} data-ai-hint="modern food" />,
+    icon: <Image src="/Project Logo/Campus_Cuisine_Logo_.2.0.png" alt="Campus Cuisine 2.0 Logo" width={48} height={48} data-ai-hint="modern food" />,
     side: "right"
   },
   {
@@ -232,8 +232,8 @@ export default function Projects() {
                                 <>
                                     <div className="timeline-col left">
                                         <div className="project-card-zoom">
-                                             <div className="project-icon section-reveal">{project.icon}</div>
                                             <div className="timeline-content section-reveal">
+                                                <div className="project-icon section-reveal">{project.icon}</div>
                                                 <div className="project-date-badge">{project.date}</div>
                                                 <div className="project-info">
                                                     <h3>{project.title}</h3>
@@ -257,8 +257,8 @@ export default function Projects() {
                                     <div className="timeline-col center"><div className="timeline-dot section-reveal"><span className="timeline-dot-icon">{project.icon}</span></div></div>
                                     <div className="timeline-col right">
                                         <div className="project-card-zoom">
-                                            <div className="project-icon section-reveal">{project.icon}</div>
                                             <div className="timeline-content section-reveal">
+                                                <div className="project-icon section-reveal">{project.icon}</div>
                                                 <div className="project-date-badge">{project.date}</div>
                                                 <div className="project-info">
                                                     <h3>{project.title}</h3>
