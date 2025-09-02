@@ -59,7 +59,7 @@ header.header-hidden {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1rem 2.5rem;
     z-index: 1001;
     position: relative;
     background: #fff;
