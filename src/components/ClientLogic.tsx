@@ -6,7 +6,7 @@ import BackToTopButton from './BackToTopButton';
 export default function ClientLogic({ children }: { children: React.ReactNode }) {
   
   useEffect(() => {
-    // --- Nav highlighting on scroll ---
+    const header = document.querySelector('header');
     const desktopNavLinks = document.querySelectorAll('.desktop-nav li a');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav li a');
     const allLinks = [...desktopNavLinks, ...mobileNavLinks];
@@ -14,9 +14,21 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
     
     let isClickScrolling = false;
     let scrollTimeout: NodeJS.Timeout;
+    let lastScrollY = window.scrollY;
 
     const onScroll = () => {
       if (isClickScrolling) return;
+
+      // Header hide/show
+      if (header) {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+          header.classList.add('header-hidden');
+        } else {
+          header.classList.remove('header-hidden');
+        }
+        lastScrollY = window.scrollY;
+      }
+
 
       let currentSectionId = '';
       sections.forEach(section => {
@@ -43,14 +55,11 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
         }, 1000);
         
         allLinks.forEach(l => l.classList.remove('active'));
-        // Find the corresponding link in the other nav and add active class
         document.querySelectorAll(`a[href="${link.getAttribute('href')}"]`).forEach(l => l.classList.add('active'));
       });
     });
 
-    // --- Mobile nav auto-hide ---
     const mobileNav = document.querySelector('.mobile-nav') as HTMLElement;
-    let lastScrollY = window.scrollY;
     let hideNavTimeout: NodeJS.Timeout;
 
     const handleMobileNavScroll = () => {
@@ -61,7 +70,6 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
         } else {
             mobileNav.classList.remove('nav-hidden');
         }
-        lastScrollY = window.scrollY;
         
         clearTimeout(hideNavTimeout);
         hideNavTimeout = setTimeout(() => {
@@ -69,7 +77,6 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
         }, 5000);
     };
 
-    // --- Section reveal on scroll ---
     const revealElements = document.querySelectorAll('.section-reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -90,7 +97,7 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('scroll', handleMobileNavScroll);
       revealElements.forEach(el => observer.unobserve(el));
-      allLinks.forEach(link => link.replaceWith(link.cloneNode(true))); // cheap way to remove listeners
+      allLinks.forEach(link => link.replaceWith(link.cloneNode(true)));
     };
   }, []);
 

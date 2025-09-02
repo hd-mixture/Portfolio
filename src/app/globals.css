@@ -48,6 +48,11 @@ header {
     right: 0;
     z-index: 9999998 !important;
     width: 100%;
+    transition: top 0.3s ease-in-out;
+}
+
+header.header-hidden {
+    top: -100%;
 }
 
 .page-header {
@@ -357,7 +362,7 @@ li a:hover {
 }
 
 @media screen and (min-width: 601px) {
-    header { background: transparent !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
+    header:not(.header-hidden) { background: transparent !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
     .container { padding: 0 !important; margin: 0 auto !important; max-width: none !important; }
     header .page-header { background: rgba(255,255,255,0.7); backdrop-filter: blur(8px); border-radius: 32px; box-shadow: 0 4px 24px rgba(82,72,156,0.10); padding: 0.7rem 2.5rem; margin: 24px auto 0 auto; max-width: 900px; display: flex; align-items: center; justify-content: space-between; }
     ul.desktop-nav { background: transparent; box-shadow: none; border-radius: 32px; display: flex; flex-direction: row; align-items: center; gap: 1.5rem; padding: 0.2rem 1.2rem; margin: 0; position: static; width: auto; height: auto; }
