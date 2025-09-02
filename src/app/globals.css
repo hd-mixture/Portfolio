@@ -439,9 +439,26 @@ li a:hover {
 /* Projects Section */
 .projects-section { margin: 56px 0; }
 .projects-section h2 { text-align: left; color: #23243a; font-size: 2.1rem; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem; }
-.project-link { flex-grow: 1; flex-basis: 0; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem 1rem; background: #f5f4fa; color: #52489C; text-decoration: none; border-radius: 12px; font-weight: 500; font-size: 0.95rem; transition: all 0.2s ease; white-space: nowrap; }
+.project-link {
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 0.5rem; /* Reduced padding */
+    background: #f5f4fa;
+    color: #52489C;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.9rem; /* Reduced font size */
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    min-width: 0;
+}
 .project-link:hover { background: #52489C; color: #fff; transform: translateY(-2px); }
-.project-link i { font-size: 1.1rem; }
+.project-link i { font-size: 1rem; }
 
 /* Contact Section */
 .contact-section { margin: 48px 0; padding: 3.5rem 1rem; background: #f7f5ff; border-radius: 24px; box-shadow: 0 8px 32px rgba(82,72,156,0.08); position: relative; overflow: hidden; max-width: 800px; margin-left: auto; margin-right: auto; }
