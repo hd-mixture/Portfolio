@@ -7,6 +7,7 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
   
   useEffect(() => {
     const header = document.querySelector('header');
+    const pageHeader = document.querySelector('.page-header') as HTMLElement;
     const desktopNavLinks = document.querySelectorAll('.desktop-nav li a');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav li a');
     const allLinks = [...desktopNavLinks, ...mobileNavLinks];
@@ -17,6 +18,15 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
     let lastScrollY = window.scrollY;
 
     const onScroll = () => {
+      // Scrolled state for header
+      if (pageHeader) {
+          if (window.scrollY > 50) {
+              pageHeader.classList.add('scrolled');
+          } else {
+              pageHeader.classList.remove('scrolled');
+          }
+      }
+
       if (isClickScrolling) return;
 
       // Header hide/show
