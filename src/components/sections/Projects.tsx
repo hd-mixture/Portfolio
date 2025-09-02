@@ -7,17 +7,6 @@ type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
 const projects = [
   {
-    date: "Ongoing",
-    title: "Graphic Designs",
-    description: "A showcase of my creative graphic design works, including posters, banners, logos, and more.",
-    portfolioLink: true,
-    behanceLink: "https://www.behance.net/hd_mixture",
-    icon: <i className="fa-solid fa-palette"></i>,
-    timelineIcon: <i className="fa-solid fa-palette"></i>,
-    side: "left",
-    status: 'ongoing' as ProjectStatus,
-  },
-  {
     date: "Jan 2025 - May 2025",
     title: "Campus Cuisine 2.0 – Web Application (Enhanced Version)",
     description: "Upgraded the UI/UX, added real-time ordering features, and role-based admin functionalities.",
@@ -62,6 +51,17 @@ const projects = [
     status: 'live' as ProjectStatus,
   },
   {
+    date: "Ongoing",
+    title: "Graphic Designs",
+    description: "A showcase of my creative graphic design works, including posters, banners, logos, and more.",
+    portfolioLink: true,
+    behanceLink: "https://www.behance.net/hd_mixture",
+    icon: <i className="fa-solid fa-palette"></i>,
+    timelineIcon: <i className="fa-solid fa-palette"></i>,
+    side: "right",
+    status: 'ongoing' as ProjectStatus,
+  },
+  {
     date: "Mar 2024 - Jun 2024",
     title: "Campus Cuisine – Web Application (Initial Version)",
     description: "Built a web app for students to discover and review affordable meals on campus.",
@@ -69,7 +69,7 @@ const projects = [
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine.git",
     icon: <Image src="/Project Logo/Campus Cuisin Logo Black.png" alt="Campus Cuisine Logo" width={48} height={48} data-ai-hint="food logo" />,
     timelineIcon: <i className="fa-solid fa-utensils"></i>,
-    side: "right",
+    side: "left",
     status: 'completed' as ProjectStatus,
   },
   {
@@ -80,7 +80,7 @@ const projects = [
     codeLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
     icon: <Image src="/Project Logo/Driving Licence App Logo.png" alt="Driving Licence App Logo" width={48} height={48} data-ai-hint="card document" />,
     timelineIcon: <i className="fa-solid fa-id-card"></i>,
-    side: "left",
+    side: "right",
     status: 'completed' as ProjectStatus,
   },
   {
@@ -91,7 +91,7 @@ const projects = [
     codeLink: "https://github.com/hd-mixture/Nearby-Places.git",
     icon: <Image src="/Project Logo/Nearby Places Logo.png" alt="Nearby Places App Logo" width={48} height={48} data-ai-hint="map pin" />,
     timelineIcon: <i className="fa-solid fa-location-dot"></i>,
-    side: "right",
+    side: "left",
     status: 'completed' as ProjectStatus,
   }
 ];
@@ -289,8 +289,17 @@ export default function Projects() {
                                                     <h3>{project.title}</h3>
                                                     <p>{project.description}</p>
                                                     <div className="project-links">
-                                                        {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
-                                                        {project.codeLink && <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i> View Code</Link>}
+                                                      {project.portfolioLink ? (
+                                                          <>
+                                                              <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
+                                                              {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
+                                                          </>
+                                                      ) : (
+                                                        <>
+                                                          {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
+                                                          {project.codeLink && <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i> View Code</Link>}
+                                                        </>
+                                                      )}
                                                     </div>
                                                 </div>
                                             </div>

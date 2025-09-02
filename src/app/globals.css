@@ -439,7 +439,7 @@ li a:hover {
 /* Projects Section */
 .projects-section { margin: 56px 0; }
 .projects-section h2 { text-align: left; color: #23243a; font-size: 2.1rem; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem; }
-.project-link { flex-grow: 1; flex-basis: 0; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem 1rem; background: #f5f4fa; color: #52489C; text-decoration: none; border-radius: 12px; font-weight: 500; font-size: 0.95rem; transition: all 0.2s ease; }
+.project-link { flex-grow: 1; flex-basis: 0; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem 1rem; background: #f5f4fa; color: #52489C; text-decoration: none; border-radius: 12px; font-weight: 500; font-size: 0.95rem; transition: all 0.2s ease; white-space: nowrap; }
 .project-link:hover { background: #52489C; color: #fff; transform: translateY(-2px); }
 .project-link i { font-size: 1.1rem; }
 
@@ -527,7 +527,7 @@ li a:hover {
 .project-card-zoom:hover { transform: scale(1.07); z-index: 20; }
 .project-icon {
     position: absolute;
-    top: -20px;
+    top: -24px;
     z-index: 20;
     transition: box-shadow 0.2s, transform 0.3s cubic-bezier(.4,2,.6,1);
     background: #fff;
@@ -560,7 +560,7 @@ li a:hover {
 .project-info { display: flex; flex-direction: column; width: 100%; }
 .project-info h3 { color: #23243a; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 700; letter-spacing: 0.01em; }
 .project-info p { color: #23243a; font-size: 1rem; margin-bottom: 1.2rem; line-height: 1.6; font-weight: 500; }
-.project-links { display: flex; gap: 1rem; margin-top: 1.2rem; width: 100%; flex-wrap: wrap; }
+.project-links { display: flex; gap: 1rem; margin-top: 1.2rem; width: 100%; flex-wrap: nowrap; }
 .timeline-event[data-side="left"] .project-links { justify-content: flex-end; }
 .timeline-event[data-side="right"] .project-links { justify-content: flex-start; }
 
