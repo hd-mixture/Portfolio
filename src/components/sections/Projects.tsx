@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+type ProjectStatus = 'completed' | 'ongoing' | 'live';
+
 const projects = [
   {
     date: "Aug 2022 - Sep 2022",
@@ -11,7 +13,8 @@ const projects = [
     liveLink: "https://github.com/hd-mixture/Nearby-Places.git",
     codeLink: "https://github.com/hd-mixture/Nearby-Places.git",
     icon: <i className="fa-solid fa-location-dot"></i>,
-    side: "right"
+    side: "right",
+    status: 'completed' as ProjectStatus,
   },
   {
     date: "Aug 2023 - Sep 2023",
@@ -20,7 +23,8 @@ const projects = [
     liveLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
     codeLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
     icon: <Image src="/Project Logo/Driving Licence App Logo.png" alt="Driving Licence App Logo" width={48} height={48} data-ai-hint="card document" />,
-    side: "left"
+    side: "left",
+    status: 'completed' as ProjectStatus,
   },
   {
     date: "Mar 2024 - Jun 2024",
@@ -29,7 +33,8 @@ const projects = [
     liveLink: "https://hd-mixture.github.io/Campus-Cuisine/",
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine.git",
     icon: <Image src="/Project Logo/Campus Cuisin Logo Black.png" alt="Campus Cuisine Logo" width={48} height={48} data-ai-hint="food logo" />,
-    side: "right"
+    side: "right",
+    status: 'completed' as ProjectStatus,
   },
   {
     date: "Oct 2024 - Present",
@@ -38,7 +43,8 @@ const projects = [
     liveLink: "https://epicpjm05.github.io/ABHAR/WEb",
     codeLink: "https://github.com/EPICPJM05/ABHAR.git",
     icon: <Image src="/Project Logo/ABHAR Orange Resize Logo.png" alt="ABHAR Logo" width={48} height={48} data-ai-hint="robot logo" />,
-    side: "left"
+    side: "left",
+    status: 'live' as ProjectStatus,
   },
   {
     date: "Feb 2025 - Apr 2025",
@@ -47,7 +53,8 @@ const projects = [
     liveLink: "https://github.com/100rabx23/Save-Share.git",
     codeLink: "https://github.com/100rabx23/Save-Share.git",
     icon: <Image src="/Project Logo/save_share_logo.png" alt="Save & Share Logo" width={48} height={48} data-ai-hint="charity logo" />,
-    side: "right"
+    side: "right",
+    status: 'completed' as ProjectStatus,
   },
   {
     date: "Apr 2025 - Apr 2025",
@@ -56,7 +63,8 @@ const projects = [
     liveLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
     codeLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
     icon: <Image src="/Project Logo/BitTRix Logo.jpg" alt="BitTRiX AI Logo" width={48} height={48} data-ai-hint="ai logo" />,
-    side: "left"
+    side: "left",
+    status: 'completed' as ProjectStatus,
   },
   {
     date: "Jan 2025 - May 2025",
@@ -65,7 +73,8 @@ const projects = [
     liveLink: "https://hd-mixture.github.io/Campus-Cuisine-2/",
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine-2",
     icon: <Image src="/Project Logo/Campus_Cuisine_Logo_.2.0.png" alt="Campus Cuisine 2.0 Logo" width={48} height={48} data-ai-hint="modern food" />,
-    side: "right"
+    side: "right",
+    status: 'completed' as ProjectStatus,
   },
   {
     date: "Ongoing",
@@ -74,7 +83,8 @@ const projects = [
     portfolioLink: true,
     behanceLink: "https://www.behance.net/hd_mixture",
     icon: <i className="fa-solid fa-palette"></i>,
-    side: "left"
+    side: "left",
+    status: 'ongoing' as ProjectStatus,
   }
 ];
 
@@ -233,7 +243,7 @@ export default function Projects() {
                                     <div className="timeline-col left">
                                         <div className="project-card-zoom">
                                             <div className="timeline-content section-reveal">
-                                                <div className="project-icon left section-reveal">{project.icon}</div>
+                                                <div className={`project-icon ${project.side}`}>{project.icon}</div>
                                                 <div className="project-date-badge">{project.date}</div>
                                                 <div className="project-info">
                                                     <h3>{project.title}</h3>
@@ -248,17 +258,17 @@ export default function Projects() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="timeline-col center"><div className="timeline-dot section-reveal"><span className="timeline-dot-icon">{project.icon}</span></div></div>
+                                    <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.icon}</span></div></div>
                                     <div className="timeline-col right"></div>
                                 </>
                             ) : (
                                 <>
                                     <div className="timeline-col left"></div>
-                                    <div className="timeline-col center"><div className="timeline-dot section-reveal"><span className="timeline-dot-icon">{project.icon}</span></div></div>
+                                    <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.icon}</span></div></div>
                                     <div className="timeline-col right">
                                         <div className="project-card-zoom">
                                             <div className="timeline-content section-reveal">
-                                                <div className="project-icon right section-reveal">{project.icon}</div>
+                                                <div className={`project-icon ${project.side}`}>{project.icon}</div>
                                                 <div className="project-date-badge">{project.date}</div>
                                                 <div className="project-info">
                                                     <h3>{project.title}</h3>
