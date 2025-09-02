@@ -652,18 +652,23 @@ li a:hover {
 .dark-mode .design-item-overlay { background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); }
 
 .timeline-dot.live {
-    border-color: var(--accent-color);
+    border-color: #ff4d4d;
+    background-color: #ff4d4d;
     animation: pulse-live 2s infinite;
+}
+
+.timeline-dot.live .timeline-dot-icon {
+    color: #fff;
 }
 
 @keyframes pulse-live {
     0% {
-        box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7);
+        box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
     }
     70% {
-        box-shadow: 0 0 0 10px rgba(255, 87, 34, 0);
+        box-shadow: 0 0 0 10px rgba(255, 77, 77, 0);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(255, 87, 34, 0);
+        box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
     }
 }
