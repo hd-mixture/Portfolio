@@ -258,10 +258,10 @@ export default function Projects() {
                                                     <p>{project.description}</p>
                                                     <div className="project-links">
                                                         {project.portfolioLink ? (
-                                                            <div style={{ display: 'flex', gap: '1rem', width: '100%', justifyContent: 'flex-end' }}>
-                                                                <a href="#" className="project-link" onClick={openDesignModal} style={{ flex: '1 1 auto' }}><i className="fa-solid fa-image"></i> View Portfolio</a>
-                                                                {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer" style={{ flex: '1 1 auto' }}><i className="fa-brands fa-behance"></i> View Behance</Link>}
-                                                            </div>
+                                                            <>
+                                                                <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
+                                                                {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
+                                                            </>
                                                         ) : (
                                                             <>
                                                                 {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
