@@ -34,7 +34,7 @@ export default function Hero() {
         </div>
         <div className="images">
           <Image
-            src="https://picsum.photos/300/450"
+            src="/hd_image.png"
             alt="Darshan Prajapati profile"
             width={300}
             height={450}

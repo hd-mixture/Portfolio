@@ -79,12 +79,59 @@ const projects = [
 ];
 
 const designData = {
-    android: Array.from({ length: 5 }, (_, i) => ({ src: `https://picsum.photos/seed/android${i}/250/200`, title: `Android Screen Design ${i+1}` })),
-    web: Array.from({ length: 8 }, (_, i) => ({ src: `https://picsum.photos/seed/web${i}/250/200`, title: `Web Screen Design ${i+1}` })),
-    banners: Array.from({ length: 7 }, (_, i) => ({ src: `https://picsum.photos/seed/banner${i}/250/200`, title: `Banner Design ${i+1}` })),
-    certificates: Array.from({ length: 3 }, (_, i) => ({ src: `https://picsum.photos/seed/cert${i}/250/200`, title: `Certificate Design ${i+1}` })),
-    logos: Array.from({ length: 8 }, (_, i) => ({ src: `https://picsum.photos/seed/logo${i}/250/200`, title: `Logo Design ${i+1}` })),
-    posters: Array.from({ length: 10 }, (_, i) => ({ src: `https://picsum.photos/seed/poster${i}/250/200`, title: `Poster Design ${i+1}` })),
+    android: [
+        { src: "/Graphic Designes/Android/1.png", title: "Android Screen Design 1" },
+        { src: "/Graphic Designes/Android/2.png", title: "Android Screen Design 2" },
+        { src: "/Graphic Designes/Android/3.png", title: "Android Screen Design 3" },
+        { src: "/Graphic Designes/Android/4.png", title: "Android Screen Design 4" },
+        { src: "/Graphic Designes/Android/5.png", title: "Android Screen Design 5" }
+    ],
+    web: [
+        { src: "/Graphic Designes/Web/1.png", title: "Web Screen Design 1" },
+        { src: "/Graphic Designes/Web/2.png", title: "Web Screen Design 2" },
+        { src: "/Graphic Designes/Web/3.png", title: "Web Screen Design 3" },
+        { src: "/Graphic Designes/Web/4.png", title: "Web Screen Design 4" },
+        { src: "/Graphic Designes/Web/5.png", title: "Web Screen Design 5" },
+        { src: "/Graphic Designes/Web/6.png", title: "Web Screen Design 6" },
+        { src: "/Graphic Designes/Web/7.png", title: "Web Screen Design 7" },
+        { src: "/Graphic Designes/Web/8.png", title: "Web Screen Design 8" }
+    ],
+    banners: [
+        { src: "/Graphic Designes/Banners/1.png", title: "Banner Design 1" },
+        { src: "/Graphic Designes/Banners/2.png", title: "Banner Design 2" },
+        { src: "/Graphic Designes/Banners/3.png", title: "Banner Design 3" },
+        { src: "/Graphic Designes/Banners/4.png", title: "Banner Design 4" },
+        { src: "/Graphic Designes/Banners/5.png", title: "Banner Design 5" },
+        { src: "/Graphic Designes/Banners/6.png", title: "Banner Design 6" },
+        { src: "/Graphic Designes/Banners/7.png", title: "Banner Design 7" }
+    ],
+    certificates: [
+        { src: "/Graphic Designes/Certificates/1.png", title: "Certificate Design 1" },
+        { src: "/Graphic Designes/Certificates/2.png", title: "Certificate Design 2" },
+        { src: "/Graphic Designes/Certificates/3.png", title: "Certificate Design 3" }
+    ],
+    logos: [
+        { src: "/Graphic Designes/Logos/1.png", title: "Logo Design 1" },
+        { src: "/Graphic Designes/Logos/2.png", title: "Logo Design 2" },
+        { src: "/Graphic Designes/Logos/3.png", title: "Logo Design 3" },
+        { src: "/Graphic Designes/Logos/4.png", title: "Logo Design 4" },
+        { src: "/Graphic Designes/Logos/5.png", title: "Logo Design 5" },
+        { src: "/Graphic Designes/Logos/6.png", title: "Logo Design 6" },
+        { src: "/Graphic Designes/Logos/7.png", title: "Logo Design 7" },
+        { src: "/Graphic Designes/Logos/8.png", title: "Logo Design 8" }
+    ],
+    posters: [
+        { src: "/Graphic Designes/Posters/1.png", title: "Poster Design 1" },
+        { src: "/Graphic Designes/Posters/2.png", title: "Poster Design 2" },
+        { src: "/Graphic Designes/Posters/3.png", title: "Poster Design 3" },
+        { src: "/Graphic Designes/Posters/4.png", title: "Poster Design 4" },
+        { src: "/Graphic Designes/Posters/5.png", title: "Poster Design 5" },
+        { src: "/Graphic Designes/Posters/6.png", title: "Poster Design 6" },
+        { src: "/Graphic Designes/Posters/7.png", title: "Poster Design 7" },
+        { src: "/Graphic Designes/Posters/8.png", title: "Poster Design 8" },
+        { src: "/Graphic Designes/Posters/9.png", title: "Poster Design 9" },
+        { src: "/Graphic Designes/Posters/10.png", title: "Poster Design 10" }
+    ]
 };
 
 const allDesigns = Object.values(designData).flat();

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "Darshan Prajapati - Creative Developer & Graphic Designer",
     description:
       "Portfolio showcasing web development, mobile apps, and graphic design projects.",
-    images: [{ url: "/img.png" }],
+    images: [{ url: "/logos/hd_logo.png" }],
     url: "https://hd-mixture.github.io/portfolio",
   },
   twitter: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Darshan Prajapati - Creative Developer & Graphic Designer",
     description:
       "Portfolio showcasing web development, mobile apps, and graphic design projects.",
-    images: ["/img.png"],
+    images: ["/logos/hd_logo.png"],
   },
 };
 
@@ -49,8 +49,8 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        <link rel="icon" type="image/png" href="/img.png" />
-        <link rel="apple-touch-icon" href="/img.png" />
+        <link rel="icon" type="image/png" href="/logos/hd_logo.png" />
+        <link rel="apple-touch-icon" href="/logos/hd_logo.png" />
       </head>
       <body>
         <ClientLogic>

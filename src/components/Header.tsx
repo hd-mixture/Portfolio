@@ -63,7 +63,7 @@ export default function Header() {
         <div className="page-header">
           <div className="logo">
             <Link href="#home">
-              <Image src="/img.png" alt="Logo" width={60} height={60} data-ai-hint="logo monogram" />
+              <Image src="/logos/hd_logo.png" alt="Logo" width={60} height={60} data-ai-hint="logo monogram" />
             </Link>
           </div>
           <label className="mode floating-toggle mobile-only">
