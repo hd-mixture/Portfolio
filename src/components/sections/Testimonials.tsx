@@ -30,7 +30,7 @@ export default function Testimonials() {
         "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
       name: "James Kim",
       designation: "Engineering Lead at DataPro",
-      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%3D",
     },
     {
       quote:
@@ -42,8 +42,12 @@ export default function Testimonials() {
   ];
   return (
     <section id="testimonials" className="py-20 section-reveal">
-       <h2 className="text-center text-2xl md:text-4xl font-bold text-black dark:text-white">Testimonials</h2>
-      <AnimatedTestimonials testimonials={testimonials} />
+      <div className="container mx-auto px-4">
+        <h2 className="text-center text-2xl md:text-4xl font-bold text-black dark:text-white mb-8">
+          Testimonials
+        </h2>
+        <AnimatedTestimonials testimonials={testimonials} />
+      </div>
     </section>
   );
 }
