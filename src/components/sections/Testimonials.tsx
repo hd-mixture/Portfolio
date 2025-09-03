@@ -42,7 +42,7 @@ export default function Testimonials() {
   ];
   return (
     <section id="testimonials" className="py-20">
-      <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
+      <AnimatedTestimonials testimonials={testimonials} />
     </section>
   );
 }

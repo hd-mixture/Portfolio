@@ -14,7 +14,7 @@ type Testimonial = {
 
 export const AnimatedTestimonials = ({
   testimonials,
-  autoplay = false,
+  autoplay = true,
 }: {
   testimonials: Testimonial[];
   autoplay?: boolean;
@@ -33,20 +33,19 @@ export const AnimatedTestimonials = ({
   const handlePrev = () => {
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
-
+  
   useEffect(() => {
-    if (autoplay) {
-      const interval = setInterval(handleNext, 5000);
-      return () => clearInterval(interval);
-    }
-  }, [autoplay, testimonials.length]);
+    if (!autoplay || !isClient) return;
+    const interval = setInterval(handleNext, 5000);
+    return () => clearInterval(interval);
+  }, [autoplay, isClient]);
 
   const randomRotate = () => (isClient ? Math.floor(Math.random() * 21) - 10 : 0);
 
   return (
-    <div className="mx-auto max-w-sm px-4 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
-      <div className="relative grid grid-cols-1 items-center gap-20 md:grid-cols-2">
-        <div className="relative h-80 w-full">
+    <div className="testimonial-section-container">
+      <div className="testimonial-grid">
+        <div className="testimonial-image-container">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -70,7 +69,7 @@ export const AnimatedTestimonials = ({
                 duration: 0.4,
                 ease: "easeInOut",
               }}
-              className="absolute inset-0 origin-bottom"
+              className="testimonial-image-motion"
             >
               <Image
                 src={testimonials[active].src}
@@ -78,13 +77,13 @@ export const AnimatedTestimonials = ({
                 width={500}
                 height={500}
                 draggable={false}
-                className="h-full w-full rounded-3xl object-cover object-center"
+                className="testimonial-image"
                 data-ai-hint="person"
               />
             </motion.div>
           </AnimatePresence>
         </div>
-        <div className="flex flex-col justify-between py-4">
+        <div className="testimonial-content-container">
           <motion.div
             key={active}
             initial={{
@@ -104,13 +103,13 @@ export const AnimatedTestimonials = ({
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-2xl font-bold text-black dark:text-white">
+            <h3 className="testimonial-name">
               {testimonials[active].name}
             </h3>
-            <p className="text-sm text-gray-500 dark:text-neutral-500">
+            <p className="testimonial-designation">
               {testimonials[active].designation}
             </p>
-            <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
+            <motion.p className="testimonial-quote">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
@@ -136,16 +135,16 @@ export const AnimatedTestimonials = ({
               ))}
             </motion.p>
           </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-0">
+          <div className="testimonial-nav-buttons">
             <button
               onClick={handlePrev}
-              className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+              className="testimonial-nav-button"
             >
               <IconArrowLeft className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
             </button>
             <button
               onClick={handleNext}
-              className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+              className="testimonial-nav-button"
             >
               <IconArrowRight className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
             </button>
