@@ -286,7 +286,7 @@ li a:hover {
 }
 
 .dark-mode .page-header {
-    box-shadow: 0 4px 17px rgba(80, 80, 80, 0.31);
+    box-shadow: none;
     background: var(--primary-dark);
 }
 
@@ -796,7 +796,7 @@ li a:hover {
 
 @media (min-width: 768px) {
   .testimonial-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 40% 1fr;
     gap: 5rem;
   }
 }
@@ -857,7 +857,7 @@ li a:hover {
   font-size: 1.125rem;
   line-height: 1.75rem;
   color: rgb(107 114 128);
-  max-width: 24rem;
+  max-width: 100%;
 }
 
 .dark-mode .testimonial-quote {
