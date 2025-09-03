@@ -814,7 +814,7 @@ li a:hover {
   font-size: 1.125rem;
   line-height: 1.75rem;
   color: rgb(107 114 128);
-  max-width: 24rem; /* 384px */
+  max-width: 24rem;
 }
 
 .dark-mode .testimonial-quote {
@@ -835,8 +835,8 @@ li a:hover {
 
 .testimonial-nav-button {
   display: flex;
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 2rem;
+  width: 2rem;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
@@ -849,6 +849,14 @@ li a:hover {
 
 .testimonial-nav-button:hover {
     background-color: rgb(229 231 235);
+}
+
+.testimonial-nav-button svg {
+    transition: transform 0.3s ease;
+}
+
+.testimonial-nav-button:hover svg {
+    transform: translateY(-2px);
 }
 
 
