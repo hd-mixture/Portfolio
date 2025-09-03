@@ -140,13 +140,13 @@ export const AnimatedTestimonials = ({
               onClick={handlePrev}
               className="testimonial-nav-button testimonial-nav-prev"
             >
-              <IconArrowLeft className="h-4 w-4 text-black dark:text-neutral-400" />
+              <IconArrowLeft className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
             </button>
             <button
               onClick={handleNext}
               className="testimonial-nav-button testimonial-nav-next"
             >
-              <IconArrowRight className="h-4 w-4 text-black dark:text-neutral-400" />
+              <IconArrowRight className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
             </button>
           </div>
         </div>
