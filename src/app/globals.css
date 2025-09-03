@@ -859,6 +859,8 @@ li a:hover {
   line-height: 1.75rem;
   color: rgb(107 114 128);
   max-width: 100%;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .dark-mode .testimonial-quote {
