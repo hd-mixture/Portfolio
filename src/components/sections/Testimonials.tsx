@@ -40,12 +40,9 @@ export default function Testimonials() {
       src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
-
   return (
     <section id="testimonials" className="py-20">
-      <div className="flex justify-center">
-        <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
-      </div>
+      <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
     </section>
   );
 }

@@ -41,48 +41,47 @@ export const AnimatedTestimonials = ({
     }
   }, [autoplay, testimonials.length]);
 
-
-  const randomRotate = () => isClient ? Math.floor(Math.random() * 21) - 10 : 0;
+  const randomRotate = () => (isClient ? Math.floor(Math.random() * 21) - 10 : 0);
   
   return (
     <div className="mx-auto max-w-sm px-4 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
       <div className="relative grid grid-cols-1 items-center gap-20 md:grid-cols-2">
         <div className="relative h-80 w-full">
           <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{
-                  opacity: 0,
-                  scale: 0.9,
-                  rotate: randomRotate(),
-                }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: 0,
-                  y: [0, -40, 0],
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 0.9,
-                  rotate: randomRotate(),
-                }}
-                transition={{
-                  duration: 0.4,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 origin-bottom"
-              >
-                <Image
-                  src={testimonials[active].src}
-                  alt={testimonials[active].name}
-                  width={500}
-                  height={500}
-                  draggable={false}
-                  className="h-full w-full rounded-3xl object-cover object-center"
-                  data-ai-hint="person"
-                />
-              </motion.div>
+            <motion.div
+              key={active}
+              initial={{
+                opacity: 0,
+                scale: 0.9,
+                rotate: randomRotate(),
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                rotate: 0,
+                y: [0, -40, 0],
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.9,
+                rotate: randomRotate(),
+              }}
+              transition={{
+                duration: 0.4,
+                ease: "easeInOut",
+              }}
+              className="absolute inset-0 origin-bottom"
+            >
+              <Image
+                src={testimonials[active].src}
+                alt={testimonials[active].name}
+                width={500}
+                height={500}
+                draggable={false}
+                className="h-full w-full rounded-3xl object-cover object-center"
+                data-ai-hint="person"
+              />
+            </motion.div>
           </AnimatePresence>
         </div>
         <div className="flex flex-col justify-between py-4">
