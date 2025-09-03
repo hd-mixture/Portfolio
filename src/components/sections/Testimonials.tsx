@@ -41,7 +41,8 @@ export default function Testimonials() {
     },
   ];
   return (
-    <section id="testimonials" className="py-20">
+    <section id="testimonials" className="py-20 section-reveal">
+       <h2 className="text-center text-2xl md:text-4xl font-bold text-black dark:text-white">Testimonials</h2>
       <AnimatedTestimonials testimonials={testimonials} />
     </section>
   );
