@@ -83,7 +83,7 @@ export const AnimatedTestimonials = ({
             </motion.div>
           </AnimatePresence>
         </div>
-        <div className="testimonial-content-container">
+        <div className="testimonial-content-container text-left">
           <motion.div
             key={active}
             initial={{
@@ -135,7 +135,7 @@ export const AnimatedTestimonials = ({
               ))}
             </motion.p>
           </motion.div>
-          <div className="testimonial-nav-buttons">
+          <div className="testimonial-nav-buttons mt-4">
             <button
               onClick={handlePrev}
               className="testimonial-nav-button"
