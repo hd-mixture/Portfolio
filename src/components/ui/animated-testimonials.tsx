@@ -3,7 +3,6 @@
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
 import { useEffect, useState } from "react";
 
 type Testimonial = {
@@ -12,6 +11,7 @@ type Testimonial = {
   designation: string;
   src: string;
 };
+
 export const AnimatedTestimonials = ({
   testimonials,
   autoplay = false,
@@ -34,10 +34,6 @@ export const AnimatedTestimonials = ({
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  const isActive = (index: number) => {
-    return index === active;
-  };
-
   useEffect(() => {
     if (autoplay && isMounted) {
       const interval = setInterval(handleNext, 5000);
@@ -45,52 +41,65 @@ export const AnimatedTestimonials = ({
     }
   }, [autoplay, isMounted]);
 
-  const randomRotateY = () => {
-    if (!isMounted) return 0;
-    return Math.floor(Math.random() * 21) - 10;
+  const getAnimationProps = () => {
+    if (!isMounted) {
+      return {
+        initial: { opacity: 0 },
+        animate: { opacity: 0 },
+        exit: { opacity: 0 },
+      };
+    }
+    const randomRotateY = Math.floor(Math.random() * 21) - 10;
+    return {
+      initial: {
+        opacity: 0,
+        scale: 0.9,
+        rotateY: randomRotateY,
+      },
+      animate: {
+        opacity: 1,
+        scale: 1,
+        rotateY: 0,
+        y: [0, -20, 0],
+      },
+      exit: {
+        opacity: 0,
+        scale: 0.9,
+        rotateY: randomRotateY,
+      },
+    };
   };
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <div className="mx-auto max-w-sm px-4 py-20 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
       <div className="relative grid grid-cols-1 items-center gap-20 md:grid-cols-2">
         <div className="relative h-80 w-full">
-          <AnimatePresence>
-            {isMounted && testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.src}
-                initial={{
-                  opacity: 0,
-                  scale: 0.9,
-                  rotateY: randomRotateY(),
-                }}
-                animate={{
-                  opacity: isActive(index) ? 1 : 0.3,
-                  scale: isActive(index) ? 1 : 0.95,
-                  rotateY: isActive(index) ? 0 : randomRotateY(),
-                  zIndex: isActive(index) ? 40 : testimonials.length - index,
-                  y: isActive(index) ? [0, -20, 0] : 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 0.9,
-                  rotateY: randomRotateY(),
-                }}
-                transition={{
-                  duration: 0.4,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 origin-bottom"
-              >
-                <Image
-                  src={testimonial.src}
-                  alt={testimonial.name}
-                  width={500}
-                  height={500}
-                  draggable={false}
-                  className="h-full w-full rounded-3xl object-cover object-center"
-                  data-ai-hint="person"
-                />
-              </motion.div>
-            ))}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={getAnimationProps().initial}
+              animate={getAnimationProps().animate}
+              exit={getAnimationProps().exit}
+              transition={{
+                duration: 0.4,
+                ease: "easeInOut",
+              }}
+              className="absolute inset-0 origin-bottom"
+            >
+              <Image
+                src={testimonials[active].src}
+                alt={testimonials[active].name}
+                width={500}
+                height={500}
+                draggable={false}
+                className="h-full w-full rounded-3xl object-cover object-center"
+                data-ai-hint="person"
+              />
+            </motion.div>
           </AnimatePresence>
         </div>
         <div className="flex flex-col justify-between py-4">
@@ -114,13 +123,13 @@ export const AnimatedTestimonials = ({
             }}
           >
             <h3 className="text-2xl font-bold text-black dark:text-white">
-              {isMounted && testimonials[active].name}
+              {testimonials[active].name}
             </h3>
             <p className="text-sm text-gray-500 dark:text-neutral-500">
-              {isMounted && testimonials[active].designation}
+              {testimonials[active].designation}
             </p>
             <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
-              {isMounted && testimonials[active].quote.split(" ").map((word, index) => (
+              {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{
