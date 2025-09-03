@@ -502,7 +502,15 @@ li a:hover {
 
 /* Testimonials Section */
 .testimonials-section { margin: 48px 0; text-align: center; padding: 0 20px; }
-.testimonials-section h2 { color: #52489C; font-size: 2.2rem; margin-bottom: 2rem; font-weight: 700; }
+.testimonials-section h2 { 
+    text-align: center; 
+    color: #52489C; 
+    font-size: 2.4rem; 
+    margin-bottom: 2.5rem; 
+    font-weight: 700; 
+    position: relative; 
+    padding-bottom: 1rem; 
+}
 .testimonial-card {
     background: #fff;
     margin: 1rem;
