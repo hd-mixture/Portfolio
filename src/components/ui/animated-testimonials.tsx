@@ -135,18 +135,18 @@ export const AnimatedTestimonials = ({
               ))}
             </motion.p>
           </motion.div>
-          <div className="testimonial-nav-buttons mt-8 pt-4">
+          <div className="testimonial-nav-buttons">
             <button
               onClick={handlePrev}
-              className="testimonial-nav-button"
+              className="testimonial-nav-button testimonial-nav-prev"
             >
-              <IconArrowLeft className="h-4 w-4 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
+              <IconArrowLeft className="h-4 w-4 text-black dark:text-neutral-400" />
             </button>
             <button
               onClick={handleNext}
-              className="testimonial-nav-button"
+              className="testimonial-nav-button testimonial-nav-next"
             >
-              <IconArrowRight className="h-4 w-4 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
+              <IconArrowRight className="h-4 w-4 text-black dark:text-neutral-400" />
             </button>
           </div>
         </div>

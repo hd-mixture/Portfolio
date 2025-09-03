@@ -829,14 +829,14 @@ li a:hover {
 
 @media (min-width: 768px) {
   .testimonial-nav-buttons {
-    padding-top: 0;
+    padding-top: 2rem;
   }
 }
 
 .testimonial-nav-button {
   display: flex;
-  height: 2rem;
-  width: 2rem;
+  height: 2.2rem;
+  width: 2.2rem;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
@@ -855,10 +855,13 @@ li a:hover {
     transition: transform 0.3s ease;
 }
 
-.testimonial-nav-button:hover svg {
-    transform: translateY(-2px);
+.testimonial-nav-button.testimonial-nav-prev:hover svg {
+    transform: translate(-2px, -2px);
 }
 
+.testimonial-nav-button.testimonial-nav-next:hover svg {
+    transform: translate(2px, -2px);
+}
 
 .dark-mode .testimonial-nav-button {
     background-color: #2a2f3a;
