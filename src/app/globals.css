@@ -702,24 +702,27 @@ li a:hover {
 }
 .back-to-top .tooltip {
     visibility: hidden;
-    width: 120px;
-    background-color: #555;
+    width: auto;
+    white-space: nowrap;
+    background-color: #23243a;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
     position: absolute;
     z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
+    top: 50%;
+    right: 110%;
+    transform: translateY(-50%);
     opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.875rem;
+    transition: opacity 0.3s ease, right 0.3s ease;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px rgba(35,36,58,0.15);
 }
 .back-to-top:hover .tooltip {
     visibility: visible;
     opacity: 1;
+    right: 120%;
 }
 
 @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
@@ -1027,3 +1030,5 @@ li a:hover {
         text-align: center;
     }
 }
+
+    
