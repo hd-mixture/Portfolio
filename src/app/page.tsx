@@ -6,6 +6,7 @@ import Internship from "@/components/sections/Internship";
 import Contact from "@/components/sections/Contact";
 import Achievements from "@/components/sections/Achievements";
 import TechStack from "@/components/sections/TechStack";
+import Testimonials from "@/components/sections/Testimonials";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Achievements />
       <TechStack />
       <Contact />
+      <Testimonials />
     </>
   );
 }
