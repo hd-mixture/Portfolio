@@ -536,7 +536,7 @@ li a:hover {
 }
 .testimonial-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(82, 72, 156, 0.15); }
 .quote-icon { position: absolute; top: -1.5rem; left: -1rem; width: 35px; height: 35px; background: linear-gradient(135deg, #52489C, #7c73e6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; opacity: 0.8; }
-.testimonial-card-p { font-size: 15px; color: #23243a; line-height: 1.6; margin-bottom: 1.5rem; font-style: italic; position: relative; z-index: 1; flex-grow: 1;}
+.testimonial-card-p { font-size: 15px; color: #23243a; line-height: 1.6; margin-bottom: 1.5rem; font-style: italic; position: relative; z-index: 1; flex-grow: 1; max-width: 24rem;}
 .testimonial-author { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; }
 .author-info { flex: 1; text-align: left; }
 .author-name { font-weight: 700; color: #52489C; font-size: 15px; margin-bottom: 0.3rem; }
