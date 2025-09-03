@@ -715,6 +715,7 @@ li a:hover {
     margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
+    font-size: 0.875rem;
 }
 .back-to-top:hover .tooltip {
     visibility: visible;
@@ -875,8 +876,8 @@ li a:hover {
 
 .testimonial-nav-button {
   display: flex;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 2rem;
+  width: 2rem;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
