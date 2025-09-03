@@ -4,6 +4,7 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Testimonial = {
   quote: string;
@@ -140,13 +141,13 @@ export const AnimatedTestimonials = ({
               onClick={handlePrev}
               className="testimonial-nav-button testimonial-nav-prev"
             >
-              <IconArrowLeft className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
+              <ChevronLeft className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
             </button>
             <button
               onClick={handleNext}
               className="testimonial-nav-button testimonial-nav-next"
             >
-              <IconArrowRight className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
+              <ChevronRight className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
             </button>
           </div>
         </div>

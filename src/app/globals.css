@@ -889,13 +889,19 @@ li a:hover {
   border-radius: 9999px;
   background-color: rgb(243 244 246);
   border: none;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition: all 0.3s ease-in-out;
 }
 
 .testimonial-nav-button:hover {
     background-color: rgb(229 231 235);
+}
+
+.testimonial-nav-button.testimonial-nav-prev:hover {
+    transform: rotate(-30deg);
+}
+
+.testimonial-nav-button.testimonial-nav-next:hover {
+    transform: rotate(30deg);
 }
 
 .dark-mode .testimonial-nav-button {
@@ -1035,4 +1041,3 @@ li a:hover {
 }
 
     
-
