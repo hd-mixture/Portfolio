@@ -503,19 +503,30 @@ li a:hover {
 /* Testimonials Section */
 .testimonials-section { margin: 48px 0; text-align: center; padding: 0 20px; }
 .testimonials-section h2 { color: #52489C; font-size: 2.2rem; margin-bottom: 2rem; font-weight: 700; }
-.testimonials-container { max-width: 1000px; margin: 0 auto; position: relative; }
-.testimonials-wrapper { display: flex; gap: 0; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; padding: 1rem 0; justify-content: flex-start; }
-.testimonials-wrapper::-webkit-scrollbar { display: none; }
-.testimonial-card { background: #fff; margin-left: 1.5rem; margin-right: 1.5rem; border-radius: 20px; box-shadow: 0 8px 32px rgba(82, 72, 156, 0.1); padding: 2rem 1.5rem; width: 310px; flex: 0 0 auto; transition: all 0.3s ease; border: 1px solid rgba(82, 72, 156, 0.05); position: relative; overflow: hidden; }
+.testimonial-card {
+    background: #fff;
+    margin: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(82, 72, 156, 0.1);
+    padding: 2rem 1.5rem;
+    width: auto;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(82, 72, 156, 0.05);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 .testimonial-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(82, 72, 156, 0.15); }
-.testimonial-content { position: relative; }
 .quote-icon { position: absolute; top: -1.5rem; left: -1rem; width: 35px; height: 35px; background: linear-gradient(135deg, #52489C, #7c73e6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; opacity: 0.8; }
-.testimonial-card p { font-size: 15px; color: #23243a; line-height: 1.6; margin-bottom: 1.5rem; font-style: italic; position: relative; z-index: 1; }
-.testimonial-author { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.testimonial-card-p { font-size: 15px; color: #23243a; line-height: 1.6; margin-bottom: 1.5rem; font-style: italic; position: relative; z-index: 1; flex-grow: 1;}
+.testimonial-author { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; }
 .author-info { flex: 1; text-align: left; }
 .author-name { font-weight: 700; color: #52489C; font-size: 15px; margin-bottom: 0.3rem; }
 .author-designation { font-size: 0.8rem; color: #666; line-height: 1.4; }
 .author-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, #52489C, #7c73e6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; flex-shrink: 0; }
+.author-avatar img { border-radius: 50%; object-fit: cover;}
 
 /* Achievements Section */
 .achievements-section { margin: 48px 0; text-align: center; }
@@ -662,7 +673,7 @@ li a:hover {
 /* Dark Mode Overrides */
 .dark-mode .social a[href*="github.com"] i { color: #fff; }
 .dark-mode .about-text h2, .dark-mode .skills-section h2, .dark-mode .projects-section h2, .dark-mode .internship-section h2, .dark-mode .achievements-section h2, .dark-mode .techstack-section h2, .dark-mode .testimonials-section h2, .dark-mode .contact-section h2 { color: #fff; }
-.dark-mode .about-text p, .dark-mode .skill-card span, .dark-mode .project-info p, .dark-mode .internship-company, .dark-mode .internship-date, .dark-mode .internship-desc, .dark-mode .achievement-card .number, .dark-mode .testimonial-card p, .dark-mode .author-designation { color: #ccc; }
+.dark-mode .about-text p, .dark-mode .skill-card span, .dark-mode .project-info p, .dark-mode .internship-company, .dark-mode .internship-date, .dark-mode .internship-desc, .dark-mode .achievement-card .number, .dark-mode .testimonial-card-p, .dark-mode .author-designation { color: #ccc; }
 .dark-mode .about-tagline, .dark-mode .author-name, .dark-mode .achievement-card .label { color: var(--primary-color); }
 .dark-mode .about-content, .dark-mode .skill-card, .dark-mode .timeline-content, .dark-mode .internship-card, .dark-mode .achievement-card, .dark-mode .testimonial-card, .dark-mode .contact-form { background: #2a2f3a; border-color: #444; }
 .dark-mode .skill-card:hover, .dark-mode .skill-card:active { background: #333947; }
