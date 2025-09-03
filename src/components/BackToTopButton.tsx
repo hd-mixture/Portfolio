@@ -32,7 +32,6 @@ export default function BackToTopButton() {
       onClick={scrollToTop}
       className={`back-to-top ${isVisible ? 'visible' : ''}`}
       title="Jump to Top"
-      style={{ display: isVisible ? 'flex' : 'none' }}
     >
       <i className="fa-solid fa-arrow-up"></i>
       <span className="tooltip">Jump to Top</span>

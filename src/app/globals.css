@@ -674,11 +674,51 @@ li a:hover {
 .close-full-image:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
 
 /* Back to Top Button */
-.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: #52489C; color: white; border: none; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 4px 12px rgba(82, 72, 156, 0.3); transition: all 0.3s ease; z-index: 9999999; opacity: 0; transform: translateY(20px); }
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #52489C;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(82, 72, 156, 0.3);
+    transition: all 0.3s ease;
+    z-index: 9999999;
+    opacity: 0;
+    transform: translateY(20px);
+}
 .back-to-top.visible { display: flex; opacity: 1; transform: translateY(0); }
 .back-to-top:hover { background: #3C3B6E; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(82, 72, 156, 0.4); }
 @media (max-width: 768px) {
     .back-to-top { bottom: 90px; right: 20px; }
+}
+.back-to-top .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.back-to-top:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
 }
 
 @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
@@ -824,7 +864,7 @@ li a:hover {
 .testimonial-nav-buttons {
   display: flex;
   gap: 1rem;
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -835,8 +875,8 @@ li a:hover {
 
 .testimonial-nav-button {
   display: flex;
-  height: 1.8rem;
-  width: 1.8rem;
+  height: 1.5rem;
+  width: 1.5rem;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
@@ -849,18 +889,6 @@ li a:hover {
 
 .testimonial-nav-button:hover {
     background-color: rgb(229 231 235);
-}
-
-.testimonial-nav-button svg {
-    transition: transform 0.3s ease-in-out;
-}
-
-.testimonial-nav-button.testimonial-nav-prev:hover svg {
-    transform: translate(-2px, -2px);
-}
-
-.testimonial-nav-button.testimonial-nav-next:hover svg {
-    transform: translate(2px, -2px);
 }
 
 .dark-mode .testimonial-nav-button {
