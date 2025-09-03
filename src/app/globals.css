@@ -860,6 +860,8 @@ li a:hover {
   color: rgb(107 114 128);
   max-width: 100%;
   white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .dark-mode .testimonial-quote {
