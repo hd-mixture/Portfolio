@@ -835,8 +835,8 @@ li a:hover {
 
 .testimonial-nav-button {
   display: flex;
-  height: 2.2rem;
-  width: 2.2rem;
+  height: 1.8rem;
+  width: 1.8rem;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
@@ -852,7 +852,7 @@ li a:hover {
 }
 
 .testimonial-nav-button svg {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 
 .testimonial-nav-button.testimonial-nav-prev:hover svg {
