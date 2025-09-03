@@ -41,35 +41,6 @@ export const AnimatedTestimonials = ({
     }
   }, [autoplay, isMounted]);
 
-  const getAnimationProps = () => {
-    if (!isMounted) {
-      return {
-        initial: { opacity: 0 },
-        animate: { opacity: 0 },
-        exit: { opacity: 0 },
-      };
-    }
-    const randomRotateY = Math.floor(Math.random() * 21) - 10;
-    return {
-      initial: {
-        opacity: 0,
-        scale: 0.9,
-        rotateY: randomRotateY,
-      },
-      animate: {
-        opacity: 1,
-        scale: 1,
-        rotateY: 0,
-        y: [0, -20, 0],
-      },
-      exit: {
-        opacity: 0,
-        scale: 0.9,
-        rotateY: randomRotateY,
-      },
-    };
-  };
-
   if (!isMounted) {
     return null;
   }
@@ -81,9 +52,22 @@ export const AnimatedTestimonials = ({
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={getAnimationProps().initial}
-              animate={getAnimationProps().animate}
-              exit={getAnimationProps().exit}
+              initial={{
+                opacity: 0,
+                scale: 0.9,
+                rotateY: Math.floor(Math.random() * 21) - 10,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                rotateY: 0,
+                y: [0, -20, 0],
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.9,
+                rotateY: Math.floor(Math.random() * 21) - 10,
+              }}
               transition={{
                 duration: 0.4,
                 ease: "easeInOut",
