@@ -897,11 +897,11 @@ li a:hover {
 }
 
 .testimonial-nav-button.testimonial-nav-prev:hover {
-    transform: rotate(-30deg);
+    transform: rotate(30deg);
 }
 
 .testimonial-nav-button.testimonial-nav-next:hover {
-    transform: rotate(30deg);
+    transform: rotate(-30deg);
 }
 
 .dark-mode .testimonial-nav-button {
