@@ -2,9 +2,9 @@
 
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 type Testimonial = {
   quote: string;
@@ -20,6 +20,12 @@ export const AnimatedTestimonials = ({
   autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length);
@@ -41,6 +47,7 @@ export const AnimatedTestimonials = ({
   }, [autoplay, testimonials.length]);
 
   const randomRotateY = () => {
+    if (!isClient) return 0;
     return Math.floor(Math.random() * 21) - 10;
   };
   return (
@@ -119,7 +126,7 @@ export const AnimatedTestimonials = ({
               {testimonials[active].designation}
             </p>
             <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
-              {testimonials[active].quote.split(" ").map((word, index) => (
+              {isClient && testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{
