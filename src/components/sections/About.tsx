@@ -14,9 +14,9 @@ export default function About() {
   return (
     <section id="about" className="about-section section-reveal">
       <div className="about-accent"></div>
+      <h2>About Me</h2>
       <div className="about-content">
         <div className="about-text">
-          <h2>About Me</h2>
           <div className="about-tagline">“Unleash Your Imagination – Transform Ideas into Vision.”</div>
           <p>I am a Creative Developer with hands-on experience in building mobile and web applications, skilled in both front-end and back-end technologies. My strong graphic design skills enable me to create appealing user-centric interfaces with projects that improve usability and efficiency.</p>
           <div className="about-download-btn">
