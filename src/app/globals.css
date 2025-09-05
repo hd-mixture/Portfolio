@@ -459,7 +459,7 @@ li a:hover {
         margin-right: auto;
         max-width: calc(100% - 2rem);
     }
-    .about-text { padding: 0 0.7rem; }
+    .about-text { padding: 0 0.7rem; text-align: center; }
     .about-section h2 { font-size: 1.2rem; padding-left: 0.5rem; margin-bottom: 1rem; }
     .about-text p { font-size: 1rem; }
     .about-tagline { font-size: 0.98rem; padding: 0.4rem 0.7rem; }
@@ -471,7 +471,7 @@ li a:hover {
 /* Skills Section */
 .skills-section { margin: 48px 0; }
 .skills-section h2 { font-size: 2.1rem; color: #23243a; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; justify-content: center; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; justify-items: center; }
 .skill-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(82,72,156,0.08); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
 .skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 32px rgba(82,72,156,0.12); }
 .skill-icon { font-size: 2.5rem; color: #52489C; margin-bottom: 1rem; }
@@ -611,17 +611,45 @@ li a:hover {
 .achievement-card .label { font-size: 1.08rem; color: #52489C; }
 
 /* Tech Stack Carousel */
-.techstack-section { margin: 48px 0; text-align: left; overflow: hidden;}
+.techstack-section { 
+    margin: 48px 0; 
+    text-align: left;
+}
+.techstack-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.techstack-wrapper::before,
+.techstack-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+.techstack-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+.techstack-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
 .techstack-section h2 { font-size: 2.1rem; color: #23243a; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem;}
 @keyframes scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-50%); }
 }
 
 .marquee-container {
   display: flex;
-  width: max-content;
+  width: fit-content;
   animation: scroll 40s linear infinite;
+  will-change: transform;
 }
 
 .marquee-container:hover {
@@ -640,6 +668,7 @@ li a:hover {
   align-items: center;
   justify-content: center;
   transition: transform 0.2s ease;
+  padding: 0 1rem;
 }
 
 .techstack-item:hover {

@@ -58,7 +58,9 @@ export default function TechStack() {
     return (
         <section id="techstack" className="techstack-section section-reveal">
             <h2>Tech Stack & Tools</h2>
-            <TechStackMarquee />
+            <div className="techstack-wrapper">
+                <TechStackMarquee />
+            </div>
         </section>
     );
 }
