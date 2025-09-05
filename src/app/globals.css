@@ -151,6 +151,7 @@ li a:hover {
     opacity: 0;
     animation: leftSideAni 1s ease forwards;
     animation-delay: 1s;
+    white-space: nowrap;
 }
 .main p {
     line-height: 1.7;
@@ -1054,6 +1055,7 @@ li a:hover {
 
 
     
+
 
 
 
