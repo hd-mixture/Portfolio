@@ -12,7 +12,7 @@ const techSkills = [
   { name: 'HTML5', icon: <i className="fa-brands fa-html5"></i> },
   { name: 'CSS3', icon: <i className="fa-brands fa-css3-alt"></i> },
   { name: 'JavaScript', icon: <i className="fa-brands fa-js"></i> },
-  { name: 'Tailwind CSS', icon: <Image src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS" width={40} height={40} style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(20%) saturate(6268%) hue-rotate(222deg) brightness(89%) contrast(89%)' }} /> },
+  { name: 'Tailwind CSS', icon: <Image src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" width={40} height={40} style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(20%) saturate(6268%) hue-rotate(222deg) brightness(89%) contrast(89%)' }} /> },
   { name: 'MongoDB', icon: <Image src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" alt="MongoDB" width={40} height={40} style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(20%) saturate(6268%) hue-rotate(222deg) brightness(89%) contrast(89%)' }} /> },
   { name: 'Express.js', icon: <Image src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" alt="Express.js" width={40} height={40} style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(20%) saturate(6268%) hue-rotate(222deg) brightness(89%) contrast(89%)' }} /> },
   { name: 'React', icon: <i className="fa-brands fa-react"></i> },
