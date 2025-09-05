@@ -6,12 +6,14 @@ import Contact from "@/components/sections/Contact";
 import Achievements from "@/components/sections/Achievements";
 import TechStack from "@/components/sections/TechStack";
 import Testimonials from "@/components/sections/Testimonials";
+import Skills from "@/components/sections/Skills";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <About />
+      <Skills />
       <TechStack />
       <Projects />
       <Internship />

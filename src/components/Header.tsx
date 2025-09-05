@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,7 +8,8 @@ const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => {
   const navItems = [
     { href: '#home', icon: 'fa-solid fa-house', label: 'Home' },
     { href: '#about', icon: 'fa-solid fa-user', label: 'About' },
-    { href: '#techstack', icon: 'fa-solid fa-code', label: 'Skills' },
+    { href: '#skills', icon: 'fa-solid fa-cogs', label: 'Skills' },
+    { href: '#techstack', icon: 'fa-solid fa-code', label: 'Tools' },
     { href: '#projects', icon: 'fa-solid fa-briefcase', label: 'Projects' },
     { href: '#contact', icon: 'fa-solid fa-envelope', label: 'Contact' },
   ];

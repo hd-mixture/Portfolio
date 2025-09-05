@@ -299,7 +299,7 @@ li a:hover {
 
 @media screen and (max-width: 900px) {
     .about-content { flex-direction: column; gap: 1.2rem; padding: 1.2rem 0.7rem; align-items: flex-start; }
-    .about-icon { display: none; }
+    .about-icon { display: flex; }
 }
 
 @media screen and (max-width: 768px) {
@@ -324,6 +324,7 @@ li a:hover {
 }
 
 @media screen and (max-width:600px) {
+    .about-icon { display: none !important; }
     body { height: auto; padding-top: 60px; padding-bottom: 90px; }
     .page-header { display: none; }
     .mobile-header {
@@ -386,10 +387,6 @@ li a:hover {
     .about-download-btn { display: flex; justify-content: center; width: 100%; }
     .about-text { width: 100%; text-align: center; }
     .download-resume-icon { margin: 1.2rem 0; }
-    .about-icon { display: none !important; }
-}
-
-@media screen and (min-width: 901px) {
 }
 
 @media screen and (min-width: 601px) {
@@ -470,6 +467,16 @@ li a:hover {
 @media (min-width: 601px) {
     .about-accent { display: none !important; }
 }
+
+/* Skills Section */
+.skills-section { margin: 48px 0; }
+.skills-section h2 { font-size: 2.1rem; color: #23243a; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+.skill-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(82,72,156,0.08); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+.skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 32px rgba(82,72,156,0.12); }
+.skill-icon { font-size: 2.5rem; color: #52489C; margin-bottom: 1rem; }
+.skill-card h3 { font-size: 1.2rem; color: #23243a; font-weight: 600; margin-bottom: 0.5rem; }
+.skill-card p { font-size: 1rem; color: #666; line-height: 1.5; }
 
 /* Projects Section */
 .projects-section { margin: 56px 0; }
@@ -1089,36 +1096,3 @@ li a:hover {
         text-align: center;
     }
 }
-
-    
-
-
-
-    
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
