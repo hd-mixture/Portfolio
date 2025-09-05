@@ -11,7 +11,8 @@ export default function Hero() {
           <h3>Hi I&apos;m</h3>
           <h1>
             <span style={{ color: '#52489C' }}>Darshan</span>
-            &nbsp;&quot;Prajapati&quot;
+            <br />
+            <span className="prajapati-lastname">&quot;Prajapati&quot;</span>
           </h1>
           <div className="typewriter-container">
             <span className="static-text">Unleash Your Imagination –</span>
