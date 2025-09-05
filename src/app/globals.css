@@ -261,6 +261,7 @@ li a:hover {
         order: 2;
         width: 250px;
         height: 250px;
+        margin-right: 0;
     }
     .social {
         justify-content: flex-start;
@@ -276,7 +277,7 @@ li a:hover {
     .main h1 {
         font-size: 3rem;
     }
-    .main h1 .prajapati-lastname {
+    .tablet-mobile-heading .prajapati-lastname {
         display: block;
         padding-left: 2.5rem;
     }
@@ -979,7 +980,7 @@ li a:hover {
     align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-w: 768px) {
     .testimonial-card-vertical-content {
         grid-template-areas:
             "author"
@@ -1053,6 +1054,7 @@ li a:hover {
 
 
     
+
 
 
 
