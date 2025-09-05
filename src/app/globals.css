@@ -299,7 +299,6 @@ li a:hover {
 
 @media screen and (max-width: 900px) {
     .about-content { flex-direction: column; gap: 1.2rem; padding: 1.2rem 0.7rem; align-items: flex-start; }
-    .about-icon { display: flex; }
 }
 
 @media screen and (max-width: 768px) {
@@ -614,6 +613,7 @@ li a:hover {
 .techstack-section { 
     margin: 48px 0; 
     text-align: left;
+    padding: 2rem 0;
 }
 .techstack-wrapper {
     position: relative;
@@ -672,7 +672,7 @@ li a:hover {
 }
 
 .techstack-item:hover {
-    transform: scale(1.2);
+    transform: translateY(-5px) scale(1.1);
 }
 
 .techstack-item i, .techstack-item img {
