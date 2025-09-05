@@ -27,6 +27,11 @@ const skills = [
     icon: 'fa-solid fa-code',
     description: 'Building responsive and interactive web frontends.'
   },
+  {
+    name: 'Time Management',
+    icon: 'fa-solid fa-clock',
+    description: 'Organizing and planning how to divide your time between activities.'
+  }
 ];
 
 export default function Skills() {

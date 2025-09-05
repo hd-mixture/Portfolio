@@ -30,7 +30,7 @@ const techSkills = [
 
 const TechStackMarquee = () => {
     // Duplicate the array to create a seamless loop
-    const extendedSkills = [...techSkills, ...techSkills];
+    const extendedSkills = [...techSkills, ...techSkills, ...techSkills, ...techSkills];
   
     return (
       <div className="marquee-container">

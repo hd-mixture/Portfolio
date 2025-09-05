@@ -449,7 +449,7 @@ li a:hover {
 
 @media (max-width: 600px) {
     .about-section { margin: 24px 0; padding: 0 0.5rem; min-height: unset; }
-    .about-accent { display: block !important; }
+    .about-icon { display: none !important; }
     .about-content { 
         padding: 1.2rem 1rem; 
         border-radius: 12px; 
@@ -471,7 +471,7 @@ li a:hover {
 /* Skills Section */
 .skills-section { margin: 48px 0; }
 .skills-section h2 { font-size: 2.1rem; color: #23243a; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; justify-content: center; }
 .skill-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(82,72,156,0.08); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
 .skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 32px rgba(82,72,156,0.12); }
 .skill-icon { font-size: 2.5rem; color: #52489C; margin-bottom: 1rem; }
@@ -631,15 +631,14 @@ li a:hover {
 .marquee-content {
   display: flex;
   align-items: center;
+  gap: 4rem; /* Adjusted gap */
 }
 
 .techstack-item {
   flex: 0 0 auto;
-  width: calc(100% / 8); /* 8 items for desktop */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
   transition: transform 0.2s ease;
 }
 
@@ -654,13 +653,13 @@ li a:hover {
   width: auto;
 }
 @media screen and (max-width: 1024px) {
-    .techstack-item {
-        width: calc(100% / 8); /* 8 items for tablet */
+    .marquee-content {
+        gap: 3rem; /* Adjusted gap */
     }
 }
 @media screen and (max-width: 600px) {
-    .techstack-item {
-        width: calc(100% / 6); /* 6 items for mobile */
+    .marquee-content {
+        gap: 2rem; /* Adjusted gap */
     }
 }
 
