@@ -8,11 +8,10 @@ export default function Hero() {
     <section id="home">
       <div className="main">
         <div className="detail">
-          <h3>Hi I&apos;m</h3>
+          <h3>Hi I'm</h3>
           <h1>
-            <span style={{ color: '#52489C' }}>Darshan</span>
-            <br />
-            <span className="prajapati-lastname">&quot;Prajapati&quot;</span>
+            <span style={{ color: '#52489C' }}>Darshan</span>{' '}
+            <span className="prajapati-lastname">"Prajapati"</span>
           </h1>
           <div className="typewriter-container">
             <span className="static-text">Unleash Your Imagination –</span>
@@ -28,7 +27,7 @@ export default function Hero() {
             <Link href="https://github.com/hd-mixture" style={{ '--socialAni': 3 } as React.CSSProperties} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-github"></i>
             </Link>
-            <Link href="https://wa.link/ey6lzx" style={{ '--socialAni': 4 } as React.CSSProperties} target="_blank" rel="noopener noreferrer">
+            <Link href="https.wa.link/ey6lzx" style={{ '--socialAni': 4 } as React.CSSProperties} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-whatsapp"></i>
             </Link>
           </div>
