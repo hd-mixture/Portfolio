@@ -218,6 +218,10 @@ li a:hover {
     animation: homeImageFloat 3.5s ease-in-out infinite alternate;
 }
 
+.tablet-mobile-heading {
+    display: none;
+}
+
 @keyframes homeImageFloat {
   0% {
     transform: translateY(0) scale(1);
@@ -261,6 +265,14 @@ li a:hover {
     .social {
         justify-content: flex-start;
     }
+
+    .desktop-heading {
+        display: none;
+    }
+    .tablet-mobile-heading {
+        display: block;
+    }
+
     .main h1 {
         font-size: 3rem;
     }
@@ -1041,6 +1053,7 @@ li a:hover {
 
 
     
+
 
 
 

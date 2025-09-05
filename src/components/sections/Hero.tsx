@@ -9,7 +9,13 @@ export default function Hero() {
       <div className="main">
         <div className="detail">
           <h3>Hi I'm</h3>
-          <h1>
+          {/* Desktop Heading */}
+          <h1 className="desktop-heading">
+            <span style={{ color: '#52489C' }}>Darshan</span>{' '}
+            <span>"Prajapati"</span>
+          </h1>
+          {/* Tablet & Mobile Heading */}
+          <h1 className="tablet-mobile-heading">
             <span style={{ color: '#52489C' }}>Darshan</span>{' '}
             <span className="prajapati-lastname">"Prajapati"</span>
           </h1>
