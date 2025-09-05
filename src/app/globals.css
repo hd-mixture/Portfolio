@@ -255,9 +255,9 @@ li a:hover {
     }
     .images {
         order: 2;
-        margin: 0;
         width: 250px;
         height: 250px;
+        margin-left: auto;
     }
     .social {
         justify-content: flex-start;
@@ -280,6 +280,9 @@ li a:hover {
     .project-card .project-icon { position: absolute !important; right: 1.5rem !important; top: -35px !important; left: auto !important; width: 70px !important; height: 70px !important; }
     .project-card .project-links { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1rem !important; margin-top: 1.5rem !important; width: 100% !important; }
     .project-card .project-link { width: 100% !important; text-align: center !important; padding: 0.8rem 0.5rem !important; font-size: 0.9rem !important; }
+    .typewriter-text, .static-text {
+        font-size: 0.7rem !important;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -1039,6 +1042,7 @@ li a:hover {
 
 
     
+
 
 
 
