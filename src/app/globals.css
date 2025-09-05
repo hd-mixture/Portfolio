@@ -618,7 +618,6 @@ li a:hover {
 .techstack-wrapper {
     position: relative;
     width: 100%;
-    overflow: hidden;
 }
 .techstack-wrapper::before,
 .techstack-wrapper::after {
