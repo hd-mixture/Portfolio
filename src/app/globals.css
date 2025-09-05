@@ -300,7 +300,6 @@ li a:hover {
 
 @media screen and (max-width: 900px) {
     .about-content { flex-direction: column; gap: 1.2rem; padding: 1.2rem 0.7rem; align-items: flex-start; }
-    .about-icon { display: none; }
 }
 
 @media screen and (max-width: 768px) {
@@ -390,6 +389,7 @@ li a:hover {
     .about-download-btn { display: flex; justify-content: center; width: 100%; }
     .about-text { width: 100%; }
     .download-resume-icon { margin: 1.2rem 0; }
+    .about-icon { display: none; }
 }
 
 @media screen and (min-width: 901px) {
@@ -1057,6 +1057,7 @@ li a:hover {
 
 
     
+
 
 
 
