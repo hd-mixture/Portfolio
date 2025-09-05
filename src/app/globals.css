@@ -393,7 +393,6 @@ li a:hover {
 }
 
 @media screen and (min-width: 901px) {
-    .about-icon { display: flex; }
 }
 
 @media screen and (min-width: 601px) {
@@ -1057,6 +1056,7 @@ li a:hover {
 
 
     
+
 
 
 
