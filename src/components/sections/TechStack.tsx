@@ -33,11 +33,10 @@ const TechStackMarquee = () => {
     const extendedSkills = [...techSkills, ...techSkills, ...techSkills, ...techSkills];
   
     return (
-      <div className="marquee-container">
-        <div className="marquee-content">
-          {extendedSkills.map((skill, index) => (
-             <TooltipProvider key={`skill-${index}`} delayDuration={100}>
-                <Tooltip>
+        <div className="marquee-container">
+            <div className="marquee-content">
+            {extendedSkills.map((skill, index) => (
+                <Tooltip key={`skill-${index}`}>
                     <TooltipTrigger asChild>
                         <div className="techstack-item">
                             {skill.icon}
@@ -47,20 +46,21 @@ const TechStackMarquee = () => {
                         <p>{skill.name}</p>
                     </TooltipContent>
                 </Tooltip>
-            </TooltipProvider>
-          ))}
+            ))}
+            </div>
         </div>
-      </div>
     );
 };
 
 export default function TechStack() {
     return (
         <section id="techstack" className="techstack-section section-reveal">
-            <h2>Tech Stack & Tools</h2>
-            <div className="techstack-wrapper">
-                <TechStackMarquee />
-            </div>
+            <TooltipProvider delayDuration={100}>
+                <h2>Tech Stack & Tools</h2>
+                <div className="techstack-wrapper">
+                    <TechStackMarquee />
+                </div>
+            </TooltipProvider>
         </section>
     );
 }
