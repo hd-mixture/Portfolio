@@ -286,7 +286,7 @@ li a:hover {
     }
     .projects-timeline { display: none !important; }
     .projects-grid.mobile-only { display: grid !important; grid-template-columns: 1fr !important; gap: 3rem !important; padding: 0 1rem !important; }
-    .project-card { display: block !important; padding: 2rem 1rem 1.5rem 1rem !important; margin: 0 auto 1.2rem auto !important; max-width: 650px !important; width: 100%; position: relative !important; background: #fff; border-radius: 22px; box-shadow: 0 6px 32px rgba(82,72,156,0.13); overflow: visible; }
+    .project-card { display: block !important; padding: 2rem 1.5rem 1.5rem 1.5rem !important; margin: 0 auto 1.2rem auto !important; max-width: 650px !important; width: 100%; position: relative !important; background: #fff; border-radius: 22px; box-shadow: 0 6px 32px rgba(82,72,156,0.13); overflow: visible; }
     .project-card h3 { color: #23243a; font-size: 1.18rem; margin-bottom: 0.5rem; font-weight: 700; border-left: 4px solid #52489C; padding-left: 0.7rem; margin-top: 1.2rem; letter-spacing: 0.01em; }
     .project-card p { color: #23243a; font-size: 1.07rem; margin-bottom: 1.2rem; line-height: 1.7; font-weight: 500; }
     .project-card .project-icon { position: absolute !important; right: 1.5rem !important; top: -35px !important; left: auto !important; width: 70px !important; height: 70px !important; }
@@ -299,6 +299,7 @@ li a:hover {
 
 @media screen and (max-width: 900px) {
     .about-content { flex-direction: column; gap: 1.2rem; padding: 1.2rem 0.7rem; align-items: flex-start; }
+    .about-icon { display: none; }
 }
 
 @media screen and (max-width: 768px) {
@@ -382,10 +383,6 @@ li a:hover {
     .images img { margin-top: -50px; }
     .main { margin-top: 2rem; padding: 0rem; }
     ul.nav-hidden { opacity: 0 !important; pointer-events: none !important; transition: opacity 0.4s cubic-bezier(.4,2,.6,1); }
-    .skills-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 0.7rem !important; padding: 0 1rem !important; margin: 0 auto !important; }
-    .skill-card { display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; text-align: center !important; padding: 0.7rem 0.2rem !important; margin: 0 !important; background: #fff !important; border-radius: 12px !important; box-shadow: 0 2px 8px rgba(82,72,156,0.08) !important; font-size: 0.98rem !important; color: #23243a !important; font-weight: 500 !important; border: 1.2px solid #f0f0f7 !important; min-width: 0 !important; min-height: 70px !important; transition: box-shadow 0.2s, transform 0.2s, border 0.2s !important; }
-    .skill-card i, .skill-card img { font-size: 1.3rem !important; margin-bottom: 0.1rem !important; color: #52489C !important; background: none !important; border-radius: 50% !important; padding: 0.1rem !important; box-shadow: none !important; display: block !important; }
-    .skill-card span { font-size: 0.93rem !important; text-align: center !important; word-break: break-word !important; display: block !important; }
     .about-download-btn { display: flex; justify-content: center; width: 100%; }
     .about-text { width: 100%; text-align: center; }
     .download-resume-icon { margin: 1.2rem 0; }
@@ -439,7 +436,7 @@ li a:hover {
     width: 100%; 
     display: flex; 
     flex-direction: row; 
-    align-items: flex-start; 
+    align-items: center;
     gap: 2.5rem; 
     position: relative; 
     z-index: 1; 
@@ -473,14 +470,6 @@ li a:hover {
 @media (min-width: 601px) {
     .about-accent { display: none !important; }
 }
-
-/* Skills Section */
-.skills-section { margin: 48px 0; padding: 2.2rem 0 1.5rem 0; }
-.skills-section h2 { font-size: 2rem; color: #23243a; font-weight: 700; border-left: 5px solid #52489C; padding-left: 1rem; margin-bottom: 2rem; display: inline-block; margin-left: 3.5rem; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; max-width: 800px; margin: 0 auto; }
-.skill-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(82,72,156,0.07); padding: 1.1rem 1rem; display: flex; align-items: center; gap: 1.1rem; font-size: 1.08rem; color: #23243a; font-weight: 500; border: 1.5px solid #f0f0f7; transition: box-shadow 0.2s, transform 0.2s, border 0.2s; }
-.skill-card i, .skill-card img { font-size: 1.7rem; color: #52489C; background: none; border-radius: 50%; padding: 0.2rem; box-shadow: none; }
-.skill-card:hover, .skill-card:active { box-shadow: 0 4px 24px rgba(82,72,156,0.13); transform: translateY(-3px) scale(1.03); border: 1.5px solid #52489C33; background: #fafaff; }
 
 /* Projects Section */
 .projects-section { margin: 56px 0; }
@@ -615,10 +604,58 @@ li a:hover {
 .achievement-card .label { font-size: 1.08rem; color: #52489C; }
 
 /* Tech Stack Carousel */
-.techstack-section { margin: 48px 0; text-align: left; }
+.techstack-section { margin: 48px 0; text-align: left; overflow: hidden;}
 .techstack-section h2 { font-size: 2.1rem; color: #23243a; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem;}
-.techstack-carousel { display: flex; overflow-x: auto; gap: 2rem; padding: 1rem 0.5rem; scroll-snap-type: x mandatory; justify-content: center; }
-.techstack-logo { width: 60px; height: 60px; background: #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(82,72,156,0.08); display: flex; align-items: center; justify-content: center; scroll-snap-align: center; font-size: 2.2rem; color: #52489C; }
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.marquee-container {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.marquee-container:hover {
+  animation-play-state: paused;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+}
+
+.techstack-item {
+  flex: 0 0 auto;
+  width: calc(100% / 8); /* 8 items for desktop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.techstack-item:hover {
+    transform: scale(1.2);
+}
+
+.techstack-item i, .techstack-item img {
+  font-size: 2.5rem;
+  color: #52489C;
+  height: 40px;
+  width: auto;
+}
+@media screen and (max-width: 1024px) {
+    .techstack-item {
+        width: calc(100% / 8); /* 8 items for tablet */
+    }
+}
+@media screen and (max-width: 600px) {
+    .techstack-item {
+        width: calc(100% / 6); /* 6 items for mobile */
+    }
+}
 
 /* Timeline Projects Section */
 .projects-timeline { display: flex; flex-direction: column; gap: 3.8rem; width: 100%; max-width: 900px; margin: 32px auto 0 auto; position: relative; }
@@ -1064,6 +1101,7 @@ li a:hover {
 
 
     
+
 
 
 

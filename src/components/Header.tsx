@@ -8,7 +8,7 @@ const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => {
   const navItems = [
     { href: '#home', icon: 'fa-solid fa-house', label: 'Home' },
     { href: '#about', icon: 'fa-solid fa-user', label: 'About' },
-    { href: '#skills', icon: 'fa-solid fa-code', label: 'Skills' },
+    { href: '#techstack', icon: 'fa-solid fa-code', label: 'Skills' },
     { href: '#projects', icon: 'fa-solid fa-briefcase', label: 'Projects' },
     { href: '#contact', icon: 'fa-solid fa-envelope', label: 'Contact' },
   ];

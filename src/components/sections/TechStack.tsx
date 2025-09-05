@@ -1,28 +1,66 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
-const techStack = [
-    "fa-brands fa-html5",
-    "fa-brands fa-css3-alt",
-    "fa-brands fa-js",
-    "fa-brands fa-react",
-    "fa-brands fa-node-js",
-    "fa-brands fa-android",
-    "fa-solid fa-database",
-    "fa-solid fa-paintbrush"
+const techSkills = [
+  { name: 'HTML5', icon: <i className="fa-brands fa-html5"></i> },
+  { name: 'CSS3', icon: <i className="fa-brands fa-css3-alt"></i> },
+  { name: 'JavaScript', icon: <i className="fa-brands fa-js"></i> },
+  { name: 'Tailwind CSS', icon: <i className="fa-brands fa-css3"></i> },
+  { name: 'MongoDB', icon: <Image src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" alt="MongoDB" width={40} height={40} style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(20%) saturate(6268%) hue-rotate(222deg) brightness(89%) contrast(89%)' }} /> },
+  { name: 'Express.js', icon: <Image src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" alt="Express.js" width={40} height={40} style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(20%) saturate(6268%) hue-rotate(222deg) brightness(89%) contrast(89%)' }} /> },
+  { name: 'React', icon: <i className="fa-brands fa-react"></i> },
+  { name: 'Node.js', icon: <i className="fa-brands fa-node-js"></i> },
+  { name: 'Mongoose', icon: <Image src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongoose/mongoose-original.svg" alt="Mongoose" width={40} height={40} style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(20%) saturate(6268%) hue-rotate(222deg) brightness(89%) contrast(89%)' }} /> },
+  { name: 'Postman', icon: <Image src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postman/postman-plain.svg" alt="Postman" width={40} height={40} style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(20%) saturate(6268%) hue-rotate(222deg) brightness(89%) contrast(89%)' }} /> },
+  { name: 'Firebase', icon: <Image src="https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-plain.svg" alt="Firebase" width={40} height={40} style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(20%) saturate(6268%) hue-rotate(222deg) brightness(89%) contrast(89%)' }} /> },
+  { name: 'SQL', icon: <i className="fa-solid fa-database"></i> },
+  { name: 'Figma', icon: <i className="fa-brands fa-figma"></i> },
+  { name: 'CorelDRAW', icon: <i className="fa-solid fa-pen-nib"></i> },
+  { name: 'Graphic Design', icon: <i className="fa-solid fa-palette"></i> },
+  { name: 'Python', icon: <i className="fa-brands fa-python"></i> },
+  { name: 'Android', icon: <i className="fa-brands fa-android"></i> },
+  { name: 'Paint Brush', icon: <i className="fa-solid fa-paintbrush"></i> },
 ];
+
+
+const TechStackMarquee = () => {
+    // Duplicate the array to create a seamless loop
+    const extendedSkills = [...techSkills, ...techSkills];
+  
+    return (
+      <div className="marquee-container">
+        <div className="marquee-content">
+          {extendedSkills.map((skill, index) => (
+             <TooltipProvider key={`skill-${index}`} delayDuration={100}>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <div className="techstack-item">
+                            {skill.icon}
+                        </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <p>{skill.name}</p>
+                    </TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
+          ))}
+        </div>
+      </div>
+    );
+};
 
 export default function TechStack() {
     return (
         <section id="techstack" className="techstack-section section-reveal">
             <h2>Tech Stack & Tools</h2>
-            <div className="techstack-carousel">
-                {techStack.map((iconClass, index) => (
-                    <div key={index} className="techstack-logo">
-                        <i className={iconClass}></i>
-                    </div>
-                ))}
-            </div>
+            <TechStackMarquee />
         </section>
     );
 }
