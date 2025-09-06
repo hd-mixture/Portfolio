@@ -1,6 +1,20 @@
 "use client";
 import React, { useState } from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
+// Define the type for the custom element
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            'dotlottie-wc': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
+                src: string;
+                loop?: boolean;
+                autoplay?: boolean;
+                style?: React.CSSProperties;
+            }, HTMLElement>;
+        }
+    }
+}
+
 
 export default function About() {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -34,12 +48,11 @@ export default function About() {
           </div>
         </div>
         <div className="about-icon">
-          <DotLottieReact
-            src="https://lottie.host/d7cd1c46-a5c3-4eef-bec7-85833741a0d8/FqaZ7dKwqu.lottie"
-            loop
-            autoplay
-            background="transparent"
-          />
+          <dotlottie-wc 
+              src="https://lottie.host/d7cd1c46-a5c3-4eef-bec7-85833741a0d8/FqaZ7dKwqu.lottie"
+              loop
+              autoplay>
+          </dotlottie-wc>
         </div>
       </div>
     </section>

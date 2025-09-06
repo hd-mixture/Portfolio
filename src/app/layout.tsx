@@ -51,14 +51,17 @@ export default function RootLayout({
         />
         <link rel="icon" type="image/png" href="/logos/hd_logo.png" />
         <link rel="apple-touch-icon" href="/logos/hd_logo.png" />
+        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.7.1/dist/dotlottie-wc.js" type="module"></script>
       </head>
       <body>
         <ClientLogic>
+          <div className="flex flex-col min-h-screen">
             <Header />
-            <div className="container">
+            <main className="container flex-grow">
               {children}
-            </div>
+            </main>
             <Footer />
+          </div>
         </ClientLogic>
         <Script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" />
       </body>
