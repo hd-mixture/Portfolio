@@ -420,8 +420,8 @@ li a:hover {
         gap: 2rem;
     }
     .techstack-item i, .techstack-item img {
-      font-size: 2rem;
-      height: 32px;
+      font-size: 2rem !important;
+      height: 32px !important;
     }
     .techstack-wrapper::before,
     .techstack-wrapper::after {
@@ -589,7 +589,7 @@ li a:hover {
     background: linear-gradient(90deg, #f7f5ff 0%, #e9e6fa 100%);
     padding: 2rem 0 1.2rem 0;
     text-align: center;
-    margin-top: 48px;
+    margin-top: auto;
     width: 100%;
     position: relative;
 }
@@ -667,6 +667,7 @@ li a:hover {
 .techstack-wrapper {
     position: relative;
     width: 100%;
+    overflow: hidden;
 }
 .techstack-wrapper::before,
 .techstack-wrapper::after {
