@@ -425,7 +425,20 @@ li a:hover {
     .about-section { min-height: unset; }
     .about-content { padding: 1.2rem 1rem; border-radius: 12px; gap: 0.7rem; align-items: center; margin-left: auto; margin-right: auto; max-width: calc(100% - 2rem); }
     .about-text { padding: 0 0.7rem; text-align: center; }
-    .about-section h2 { font-size: 1.2rem; padding-left: 0.5rem; margin-bottom: 1rem; }
+    .about-section h2, 
+    .skills-section h2, 
+    .projects-section h2, 
+    .internship-section h2, 
+    .achievements-section h2, 
+    .techstack-section h2, 
+    .testimonials-section h2,
+    .contact-section h2 {
+      font-size: 1.8rem;
+      text-align: left;
+      margin-left: 0;
+      padding-left: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
     .about-text p { font-size: 1rem; }
     .about-tagline { font-size: 0.98rem; padding: 0.4rem 0.7rem; }
     section {
