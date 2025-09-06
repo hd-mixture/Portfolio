@@ -386,6 +386,17 @@ li a:hover {
     .about-download-btn { display: flex; justify-content: center; width: 100%; }
     .about-text { width: 100%; text-align: center; }
     .download-resume-icon { margin: 1.2rem 0; }
+    .marquee-content {
+        gap: 2rem; /* Adjusted gap */
+    }
+    .techstack-item i, .techstack-item img {
+      font-size: 2rem;
+      height: 32px;
+    }
+    .techstack-wrapper::before,
+    .techstack-wrapper::after {
+        width: 50px;
+    }
 }
 
 @media screen and (min-width: 601px) {
@@ -618,6 +629,7 @@ li a:hover {
 .techstack-wrapper {
     position: relative;
     width: 100%;
+    overflow: hidden;
 }
 .techstack-wrapper::before,
 .techstack-wrapper::after {
@@ -685,15 +697,7 @@ li a:hover {
         gap: 3rem; /* Adjusted gap */
     }
 }
-@media screen and (max-width: 600px) {
-    .marquee-content {
-        gap: 2rem; /* Adjusted gap */
-    }
-    .techstack-item i, .techstack-item img {
-      font-size: 2rem;
-      height: 32px;
-    }
-}
+
 
 /* Timeline Projects Section */
 .projects-timeline { display: flex; flex-direction: column; gap: 3.8rem; width: 100%; max-width: 900px; margin: 32px auto 0 auto; position: relative; }
