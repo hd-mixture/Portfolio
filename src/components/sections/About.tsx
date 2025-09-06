@@ -52,7 +52,7 @@ export default function About() {
               src="https://lottie.host/d7cd1c46-a5c3-4eef-bec7-85833741a0d8/FqaZ7dKwqu.lottie"
               loop
               autoplay
-              style={{ width: '140px', height: '140px' }}>
+              style={{ width: '200px', height: '200px' }}>
           </dotlottie-wc>
         </div>
       </div>
