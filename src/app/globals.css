@@ -306,6 +306,9 @@ li a:hover {
     section {
         margin-bottom: 3rem;
     }
+    .skills-grid {
+      padding: 0 1.5rem;
+    }
 }
 
 @media screen and (max-width: 900px) {
