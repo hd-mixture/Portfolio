@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function About() {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -33,7 +34,11 @@ export default function About() {
           </div>
         </div>
         <div className="about-icon">
-          <div className="icon-circle"><i className="fa-solid fa-user-astronaut"></i></div>
+          <DotLottieReact
+            src="https://lottie.host/d7cd1c46-a5c3-4eef-bec7-85833741a0d8/FqaZ7dKwqu.lottie"
+            loop
+            autoplay
+          />
         </div>
       </div>
     </section>
