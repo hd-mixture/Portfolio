@@ -25,6 +25,11 @@ body {
     overflow-x: hidden;
 }
 
+/* General Section Spacing */
+section {
+    margin-bottom: 5rem;
+}
+
 /* Genral */
 .container {
     width: 100%;
@@ -295,6 +300,12 @@ li a:hover {
     .typewriter-text, .static-text {
         font-size: 0.9rem !important;
     }
+    .marquee-content {
+        gap: 3rem;
+    }
+    section {
+        margin-bottom: 3rem;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -387,7 +398,7 @@ li a:hover {
     .about-text { width: 100%; text-align: center; }
     .download-resume-icon { margin: 1.2rem 0; }
     .marquee-content {
-        gap: 2rem; /* Adjusted gap */
+        gap: 2rem;
     }
     .techstack-item i, .techstack-item img {
       font-size: 2rem;
@@ -396,6 +407,17 @@ li a:hover {
     .techstack-wrapper::before,
     .techstack-wrapper::after {
         width: 50px;
+    }
+    .download-resume-icon { width: 48px; height: 48px; font-size: 1.1rem; }
+    .download-tooltip { font-size: 0.95rem; padding: 0.3rem 0.7rem; }
+    .about-section { min-height: unset; }
+    .about-content { padding: 1.2rem 1rem; border-radius: 12px; gap: 0.7rem; align-items: center; margin-left: auto; margin-right: auto; max-width: calc(100% - 2rem); }
+    .about-text { padding: 0 0.7rem; text-align: center; }
+    .about-section h2 { font-size: 1.2rem; padding-left: 0.5rem; margin-bottom: 1rem; }
+    .about-text p { font-size: 1rem; }
+    .about-tagline { font-size: 0.98rem; padding: 0.4rem 0.7rem; }
+    section {
+        margin-bottom: 2rem;
     }
 }
 
@@ -428,10 +450,10 @@ li a:hover {
     .mobile-only { display: none !important; }
 }
 
-#home { margin-top: 40px; }
+#home { margin-top: 40px; margin-bottom: 5rem;}
 
 /* About Section */
-.about-section { margin: 48px 0; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-height: 320px; z-index: 1; }
+.about-section { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-height: 320px; z-index: 1; }
 .about-accent { position: absolute; top: -40px; left: -60px; width: 220px; height: 220px; background: radial-gradient(circle at 60% 40%, #ff5722 0%, #52489C 100%); opacity: 0.13; border-radius: 50%; z-index: 0; pointer-events: none; }
 .about-section h2 { font-size: 2.1rem; color: #23243a; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem; }
 .about-content { 
@@ -457,29 +479,11 @@ li a:hover {
 .about-icon { flex: 1; display: flex; align-items: center; justify-content: center; min-width: 90px; padding-right: 2.2rem;}
 .about-icon .icon-circle { width: 90px; height: 90px; background: linear-gradient(135deg, var(--accent-color) 60%, #52489C 60%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.7rem; color: #fff; box-shadow: 0 2px 12px rgba(82,72,156,0.10); }
 
-@media (max-width: 600px) {
-    .about-section { margin: 24px 0; padding: 0 0.5rem; min-height: unset; }
-    .about-icon { display: none !important; }
-    .about-content { 
-        padding: 1.2rem 1rem; 
-        border-radius: 12px; 
-        gap: 0.7rem; 
-        align-items: center; 
-        margin-left: auto;
-        margin-right: auto;
-        max-width: calc(100% - 2rem);
-    }
-    .about-text { padding: 0 0.7rem; text-align: center; }
-    .about-section h2 { font-size: 1.2rem; padding-left: 0.5rem; margin-bottom: 1rem; }
-    .about-text p { font-size: 1rem; }
-    .about-tagline { font-size: 0.98rem; padding: 0.4rem 0.7rem; }
-}
 @media (min-width: 601px) {
     .about-accent { display: none !important; }
 }
 
 /* Skills Section */
-.skills-section { margin: 48px 0; }
 .skills-section h2 { font-size: 2.1rem; color: #23243a; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem; }
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; justify-items: center; }
 .skill-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(82,72,156,0.08); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
@@ -489,7 +493,6 @@ li a:hover {
 .skill-card p { font-size: 1rem; color: #666; line-height: 1.5; }
 
 /* Projects Section */
-.projects-section { margin: 56px 0; }
 .projects-section h2 { text-align: left; color: #23243a; font-size: 2.1rem; margin-bottom: 2.2rem; font-weight: 700; border-left: 6px solid #52489C; padding-left: 1.4rem; display: inline-block; letter-spacing: 0.01em; margin-left: 3.5rem; }
 .project-link {
     flex-grow: 1;
@@ -513,7 +516,7 @@ li a:hover {
 .project-link i { font-size: 1rem; }
 
 /* Contact Section */
-.contact-section { margin: 24px auto; padding: 1rem; background: #f7f5ff; border-radius: 16px; max-width: 550px; }
+.contact-section { padding: 1rem; background: #f7f5ff; border-radius: 16px; max-width: 550px; margin-left: auto; margin-right: auto; }
 .contact-section h2 { text-align: center; color: #52489C; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 700; }
 .contact-form { background: #fff; border-radius: 12px; box-shadow: 0 2px 16px rgba(82,72,156,0.08); padding: 2rem; border: 1px solid rgba(82,72,156,0.08); display: flex; flex-direction: column; gap: 1rem; }
 .contact-form input, .contact-form textarea { width: 100%; padding: 0.8rem 1rem; border: 1px solid #e0def7; border-radius: 8px; font-size: 1rem; font-family: inherit; resize: none; background: #fafaff; color: #23243a; transition: all 0.3s ease; }
@@ -541,10 +544,6 @@ li a:hover {
 .download-resume-icon.success .download-icon { color: #fff; animation: popCheck 0.5s; }
 .download-resume-icon.success .download-icon i::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
 @keyframes popCheck { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
-@media (max-width: 600px) {
-    .download-resume-icon { width: 48px; height: 48px; font-size: 1.1rem; }
-    .download-tooltip { font-size: 0.95rem; padding: 0.3rem 0.7rem; }
-}
 
 /* Footer */
 .footer {
@@ -572,11 +571,12 @@ li a:hover {
 
 /* Testimonials Section */
 .testimonials-section {
-    margin: 48px auto;
     padding: 1rem;
     border-radius: 24px;
     max-width: 900px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .testimonials-section h2 { 
     text-align: center; 
@@ -613,7 +613,7 @@ li a:hover {
 .author-avatar img { border-radius: 50%; object-fit: cover;}
 
 /* Achievements Section */
-.achievements-section { margin: 48px 0; text-align: center; }
+.achievements-section { text-align: center; }
 .achievements-grid { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; margin-top: 2rem; }
 .achievement-card { background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(82,72,156,0.08); padding: 2rem 1.5rem; min-width: 180px; text-align: center; }
 .achievement-card i { font-size: 2.2rem; color: #52489C; margin-bottom: 0.7rem; }
@@ -622,15 +622,12 @@ li a:hover {
 
 /* Tech Stack Carousel */
 .techstack-section { 
-    margin: 48px 0; 
     text-align: left;
     padding: 2rem 0;
 }
 .techstack-wrapper {
     position: relative;
     width: 100%;
-    overflow: hidden;
-    padding-top: 2rem;
 }
 .techstack-wrapper::before,
 .techstack-wrapper::after {
@@ -671,7 +668,7 @@ li a:hover {
 .marquee-content {
   display: flex;
   align-items: center;
-  gap: 4rem; /* Adjusted gap */
+  gap: 4rem;
 }
 
 .techstack-item {
@@ -693,12 +690,6 @@ li a:hover {
   height: 40px;
   width: auto;
 }
-@media screen and (max-width: 1024px) {
-    .marquee-content {
-        gap: 3rem; /* Adjusted gap */
-    }
-}
-
 
 /* Timeline Projects Section */
 .projects-timeline { display: flex; flex-direction: column; gap: 3.8rem; width: 100%; max-width: 900px; margin: 32px auto 0 auto; position: relative; }
@@ -760,7 +751,7 @@ li a:hover {
 }
 
 /* Internship Section */
-.internship-section { margin: 48px 0; padding: 2.5rem 0; background: linear-gradient(135deg, #f7f5ff 60%, #e9e6fa 100%); border-radius: 28px; box-shadow: 0 8px 32px rgba(82,72,156,0.10); max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; position: relative; overflow: hidden; }
+.internship-section { padding: 2.5rem 0; background: linear-gradient(135deg, #f7f5ff 60%, #e9e6fa 100%); border-radius: 28px; box-shadow: 0 8px 32px rgba(82,72,156,0.10); max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; position: relative; overflow: hidden; }
 .internship-section h2 { color: #52489C; font-size: 2.2rem; margin-bottom: 2.2rem; font-weight: 800; letter-spacing: 0.01em; position: relative; display: inline-block; }
 .internship-card { background: #fff; border-radius: 22px; box-shadow: 0 4px 24px rgba(82,72,156,0.10); padding: 2.5rem 2rem 2rem 2rem; max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.3rem; position: relative; transition: box-shadow 0.3s, transform 0.3s; }
 .internship-card:hover { box-shadow: 0 8px 32px rgba(82,72,156,0.18); transform: translateY(-2px) scale(1.02); }
@@ -1023,7 +1014,6 @@ li a:hover {
 .testimonials-section-vertical {
     padding: 4rem 1rem;
     max-width: 900px;
-    margin: 48px auto;
 }
 
 .testimonials-heading {
