@@ -432,15 +432,17 @@ li a:hover {
     .techstack-section h2, 
     .testimonials-section h2,
     .contact-section h2 {
-      font-size: 1.8rem;
-      text-align: left;
-      margin-left: 0;
-      padding-left: 0.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 1.5rem !important;
+      text-align: left !important;
+      margin-left: 0 !important;
+      padding-left: 0.5rem !important;
+      margin-bottom: 1.5rem !important;
     }
     .achievements-section h2 {
-      text-align: center;
-      padding-left: 0;
+      text-align: center !important;
+      padding-left: 0 !important;
+      font-size: 1.5rem !important;
+      margin-bottom: 1.5rem !important;
     }
     .about-text p { font-size: 1rem; }
     .about-tagline { font-size: 0.98rem; padding: 0.4rem 0.7rem; }
