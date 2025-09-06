@@ -38,6 +38,7 @@ export default function About() {
             src="https://lottie.host/d7cd1c46-a5c3-4eef-bec7-85833741a0d8/FqaZ7dKwqu.lottie"
             loop
             autoplay
+            background="transparent"
           />
         </div>
       </div>
