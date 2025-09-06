@@ -449,6 +449,8 @@ li a:hover {
     section {
         margin-bottom: 2rem;
     }
+    .footer { padding: 1rem 0 0.8rem 0; margin-top: 2rem; }
+    .footer-content span { font-size: 0.85rem; padding: 0.5rem 1rem; }
 }
 
 @media screen and (min-width: 601px) {
