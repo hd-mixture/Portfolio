@@ -311,6 +311,15 @@ li a:hover {
     }
 }
 
+@media screen and (min-width: 1025px) {
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .skill-card:nth-child(5) {
+        grid-column-start: 2;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .about-content { flex-direction: column; gap: 1.2rem; padding: 1.2rem 0.7rem; align-items: flex-start; }
 }
