@@ -27,13 +27,13 @@ export default function Hero() {
             <Link href="https://www.linkedin.com/in/hdmixture/" style={{ '--socialAni': 1 } as React.CSSProperties} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-linkedin-in"></i>
             </Link>
-            <Link href="https://www.instagram.com/hd_mixture/ss" style={{ '--socialAni': 2 } as React.CSSProperties} target="_blank" rel="noopener noreferrer">
+            <Link href="https://www.instagram.com/hd_mixture/" style={{ '--socialAni': 2 } as React.CSSProperties} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-instagram"></i>
             </Link>
             <Link href="https://github.com/hd-mixture" style={{ '--socialAni': 3 } as React.CSSProperties} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-github"></i>
             </Link>
-            <Link href="https.wa.link/ey6lzx" style={{ '--socialAni': 4 } as React.CSSProperties} target="_blank" rel="noopener noreferrer">
+            <Link href="https://wa.link/ey6lzx" style={{ '--socialAni': 4 } as React.CSSProperties} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-whatsapp"></i>
             </Link>
           </div>
@@ -53,3 +53,5 @@ export default function Hero() {
     </section>
   );
 }
+
+    
