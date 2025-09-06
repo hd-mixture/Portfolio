@@ -54,14 +54,16 @@ export default function RootLayout({
       </head>
       <body>
         <ClientLogic>
-          <div className="container">
             <Header />
-            {children}
+            <div className="container">
+              {children}
+            </div>
             <Footer />
-          </div>
         </ClientLogic>
         <Script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" />
       </body>
     </html>
   );
 }
+
+    
