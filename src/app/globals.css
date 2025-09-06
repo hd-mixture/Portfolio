@@ -689,6 +689,10 @@ li a:hover {
     .marquee-content {
         gap: 2rem; /* Adjusted gap */
     }
+    .techstack-item i, .techstack-item img {
+      font-size: 2rem;
+      height: 32px;
+    }
 }
 
 /* Timeline Projects Section */
