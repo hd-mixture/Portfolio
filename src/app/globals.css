@@ -449,13 +449,19 @@ li a:hover {
     .skills-section h2, 
     .projects-section h2, 
     .internship-section h2, 
-    .techstack-section h2, 
-    .testimonials-section h2,
-    .contact-section h2 {
+    .techstack-section h2 {
       font-size: 1.5rem !important;
       text-align: left !important;
       margin-left: 0 !important;
       padding-left: 0.5rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+    .testimonials-section h2,
+    .contact-section h2 {
+      font-size: 1.5rem !important;
+      text-align: center !important;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
       margin-bottom: 1.5rem !important;
     }
     .achievements-section h2 {
@@ -1182,3 +1188,4 @@ li a:hover {
     
 
     
+
