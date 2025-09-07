@@ -1323,7 +1323,7 @@ li a:hover {
 
 /* Circular Reveal Animation */
 @keyframes circle-reveal-in {
-  from { clip-path: circle(0%); }
+  from { clip-path: circle(0% at var(--x) var(--y)); }
   to { clip-path: circle(150% at var(--x) var(--y)); }
 }
 
@@ -1347,6 +1347,7 @@ li a:hover {
     
 
     
+
 
 
 
