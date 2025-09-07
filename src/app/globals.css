@@ -351,6 +351,9 @@ li a:hover {
     }
     .main h1 { font-size: 2.5rem; }
     .main h3 { font-size: 1rem; }
+    .testimonial-nav-buttons {
+        justify-content: center;
+    }
 }
 
 @media screen and (max-width:600px) {
@@ -1122,7 +1125,7 @@ li a:hover {
     align-items: center;
 }
 
-@media (max-w: 768px) {
+@media (max-width: 768px) {
     .testimonial-card-vertical-content {
         grid-template-areas:
             "author"
@@ -1188,4 +1191,5 @@ li a:hover {
     
 
     
+
 
