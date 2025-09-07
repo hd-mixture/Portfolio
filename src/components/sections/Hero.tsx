@@ -40,7 +40,7 @@ export default function Hero() {
         </div>
         <div className="images">
           <Image
-            src="/hd_image.png"
+            src="/Logos/hd_image.png"
             alt="Darshan Prajapati profile"
             width={300}
             height={450}

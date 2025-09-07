@@ -136,7 +136,7 @@ header.header-hidden {
     cursor: pointer;
 }
 
-.logo img {
+.logo img, .mobile-header-logo {
     width: 60px;
     height: auto;
     object-fit: contain;
@@ -146,6 +146,12 @@ header.header-hidden {
     border: 2px solid var(--border-color);
     display: block;
     transition: all 0.3s ease-in-out;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 ul {
@@ -1335,6 +1341,7 @@ li a:hover {
     
 
     
+
 
 
 

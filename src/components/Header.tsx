@@ -91,13 +91,13 @@ export default function Header() {
             title="Long press to toggle theme"
           >
             <Link href="#home">
-              <Image src="/logos/hd_logo.png" alt="Logo" width={60} height={60} data-ai-hint="logo monogram" />
+              <Image src="/Logos/hd_logo.png" alt="Logo" width={60} height={60} data-ai-hint="logo monogram" />
             </Link>
           </div>
           <NavLinks />
         </div>
         <div className="mobile-header mobile-only">
-           <Image src="/logos/hd_logo.png" alt="Logo" width={40} height={40} className="mobile-header-logo" data-ai-hint="logo monogram" />
+           <Image src="/Logos/hd_logo.png" alt="Logo" width={40} height={40} className="mobile-header-logo" data-ai-hint="logo monogram" />
           <span className="portfolio-title">PORTFOLIO</span>
           <button onClick={handleShare} className="share-button" aria-label="Share portfolio">
             <Share2 size={20} />
