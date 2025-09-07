@@ -415,10 +415,10 @@ li a:hover {
     ul.mobile-nav li a:hover::after { opacity: 1; visibility: visible; bottom: 130%; }
     .images { width: 300px; height: 300px; margin: 32px auto 0 auto; background: #000 !important; border-radius: 50%; clip-path: none; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.18); }
     .images img { margin-top: -50px; }
-    .main { margin-top: 2rem; padding: 0rem; }
+    .main { margin-top: 0; padding: 0rem; padding-top: 2rem; }
     ul.nav-hidden { opacity: 0 !important; pointer-events: none !important; transition: opacity 0.4s cubic-bezier(.4,2,.6,1); }
     .about-download-btn { display: flex; justify-content: center; width: 100%; }
-    .about-text { width: 100%; text-align: center; }
+    .about-text { width: 100%; text-align: center; padding: 0;}
     .download-resume-icon { margin: 1.2rem 0; }
     .marquee-content {
         gap: 2rem;
@@ -440,7 +440,6 @@ li a:hover {
     .download-tooltip { font-size: 0.95rem; padding: 0.3rem 0.7rem; }
     .about-section { min-height: unset; }
     .about-content { padding: 2.5rem 0 !important; border-radius: 12px; gap: 0.7rem; align-items: center; margin-left: auto; margin-right: auto; max-width: 100%; }
-    .about-text { padding: 0; text-align: center; }
     .about-text p { font-size: 1rem; text-align: justify; }
     .about-tagline { font-size: .9rem !important; padding: 0.4rem 0.7rem; }
     section {
@@ -513,7 +512,7 @@ li a:hover {
 .about-content { 
     background: rgba(255,255,255,0.92); 
     backdrop-filter: blur(8px); 
-    border-radius: 18px; 
+    border-radius: 18px;
     box-shadow: 0 4px 24px rgba(82,72,156,0.10); 
     max-width: 800px; 
     width: 100%; 
@@ -1191,6 +1190,8 @@ li a:hover {
     
 
     
+
+
 
 
 
