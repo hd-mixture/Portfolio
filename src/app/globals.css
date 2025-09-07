@@ -439,7 +439,7 @@ li a:hover {
     .download-resume-icon { width: 48px; height: 48px; font-size: 1.1rem; }
     .download-tooltip { font-size: 0.95rem; padding: 0.3rem 0.7rem; }
     .about-section { min-height: unset; }
-    .about-content { padding: 1.2rem 1rem; border-radius: 12px; gap: 0.7rem; align-items: center; margin-left: auto; margin-right: auto; max-width: calc(100% - 2rem); }
+    .about-content { padding: 1.2rem 0; border-radius: 12px; gap: 0.7rem; align-items: center; margin-left: auto; margin-right: auto; max-width: 100%; }
     .about-text { padding: 0; text-align: center; }
     .about-text p { font-size: 1rem; text-align: justify; }
     .about-tagline { font-size: 0.98rem; padding: 0.4rem 0.7rem; }
@@ -1191,6 +1191,7 @@ li a:hover {
     
 
     
+
 
 
 
