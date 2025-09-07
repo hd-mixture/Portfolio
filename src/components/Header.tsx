@@ -97,7 +97,17 @@ export default function Header() {
           <NavLinks />
         </div>
         <div className="mobile-header mobile-only">
-           <Image src="/Logos/hd_logo.png" alt="Logo" width={40} height={40} className="mobile-header-logo" data-ai-hint="logo monogram" />
+          <div
+            onMouseDown={handlePressStart}
+            onMouseUp={handlePressEnd}
+            onMouseLeave={handlePressEnd}
+            onTouchStart={handlePressStart}
+            onTouchEnd={handlePressEnd}
+            onClick={handleClick}
+            title="Long press to toggle theme"
+          >
+            <Image src="/Logos/hd_logo.png" alt="Logo" width={40} height={40} className="mobile-header-logo" data-ai-hint="logo monogram" />
+          </div>
           <span className="portfolio-title">PORTFOLIO</span>
           <button onClick={handleShare} className="share-button" aria-label="Share portfolio">
             <Share2 size={20} />
