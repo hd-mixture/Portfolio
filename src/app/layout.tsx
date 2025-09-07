@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientLogic from "@/components/ClientLogic";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Darshan Prajapati - Creative Developer & Graphic Designer",
@@ -40,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -54,15 +55,22 @@ export default function RootLayout({
         <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.7.1/dist/dotlottie-wc.js" type="module"></script>
       </head>
       <body>
-        <ClientLogic>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="container flex-grow">
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </ClientLogic>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ClientLogic>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="container flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </ClientLogic>
+        </ThemeProvider>
         <Script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" />
       </body>
     </html>

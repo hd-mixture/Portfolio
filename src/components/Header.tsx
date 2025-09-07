@@ -1,8 +1,9 @@
 "use client";
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Share2 } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => {
   const navClass = isMobile ? 'mobile-nav' : 'desktop-nav';
@@ -34,6 +35,9 @@ const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => {
 };
 
 export default function Header() {
+  const { theme, setTheme } = useTheme();
+  const longPressTimer = useRef<NodeJS.Timeout | null>(null);
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -46,17 +50,46 @@ export default function Header() {
         console.error('Error sharing:', error);
       }
     } else {
-      // Fallback for browsers that don't support the Web Share API
       navigator.clipboard.writeText(window.location.href);
       alert('Portfolio link copied to clipboard!');
     }
   };
 
+  const handlePressStart = () => {
+    longPressTimer.current = setTimeout(() => {
+      setTheme(theme === 'dark' ? 'light' : 'dark');
+    }, 800); // 800ms for long press
+  };
+
+  const handlePressEnd = () => {
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
+  };
+  
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Prevent default link behavior if it's a long press
+    if (longPressTimer.current) {
+       e.preventDefault();
+    }
+  };
+
+
   return (
     <>
       <header>
         <div className="page-header">
-          <div className="logo">
+          <div 
+            className="logo"
+            onMouseDown={handlePressStart}
+            onMouseUp={handlePressEnd}
+            onMouseLeave={handlePressEnd}
+            onTouchStart={handlePressStart}
+            onTouchEnd={handlePressEnd}
+            onClick={handleClick}
+            title="Long press to toggle theme"
+          >
             <Link href="#home">
               <Image src="/logos/hd_logo.png" alt="Logo" width={60} height={60} data-ai-hint="logo monogram" />
             </Link>
