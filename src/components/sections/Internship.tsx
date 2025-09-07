@@ -10,11 +10,12 @@ export default function Internship() {
         <div className="internship-role">
           <span className="internship-logo-wrap">
             <Image 
-                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/androidstudio/androidstudio-original.svg" 
-                alt="Android Studio Logo" 
+                src="https://media.licdn.com/dms/image/v2/C4D0BAQFFrMKiwR45wg/company-logo_200_200/company-logo_200_200/0/1658907156557/riseupinfotech_logo?e=2147483647&v=beta&t=k4tRyTKDAokJD3mEbcQntQB6n6BSsMNYwKtsKtsbD4A" 
+                alt="RiseUp Infotech Logo" 
                 className="internship-android-logo"
                 width={38}
                 height={38}
+                data-ai-hint="company logo"
             />
           </span>
           <span className="internship-title">Android Developer</span>
