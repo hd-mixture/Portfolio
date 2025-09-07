@@ -20,10 +20,10 @@ export default function Internship() {
           </span>
           <span className="internship-title">Android Developer</span>
         </div>
-        <div className="internship-company">
+        <a href="https://share.google/sumZU9ye7TxnvSzCV" target="_blank" rel="noopener noreferrer" className="internship-company" style={{textDecoration: 'none'}}>
           <i className="fa-solid fa-building-columns"></i>
           RiseUp Infotech, Surat
-        </div>
+        </a>
         <div className="internship-date">
           <i className="fa-regular fa-calendar"></i>
           Aug 2022 &amp; Sep 2023
