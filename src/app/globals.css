@@ -380,7 +380,8 @@ li a:hover {
       color: #333;
     }
     
-    #home, .main { padding-left: 1rem; padding-right: 1rem; }
+    #home { padding-left: 1rem; padding-right: 1rem; }
+    .main { padding-top: 2rem !important; }
     ul.mobile-nav {
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(8px);
@@ -471,6 +472,20 @@ li a:hover {
       padding-left: 0 !important;
       font-size: 1.5rem !important;
       margin-bottom: 1.5rem !important;
+    }
+
+    .internship-section {
+        padding: 1.5rem !important;
+    }
+    .internship-card {
+        padding: 1.5rem !important;
+    }
+    .internship-title {
+        font-size: 1.1rem !important;
+    }
+    .internship-company, .internship-date, .internship-desc {
+        font-size: 0.9rem !important;
+        padding: 0.5rem 1rem !important;
     }
 }
 
@@ -1190,6 +1205,7 @@ li a:hover {
     
 
     
+
 
 
 
