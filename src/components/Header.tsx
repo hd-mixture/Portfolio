@@ -77,8 +77,11 @@ export default function Header() {
   }
 
   const handlePressStart = (e: React.MouseEvent | React.TouchEvent) => {
+    // Clone the event to persist it
+    const persistentEvent = { ...e };
     longPressTimer.current = setTimeout(() => {
-        handleThemeToggle(e);
+        handleThemeToggle(persistentEvent);
+        longPressTimer.current = null; // Prevent click after long press
     }, 800); // 800ms for long press
   };
 
@@ -90,9 +93,17 @@ export default function Header() {
   };
   
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Prevent default link behavior if it's a long press
+    // A normal click (not a long press)
     if (longPressTimer.current) {
-       e.preventDefault();
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    } else {
+      // This is to prevent navigation if the timer was cleared by handlePressEnd but the click event still fires.
+      // A null timer indicates a long press has already occurred.
+      if (e.currentTarget.className.includes('logo')) {
+          // It's the desktop logo, allow navigation or other click actions
+          window.location.href = '#home';
+      }
     }
   };
 
@@ -125,7 +136,13 @@ export default function Header() {
             onMouseLeave={handlePressEnd}
             onTouchStart={handlePressStart}
             onTouchEnd={handlePressEnd}
-            onClick={handleClick}
+            onClick={(e) => {
+              if (longPressTimer.current) {
+                e.preventDefault();
+                clearTimeout(longPressTimer.current);
+                longPressTimer.current = null;
+              }
+            }}
             title="Long press to toggle theme"
           >
             <Image src="/Logos/hd_logo.png" alt="Logo" width={40} height={40} className="mobile-header-logo" data-ai-hint="logo monogram" />
