@@ -55,9 +55,30 @@ export default function Header() {
     }
   };
 
-  const handlePressStart = () => {
+  const handleThemeToggle = (e: React.MouseEvent | React.TouchEvent) => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    
+    // @ts-ignore
+    if (!document.startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+    
+    const x = 'clientX' in e ? e.clientX : e.touches[0].clientX;
+    const y = 'clientY' in e ? e.clientY : e.touches[0].clientY;
+    
+    document.documentElement.style.setProperty('--x', `${x}px`);
+    document.documentElement.style.setProperty('--y', `${y}px`);
+
+    // @ts-ignore
+    document.startViewTransition(() => {
+        setTheme(newTheme);
+    });
+  }
+
+  const handlePressStart = (e: React.MouseEvent | React.TouchEvent) => {
     longPressTimer.current = setTimeout(() => {
-      setTheme(theme === 'dark' ? 'light' : 'dark');
+        handleThemeToggle(e);
     }, 800); // 800ms for long press
   };
 
@@ -98,6 +119,7 @@ export default function Header() {
         </div>
         <div className="mobile-header mobile-only">
           <div
+            className="flex items-center"
             onMouseDown={handlePressStart}
             onMouseUp={handlePressEnd}
             onMouseLeave={handlePressEnd}
