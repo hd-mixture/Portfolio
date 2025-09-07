@@ -1332,7 +1332,7 @@ li a:hover {
   mix-blend-mode: normal;
 }
 ::view-transition-new(root) {
-  animation: circle-reveal-in .5s ease-in;
+  animation: circle-reveal-in .5s ease-in-out;
   mix-blend-mode: normal;
 }
 
@@ -1341,26 +1341,9 @@ li a:hover {
   mix-blend-mode: normal;
 }
 .dark::view-transition-new(root) {
-  animation: circle-reveal-in .5s ease-in;
+  animation: circle-reveal-in .5s ease-in-out;
   mix-blend-mode: normal;
 }
     
 
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
