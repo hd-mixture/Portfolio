@@ -55,7 +55,7 @@ export default function Header() {
     }
   };
 
-  const handleThemeToggle = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleThemeToggle = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     
     // @ts-ignore
@@ -64,11 +64,8 @@ export default function Header() {
       return;
     }
     
-    const x = 'clientX' in e ? e.clientX : e.touches[0].clientX;
-    const y = 'clientY' in e ? e.clientY : e.touches[0].clientY;
-    
-    document.documentElement.style.setProperty('--x', `${x}px`);
-    document.documentElement.style.setProperty('--y', `${y}px`);
+    document.documentElement.style.setProperty('--x', `5vw`);
+    document.documentElement.style.setProperty('--y', `5vh`);
 
     // @ts-ignore
     document.startViewTransition(() => {
@@ -76,11 +73,9 @@ export default function Header() {
     });
   }
 
-  const handlePressStart = (e: React.MouseEvent | React.TouchEvent) => {
-    // Clone the event to persist it
-    const persistentEvent = { ...e };
+  const handlePressStart = () => {
     longPressTimer.current = setTimeout(() => {
-        handleThemeToggle(persistentEvent);
+        handleThemeToggle();
         longPressTimer.current = null; // Prevent click after long press
     }, 800); // 800ms for long press
   };
