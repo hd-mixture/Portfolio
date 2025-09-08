@@ -7,6 +7,16 @@ type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
 const projects = [
   {
+    date: "Jul 2025 - Ongoing",
+    title: "DevTeXhHub",
+    description: "DevTeXhHub is a modern, full-featured project management application designed to streamline workflows for software development teams. It provides distinct, role-based dashboards for Admins, Managers, Developers, QAs, and Designers, ensuring that every team member has the tools they need to be productive.",
+    liveLink: null,
+    codeLink: null,
+    icon: <Image src="/Project Logo/custom_logo.png" alt="DevTeXhHub Logo" width={48} height={48} data-ai-hint="modern logo" />,
+    timelineIcon: <i className="fa-solid fa-tasks"></i>,
+    status: 'ongoing' as ProjectStatus,
+  },
+  {
     date: "Jun 2025 - Jul 2025",
     title: "Cardify",
     description: "Cardify is a modern, web-based application that allows users to effortlessly create, customize, and download professional virtual visiting cards. With a live preview and a wide range of customization options, creating your perfect digital card has never been easier.",
@@ -138,7 +148,8 @@ const designData = {
         { src: "/Graphic Designes/Logos/5.png", title: "Logo Design 5" },
         { src: "/Graphic Designes/Logos/6.png", title: "Logo Design 6" },
         { src: "/Graphic Designes/Logos/7.png", title: "Logo Design 7" },
-        { src: "/Graphic Designes/Logos/8.png", title: "Logo Design 8" }
+        { src: "/Graphic Designes/Logos/8.png", title
+: "Logo Design 8" }
     ],
     posters: [
         { src: "/Graphic Designes/Posters/1.png", title: "Poster Design 1" },
@@ -233,6 +244,42 @@ const DesignGalleryModal = ({ onClose }: { onClose: () => void }) => {
     );
 };
 
+const ProjectLinks = ({ project, openDesignModal }: { project: any, openDesignModal: (e: React.MouseEvent) => void }) => {
+    const disabledStyle = { cursor: 'not-allowed', opacity: 0.5 };
+    
+    if (project.portfolioLink) {
+        return (
+            <>
+                <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
+                {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
+            </>
+        );
+    }
+
+    return (
+        <>
+            {project.liveLink ? (
+                <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer">
+                    <i className="fa-solid fa-globe"></i> View Live
+                </Link>
+            ) : (
+                <span className="project-link" style={disabledStyle}>
+                    <i className="fa-solid fa-globe"></i> View Live
+                </span>
+            )}
+            {project.codeLink ? (
+                <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer">
+                    <i className="fa-brands fa-github"></i> View Code
+                </Link>
+            ) : (
+                <span className="project-link" style={disabledStyle}>
+                    <i className="fa-brands fa-github"></i> View Code
+                </span>
+            )}
+        </>
+    );
+};
+
 export default function Projects() {
     const [showDesignModal, setShowDesignModal] = useState(false);
 
@@ -261,17 +308,7 @@ export default function Projects() {
                                                         <h3>{project.title}</h3>
                                                         <p>{project.description}</p>
                                                         <div className="project-links">
-                                                            {project.portfolioLink ? (
-                                                                <>
-                                                                    <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
-                                                                    {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
-                                                                </>
-                                                            ) : (
-                                                                <>
-                                                                    {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
-                                                                    {project.codeLink && <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i> View Code</Link>}
-                                                                </>
-                                                            )}
+                                                          <ProjectLinks project={project} openDesignModal={openDesignModal} />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -293,17 +330,7 @@ export default function Projects() {
                                                         <h3>{project.title}</h3>
                                                         <p>{project.description}</p>
                                                         <div className="project-links">
-                                                          {project.portfolioLink ? (
-                                                              <>
-                                                                  <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
-                                                                  {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
-                                                              </>
-                                                          ) : (
-                                                            <>
-                                                              {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
-                                                              {project.codeLink && <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i> View Code</Link>}
-                                                            </>
-                                                          )}
+                                                            <ProjectLinks project={project} openDesignModal={openDesignModal} />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -324,10 +351,7 @@ export default function Projects() {
                             <h3>{project.title}</h3>
                             <p>{project.description}</p>
                             <div className="project-links">
-                                {project.liveLink && <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i> View Live</Link>}
-                                {project.codeLink && <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i> View Code</Link>}
-                                {project.portfolioLink && <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>}
-                                {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
+                                <ProjectLinks project={project} openDesignModal={openDesignModal} />
                             </div>
                         </div>
                     ))}
