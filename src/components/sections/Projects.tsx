@@ -27,7 +27,7 @@ const projects = [
     status: 'completed' as ProjectStatus,
   },
   {
-    date: "Ongoing",
+    date: "Mar 2020 - Ongoing",
     title: "Graphic Designs",
     description: "A showcase of my creative graphic design works, including posters, banners, logos, and more.",
     portfolioLink: true,
@@ -148,8 +148,7 @@ const designData = {
         { src: "/Graphic Designes/Logos/5.png", title: "Logo Design 5" },
         { src: "/Graphic Designes/Logos/6.png", title: "Logo Design 6" },
         { src: "/Graphic Designes/Logos/7.png", title: "Logo Design 7" },
-        { src: "/Graphic Designes/Logos/8.png", title
-: "Logo Design 8" }
+        { src: "/Graphic Designes/Logos/8.png", title: "Logo Design 8" }
     ],
     posters: [
         { src: "/Graphic Designes/Posters/1.png", title: "Poster Design 1" },
