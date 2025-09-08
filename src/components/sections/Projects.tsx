@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MapPin } from 'lucide-react';
 
 type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
@@ -102,7 +103,7 @@ const projectsData = [
     description: "Created an Android app using Google Maps API to display nearby essential locations like ATMs, hospitals, and restaurants.",
     liveLink: "https://github.com/hd-mixture/Nearby-Places.git",
     codeLink: "https://github.com/hd-mixture/Nearby-Places.git",
-    icon: <Image src="/Project Logo/Nearby Places Logo.png" alt="Nearby Places App Logo" width={48} height={48} data-ai-hint="map pin" />,
+    icon: <MapPin size={48} />,
     timelineIcon: <i className="fa-solid fa-location-dot"></i>,
     status: 'completed' as ProjectStatus,
   }
@@ -368,5 +369,3 @@ export default function Projects() {
         </>
     );
 }
-
-    
