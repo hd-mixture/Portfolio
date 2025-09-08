@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 
 // Define the type for the custom element
 declare global {
@@ -17,7 +17,7 @@ declare global {
 
 
 export default function About() {
-  const [isDownloading, setIsDownloading] = useState(false);
+  const [isDownloading, setIsDownloading] = React.useState(false);
 
   const handleDownloadClick = () => {
     setIsDownloading(true);
@@ -64,5 +64,3 @@ export default function About() {
     </section>
   );
 }
-
-    
