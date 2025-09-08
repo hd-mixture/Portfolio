@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MapPin } from 'lucide-react';
 
 type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
@@ -289,19 +290,16 @@ export default function Projects() {
     }
     
     const sortedProjects = [...projectsData].sort((a, b) => {
-        const dateToParseA = a.date.split(' - ')[0];
-        const dateToParseB = b.date.split(' - ')[0];
-        
-        // Handle "Ongoing" or "Present" dates by giving them a very high value
         const getSortableDate = (dateStr: string) => {
-            if (dateStr.toLowerCase().includes('ongoing') || dateStr.toLowerCase().includes('present')) {
-                return new Date(8640000000000000); // Max Date
+            const datePart = dateStr.split(' - ')[0];
+            if (datePart.toLowerCase().includes('ongoing') || datePart.toLowerCase().includes('present')) {
+                return new Date(8640000000000000); 
             }
-            return new Date(dateStr);
+            return new Date(datePart);
         };
 
-        const dateA = getSortableDate(dateToParseA);
-        const dateB = getSortableDate(dateToParseB);
+        const dateA = getSortableDate(a.date);
+        const dateB = getSortableDate(b.date);
 
         return dateB.getTime() - dateA.getTime();
     });
@@ -364,7 +362,7 @@ export default function Projects() {
                 <div className="projects-grid mobile-only">
                     {sortedProjects.map((project, index) => (
                         <div key={index} className="project-card">
-                            <div className="project-icon">{project.icon}</div>
+                            <div className={`project-icon ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}>{project.icon}</div>
                             <div className="project-date-badge">{project.date}</div>
                             <h3>{project.title}</h3>
                             <p>{project.description}</p>
@@ -379,5 +377,3 @@ export default function Projects() {
         </>
     );
 }
-
-    
