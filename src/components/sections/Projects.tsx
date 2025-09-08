@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
-const projects = [
+const projectsData = [
   {
     date: "Jul 2025 - Ongoing",
     title: "DevTeXhHub",
@@ -286,13 +286,23 @@ export default function Projects() {
         e.preventDefault();
         setShowDesignModal(true);
     }
+    
+    const sortedProjects = [...projectsData].sort((a, b) => {
+        if (a.status === 'ongoing' && b.status !== 'ongoing') {
+          return -1; // a comes first
+        }
+        if (a.status !== 'ongoing' && b.status === 'ongoing') {
+          return 1; // b comes first
+        }
+        return 0; // no change in order
+    });
 
     return (
         <>
             <section id="projects" className="projects-section section-reveal">
                 <h2>Projects</h2>
                 <div className="projects-timeline">
-                    {projects.map((project, index) => {
+                    {sortedProjects.map((project, index) => {
                         const side = index % 2 === 0 ? 'right' : 'left';
                         return (
                             <div key={index} className="timeline-event" data-side={side}>
@@ -343,7 +353,7 @@ export default function Projects() {
                 </div>
 
                 <div className="projects-grid mobile-only">
-                    {projects.map((project, index) => (
+                    {sortedProjects.map((project, index) => (
                         <div key={index} className="project-card">
                             <div className="project-icon">{project.icon}</div>
                             <div className="project-date-badge">{project.date}</div>
