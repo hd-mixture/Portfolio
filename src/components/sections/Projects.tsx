@@ -12,22 +12,7 @@ const projects = [
     description: "Cardify is a modern, web-based application that allows users to effortlessly create, customize, and download professional virtual visiting cards. With a live preview and a wide range of customization options, creating your perfect digital card has never been easier.",
     liveLink: "https://cardify.hdmixture.site",
     codeLink: "https://github.com/hd-mixture/Cardify.git",
-    icon: <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="grad_cardify" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{stopColor:"#29ABE2",stopOpacity:1}} />
-                <stop offset="100%" style={{stopColor:"#008080",stopOpacity:1}} />
-              </linearGradient>
-            </defs>
-            <rect width="100" height="100" rx="20" fill="url(#grad_cardify)"/>
-            <g transform="translate(16, 16) scale(2.75)">
-              <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <rect width="18" height="18" x="3" y="4" rx="2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="12" cy="10" r="2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <line x1="8" x2="8" y1="2" y2="4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <line x1="16" x2="16" y1="2" y2="4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </g>
-          </svg>,
+    icon: <Image src="/Project Logo/Cardify Logo.png" alt="Cardify Logo" width={48} height={48} data-ai-hint="visiting card" />,
     timelineIcon: <i className="fa-solid fa-address-card"></i>,
     status: 'completed' as ProjectStatus,
   },
