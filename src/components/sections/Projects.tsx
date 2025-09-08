@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin } from 'lucide-react';
 
 type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
@@ -13,7 +12,7 @@ const projectsData = [
     description: "DevTeXhHub is a modern, full-featured project management application designed to streamline workflows for software development teams. It provides distinct, role-based dashboards for Admins, Managers, Developers, QAs, and Designers, ensuring that every team member has the tools they need to be productive.",
     liveLink: null,
     codeLink: null,
-    icon: <Image src="/Project Logo/custom_logo.png" alt="DevTeXhHub Logo" width={48} height={48} data-ai-hint="modern logo" />,
+    icon: <Image src="/Project Logo/DevTeXhHub Logo.png" alt="DevTeXhHub Logo" width={48} height={48} data-ai-hint="modern logo" />,
     timelineIcon: <i className="fa-solid fa-tasks"></i>,
     status: 'ongoing' as ProjectStatus,
   },
@@ -103,7 +102,7 @@ const projectsData = [
     description: "Created an Android app using Google Maps API to display nearby essential locations like ATMs, hospitals, and restaurants.",
     liveLink: "https://github.com/hd-mixture/Nearby-Places.git",
     codeLink: "https://github.com/hd-mixture/Nearby-Places.git",
-    icon: <MapPin size={48} />,
+    icon: <Image src="/Project Logo/Nearby Place Logo.png" alt="Nearby Places Logo" width={48} height={48} data-ai-hint="location pin" />,
     timelineIcon: <i className="fa-solid fa-location-dot"></i>,
     status: 'completed' as ProjectStatus,
   }
@@ -291,8 +290,18 @@ export default function Projects() {
     const sortedProjects = [...projectsData].sort((a, b) => {
         const dateToParseA = a.date.split(' - ')[0];
         const dateToParseB = b.date.split(' - ')[0];
-        const dateA = new Date(dateToParseA);
-        const dateB = new Date(dateToParseB);
+        
+        // Handle "Ongoing" or "Present" dates by giving them a very high value
+        const getSortableDate = (dateStr: string) => {
+            if (dateStr.toLowerCase().includes('ongoing') || dateStr.toLowerCase().includes('present')) {
+                return new Date(8640000000000000); // Max Date
+            }
+            return new Date(dateStr);
+        };
+
+        const dateA = getSortableDate(dateToParseA);
+        const dateB = getSortableDate(dateToParseB);
+
         return dateB.getTime() - dateA.getTime();
     });
 
