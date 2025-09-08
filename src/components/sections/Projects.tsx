@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -102,7 +103,7 @@ const projectsData = [
     description: "Created an Android app using Google Maps API to display nearby essential locations like ATMs, hospitals, and restaurants.",
     liveLink: "https://github.com/hd-mixture/Nearby-Places.git",
     codeLink: "https://github.com/hd-mixture/Nearby-Places.git",
-    icon: <Image src="/Project Logo/Nearby Place Logo.png" alt="Nearby Places Logo" width={48} height={48} data-ai-hint="location pin" />,
+    icon: <Image src="/Project Logo/Nearby Place Logo.png?v=2" alt="Nearby Places Logo" width={48} height={48} data-ai-hint="location pin" />,
     timelineIcon: <i className="fa-solid fa-location-dot"></i>,
     status: 'completed' as ProjectStatus,
   }
@@ -378,3 +379,5 @@ export default function Projects() {
         </>
     );
 }
+
+    
