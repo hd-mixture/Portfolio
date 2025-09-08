@@ -43,7 +43,12 @@ export default function About() {
               onClick={handleDownloadClick}
             >
               <span className="download-tooltip">Download Resume</span>
-              <span className="download-icon"><i className="fa-solid fa-download"></i></span>
+              <div className="download-icon">
+                <div className="download-icon-inner">
+                  <span><i className="fa-solid fa-download"></i></span>
+                  <span>CV</span>
+                </div>
+              </div>
             </a>
           </div>
         </div>
@@ -59,3 +64,5 @@ export default function About() {
     </section>
   );
 }
+
+    

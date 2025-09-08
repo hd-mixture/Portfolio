@@ -699,8 +699,8 @@ li a:hover {
 .section-reveal.visible { opacity: 1; transform: none; }
 
 /* Download Resume Button */
-.download-resume-icon { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--primary-color); color: #fff; box-shadow: 0 2px 12px rgba(82,72,156,0.10); position: relative; border: none; outline: none; cursor: pointer; transition: background 0.2s, box-shadow 0.2s, transform 0.15s; margin-top: 1.2rem; margin-bottom: 1.2rem; text-decoration: none; overflow: visible; }
-.download-resume-icon .download-icon { display: flex; align-items: center; justify-content: center; font-size: 1.7rem; transition: color 0.2s, transform 0.3s cubic-bezier(.4,2,.6,1); z-index: 2; }
+.download-resume-icon { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--primary-color); color: #fff; box-shadow: 0 2px 12px rgba(82,72,156,0.10); position: relative; border: none; outline: none; cursor: pointer; transition: background 0.2s, box-shadow 0.2s, transform 0.15s; margin-top: 1.2rem; margin-bottom: 1.2rem; text-decoration: none; overflow: hidden; }
+.download-resume-icon .download-icon { display: flex; align-items: center; justify-content: center; font-size: 1.7rem; transition: color 0.2s, transform 0.3s cubic-bezier(.4,2,.6,1); z-index: 2; height: 100%; }
 .download-resume-icon:hover, .download-resume-icon:focus { background: var(--accent-color); box-shadow: 0 4px 24px rgba(82,72,156,0.16), 0 0 0 8px #ff572233; transform: translateY(-2px) scale(1.05); }
 .download-resume-icon:hover .download-icon, .download-resume-icon:focus .download-icon { animation: spinIcon 0.7s; color: #fff; }
 @keyframes spinIcon { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
@@ -709,6 +709,27 @@ li a:hover {
 .download-resume-icon.success .download-icon { color: #fff; animation: popCheck 0.5s; }
 .download-resume-icon.success .download-icon i::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
 @keyframes popCheck { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+
+/* New Rolling Animation */
+.download-icon-inner {
+  display: inline-block;
+  animation: roll-icon 4s ease-in-out infinite;
+  width: 100%;
+}
+.download-icon-inner span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px; /* Match the button height */
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+@keyframes roll-icon {
+  0%, 25% { transform: translateY(0%); }
+  35%, 60% { transform: translateY(-100%); }
+  70%, 100% { transform: translateY(0%); }
+}
+
 
 /* Footer */
 .footer {
@@ -1344,6 +1365,8 @@ li a:hover {
   animation: circle-reveal-in .5s ease-in-out;
   mix-blend-mode: normal;
 }
+    
+
     
 
     
