@@ -288,13 +288,11 @@ export default function Projects() {
     }
     
     const sortedProjects = [...projectsData].sort((a, b) => {
-        if (a.status === 'ongoing' && b.status !== 'ongoing') {
-          return -1; // a comes first
-        }
-        if (a.status !== 'ongoing' && b.status === 'ongoing') {
-          return 1; // b comes first
-        }
-        return 0; // no change in order
+        const dateToParseA = a.date.split(' - ')[0];
+        const dateToParseB = b.date.split(' - ')[0];
+        const dateA = new Date(dateToParseA);
+        const dateB = new Date(dateToParseB);
+        return dateB.getTime() - dateA.getTime();
     });
 
     return (
@@ -370,3 +368,5 @@ export default function Projects() {
         </>
     );
 }
+
+    
