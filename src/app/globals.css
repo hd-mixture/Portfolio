@@ -711,8 +711,12 @@ li a:hover {
   width: 100%;
 }
 .download-resume-icon:hover, .download-resume-icon:focus { background: var(--accent-color); box-shadow: 0 4px 24px rgba(82,72,156,0.16), 0 0 0 8px #ff572233; transform: translateY(-2px) scale(1.05); }
-.download-resume-icon:hover .download-icon, .download-resume-icon:focus .download-icon { animation: spinIcon 0.7s; color: #fff; }
-@keyframes spinIcon { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
+
+.download-resume-icon:hover .download-icon-inner {
+  animation-play-state: paused;
+  transform: translateY(0%);
+}
+
 .download-tooltip { position: absolute; left: 50%; bottom: 120%; transform: translateX(-50%); background: #23243a; color: #fff; font-size: 1rem; padding: 0.4rem 1rem; border-radius: 8px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s, bottom 0.2s; z-index: 10; box-shadow: 0 2px 8px rgba(82,72,156,0.13); }
 .download-resume-icon:hover .download-tooltip, .download-resume-icon:focus .download-tooltip { opacity: 1; bottom: 140%; }
 .download-resume-icon.success .download-icon { color: #fff; animation: popCheck 0.5s; }
@@ -1381,3 +1385,4 @@ li a:hover {
     
 
     
+
