@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
-const projectsData = [
+export const projectsData = [
   {
     date: "Jul 2025 - Ongoing",
     title: "DevTeXhHub",

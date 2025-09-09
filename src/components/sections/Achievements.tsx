@@ -1,11 +1,8 @@
+
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
-
-const achievements = [
-    { icon: "fa-solid fa-briefcase", target: 10, suffix: "+", label: "Projects" },
-    { icon: "fa-solid fa-award", target: 5, suffix: "", label: "Years Experience" },
-    { icon: "fa-solid fa-users", target: 20, suffix: "+", label: "Happy Clients" },
-];
+import { projectsData } from './Projects';
+import { testimonials } from './Testimonials';
 
 const AchievementCard = ({ icon, target, suffix, label }: { icon: string; target: number; suffix: string; label: string }) => {
     const [count, setCount] = useState(0);
@@ -20,9 +17,11 @@ const AchievementCard = ({ icon, target, suffix, label }: { icon: string; target
                     hasAnimated.current = true;
                     let start = 0;
                     const duration = 1500;
+                    if (target === 0) {
+                        setCount(0);
+                        return;
+                    }
                     const stepTime = Math.abs(Math.floor(duration / target));
-                    
-                    if (target === 0) return;
 
                     const timer = setInterval(() => {
                         start += 1;
@@ -56,7 +55,29 @@ const AchievementCard = ({ icon, target, suffix, label }: { icon: string; target
     );
 };
 
+const getYearsOfExperience = () => {
+    const startYear = 2020;
+    const currentYear = new Date().getFullYear();
+    return currentYear - startYear;
+}
+
 export default function Achievements() {
+  const [projectsCount, setProjectsCount] = useState(0);
+  const [experience, setExperience] = useState(0);
+  const [clientsCount, setClientsCount] = useState(0);
+  
+  useEffect(() => {
+    setProjectsCount(projectsData.length);
+    setExperience(getYearsOfExperience());
+    setClientsCount(testimonials.length);
+  }, []);
+
+  const achievements = [
+      { icon: "fa-solid fa-briefcase", target: projectsCount, suffix: "+", label: "Projects" },
+      { icon: "fa-solid fa-award", target: experience, suffix: "+", label: "Years Experience" },
+      { icon: "fa-solid fa-users", target: clientsCount, suffix: "+", label: "Happy Clients" },
+  ];
+
   return (
     <section id="achievements" className="achievements-section section-reveal">
         <h2>Achievements</h2>
