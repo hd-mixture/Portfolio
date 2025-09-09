@@ -171,6 +171,10 @@ const allDesigns = Object.values(designData).flat();
 
 const FullImageSlider = ({ images, startIndex, onClose }: { images: {src: string, title: string}[], startIndex: number, onClose: () => void }) => {
     const [currentIndex, setCurrentIndex] = useState(startIndex);
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+    const minSwipeDistance = 50;
 
     const goToPrev = () => setCurrentIndex(prev => (prev === 0 ? images.length - 1 : prev - 1));
     const goToNext = () => setCurrentIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
@@ -185,8 +189,40 @@ const FullImageSlider = ({ images, startIndex, onClose }: { images: {src: string
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
+    const onTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) {
+            goToNext();
+        } else if (isRightSwipe) {
+            goToPrev();
+        }
+        setTouchStart(null);
+        setTouchEnd(null);
+    };
+
+
     return (
-        <div className="full-image-modal" style={{display: 'flex'}} onClick={onClose}>
+        <div 
+          className="full-image-modal" 
+          style={{display: 'flex'}} 
+          onClick={onClose}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
             <div className="full-image-content" onClick={e => e.stopPropagation()}>
                 <button className="slider-nav prev-btn" onClick={goToPrev}><i className="fa-solid fa-chevron-left"></i></button>
                 <div className="slider-container">
