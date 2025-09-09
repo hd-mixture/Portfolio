@@ -10,24 +10,24 @@ import ContentProtection from "@/components/ContentProtection";
 export const metadata: Metadata = {
   title: "Darshan Prajapati - Creative Developer & Graphic Designer",
   description:
-    "Darshan Prajapati - Creative Developer & Graphic Designer Portfolio. Showcasing web development, mobile apps, and graphic design projects.",
+    "Explore the portfolio of Darshan Prajapati, a creative developer and graphic designer specializing in web/mobile apps, UI/UX, and building beautiful, functional digital experiences.",
   keywords:
-    "Darshan Prajapati, Web Developer, Graphic Designer, UI/UX, Portfolio, Creative Developer",
+    "Darshan Prajapati, Creative Developer, Graphic Designer, Developer Near me, Graphic Designer Near me, Full Stack Developer Near me, Website builder near me, Creative Website Designer, Virtual Card Generator, Portfolio",
   authors: [{ name: "Darshan Prajapati" }],
   robots: "index, follow",
   openGraph: {
     title: "Darshan Prajapati - Creative Developer & Graphic Designer",
     description:
-      "Portfolio showcasing web development, mobile apps, and graphic design projects.",
-    images: [{ url: "/logos/hd_logo.png" }],
-    url: "https://hd-mixture.github.io/portfolio",
+      "Explore the portfolio of Darshan Prajapati, a creative developer and graphic designer specializing in building innovative web/mobile apps and stunning visual designs.",
+    images: [{ url: "/Logos/hd_logo.png" }],
+    url: "https://darshan-prajapati.com", // Replace with your actual domain
   },
   twitter: {
     card: "summary_large_image",
     title: "Darshan Prajapati - Creative Developer & Graphic Designer",
     description:
-      "Portfolio showcasing web development, mobile apps, and graphic design projects.",
-    images: ["/logos/hd_logo.png"],
+      "Explore the portfolio of Darshan Prajapati, a creative developer and graphic designer specializing in building innovative web/mobile apps and stunning visual designs.",
+    images: ["/Logos/hd_logo.png"],
   },
 };
 
@@ -51,8 +51,8 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        <link rel="icon" type="image/png" href="/logos/hd_logo.png" />
-        <link rel="apple-touch-icon" href="/logos/hd_logo.png" />
+        <link rel="icon" type="image/png" href="/Logos/hd_logo.png" />
+        <link rel="apple-touch-icon" href="/Logos/hd_logo.png" />
         <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.7.1/dist/dotlottie-wc.js" type="module"></script>
       </head>
       <body>
