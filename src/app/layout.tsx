@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientLogic from "@/components/ClientLogic";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import ContentProtection from "@/components/ContentProtection";
 
 export const metadata: Metadata = {
   title: "Darshan Prajapati - Creative Developer & Graphic Designer",
@@ -61,15 +62,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ClientLogic>
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <main className="container flex-grow">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </ClientLogic>
+          <ContentProtection>
+            <ClientLogic>
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="container flex-grow">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </ClientLogic>
+          </ContentProtection>
         </ThemeProvider>
         <Script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" />
       </body>
