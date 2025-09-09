@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin } from 'lucide-react';
 
 type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
@@ -112,57 +111,59 @@ const projectsData = [
 
 const designData = {
     android: [
-        { src: "/Graphic Designes/Android/1.png", title: "Android Screen Design 1" },
-        { src: "/Graphic Designes/Android/2.png", title: "Android Screen Design 2" },
-        { src: "/Graphic Designes/Android/3.png", title: "Android Screen Design 3" },
-        { src: "/Graphic Designes/Android/4.png", title: "Android Screen Design 4" },
-        { src: "/Graphic Designes/Android/5.png", title: "Android Screen Design 5" }
+        { src: "/Graphic Designes/Android_Screen_Images/IMG-20250408-WA0020.jpg", title: "Android Screen Design 1" },
+        { src: "/Graphic Designes/Android_Screen_Images/IMG-20250408-WA0021.jpg", title: "Android Screen Design 2" },
+        { src: "/Graphic Designes/Android_Screen_Images/IMG-20250408-WA0022.jpg", title: "Android Screen Design 3" },
+        { src: "/Graphic Designes/Android_Screen_Images/IMG-20250408-WA0024.jpg", title: "Android Screen Design 4" },
+        { src: "/Graphic Designes/Android_Screen_Images/IMG-20250408-WA0025.jpg", title: "Android Screen Design 5" }
     ],
     web: [
-        { src: "/Graphic Designes/Web/1.png", title: "Web Screen Design 1" },
-        { src: "/Graphic Designes/Web/2.png", title: "Web Screen Design 2" },
-        { src: "/Graphic Designes/Web/3.png", title: "Web Screen Design 3" },
-        { src: "/Graphic Designes/Web/4.png", title: "Web Screen Design 4" },
-        { src: "/Graphic Designes/Web/5.png", title: "Web Screen Design 5" },
-        { src: "/Graphic Designes/Web/6.png", title: "Web Screen Design 6" },
-        { src: "/Graphic Designes/Web/7.png", title: "Web Screen Design 7" },
-        { src: "/Graphic Designes/Web/8.png", title: "Web Screen Design 8" }
+        { src: "/Graphic Designes/Web_Screen_Images/Web_Screen_Design_1.png", title: "Web Screen Design 1" },
+        { src: "/Graphic Designes/Web_Screen_Images/Web_Screen_Design_2.png", title: "Web Screen Design 2" },
+        { src: "/Graphic Designes/Web_Screen_Images/Web_Screen_Design_3.png", title: "Web Screen Design 3" },
+        { src: "/Graphic Designes/Web_Screen_Images/Web_Screen_Design_4.png", title: "Web Screen Design 4" },
+        { src: "/Graphic Designes/Web_Screen_Images/Web_Screen_Design_5.png", title: "Web Screen Design 5" },
+        { src: "/Graphic Designes/Web_Screen_Images/Web_Screen_Design_6.png", title: "Web Screen Design 6" },
+        { src: "/Graphic Designes/Web_Screen_Images/Web_Screen_Design_7.png", title: "Web Screen Design 7" },
+        { src: "/Graphic Designes/Web_Screen_Images/Web_Screen_Design_8.png", title: "Web Screen Design 8" }
     ],
     banners: [
-        { src: "/Graphic Designes/Banners/1.png", title: "Banner Design 1" },
-        { src: "/Graphic Designes/Banners/2.png", title: "Banner Design 2" },
-        { src: "/Graphic Designes/Banners/3.png", title: "Banner Design 3" },
-        { src: "/Graphic Designes/Banners/4.png", title: "Banner Design 4" },
-        { src: "/Graphic Designes/Banners/5.png", title: "Banner Design 5" },
-        { src: "/Graphic Designes/Banners/6.png", title: "Banner Design 6" },
-        { src: "/Graphic Designes/Banners/7.png", title: "Banner Design 7" }
+        { src: "/Graphic Designes/Banner/Blood Donation E-Banner_.jpg", title: "Banner Design 1" },
+        { src: "/Graphic Designes/Banner/BOD Navrati Banner.png", title: "Banner Design 2" },
+        { src: "/Graphic Designes/Banner/Diploma Summer Result 2024 Banner.png", title: "Banner Design 3" },
+        { src: "/Graphic Designes/Banner/IMG-20250311-WA0023.jpg", title: "Banner Design 4" },
+        { src: "/Graphic Designes/Banner/Main Banner.png", title: "Banner Design 5" },
+        { src: "/Graphic Designes/Banner/Sec- Tec Banner Graphic Poster Final Day.jpg", title: "Banner Design 6" },
+        { src: "/Graphic Designes/Banner/Sec- Tec Game Banner.jpg", title: "Banner Design 7" },
+        { src: "/Graphic Designes/Banner/σ Banner.jpg", title: "Banner Design 8" }
     ],
     certificates: [
-        { src: "/Graphic Designes/Certificates/1.png", title: "Certificate Design 1" },
-        { src: "/Graphic Designes/Certificates/2.png", title: "Certificate Design 2" },
-        { src: "/Graphic Designes/Certificates/3.png", title: "Certificate Design 3" }
+        { src: "/Graphic Designes/Certificate/BOD Potery Certificate - 2.jpg", title: "Certificate Design 1" },
+        { src: "/Graphic Designes/Certificate/Certificate on Webinar.jpg", title: "Certificate Design 2" },
+        { src: "/Graphic Designes/Certificate/WordPrees Certificate_.jpg", title: "Certificate Design 3" }
     ],
     logos: [
-        { src: "/Graphic Designes/Logos/1.png", title: "Logo Design 1" },
-        { src: "/Graphic Designes/Logos/2.png", title: "Logo Design 2" },
-        { src: "/Graphic Designes/Logos/3.png", title: "Logo Design 3" },
-        { src: "/Graphic Designes/Logos/4.png", title: "Logo Design 4" },
-        { src: "/Graphic Designes/Logos/5.png", title: "Logo Design 5" },
-        { src: "/Graphic Designes/Logos/6.png", title: "Logo Design 6" },
-        { src: "/Graphic Designes/Logos/7.png", title: "Logo Design 7" },
-        { src: "/Graphic Designes/Logos/8.png", title: "Logo Design 8" }
+        { src: "/Graphic Designes/Logos/ABHAR Orange Resize Logo.png", title: "Logo Design 1" },
+        { src: "/Graphic Designes/Logos/BIttStock App Logo.png", title: "Logo Design 2" },
+        { src: "/Graphic Designes/Logos/Campus Cuisin Logo.jpg", title: "Logo Design 3" },
+        { src: "/Graphic Designes/Logos/Driving Licence App Logo.png", title: "Logo Design 4" },
+        { src: "/Graphic Designes/Logos/Netflix Unlock Creative Logo.png", title: "Logo Design 5" },
+        { src: "/Graphic Designes/Logos/Neural Grafix Logo.png", title: "Logo Design 6" },
+        { src: "/Graphic Designes/Logos/save_share_logo1.png", title: "Logo Design 7" },
+        { src: "/Graphic Designes/Logos/YASHODA Logo.png", title: "Logo Design 8" },
+        { src: "/Graphic Designes/Logos/K-Naturals Logo.jpg", title: "Logo Design 9" }
     ],
     posters: [
-        { src: "/Graphic Designes/Posters/1.png", title: "Poster Design 1" },
-        { src: "/Graphic Designes/Posters/2.png", title: "Poster Design 2" },
-        { src: "/Graphic Designes/Posters/3.png", title: "Poster Design 3" },
-        { src: "/Graphic Designes/Posters/4.png", title: "Poster Design 4" },
-        { src: "/Graphic Designes/Posters/5.png", title: "Poster Design 5" },
-        { src: "/Graphic Designes/Posters/6.png", title: "Poster Design 6" },
-        { src: "/Graphic Designes/Posters/7.png", title: "Poster Design 7" },
-        { src: "/Graphic Designes/Posters/8.png", title: "Poster Design 8" },
-        { src: "/Graphic Designes/Posters/9.png", title: "Poster Design 9" },
-        { src: "/Graphic Designes/Posters/10.png", title: "Poster Design 10" }
+        { src: "/Graphic Designes/Posters/BOD Blood Donation Poster.jpg", title: "Poster Design 1" },
+        { src: "/Graphic Designes/Posters/BOD Freshers Poster Beginning.jpg", title: "Poster Design 2" },
+        { src: "/Graphic Designes/Posters/BOD Ganesh Mahotsav Poster.jpg", title: "Poster Design 3" },
+        { src: "/Graphic Designes/Posters/BOD Independence Day.jpg", title: "Poster Design 4" },
+        { src: "/Graphic Designes/Posters/BOD Letter Exchange PanColombo.jpg", title: "Poster Design 5" },
+        { src: "/Graphic Designes/Posters/BOD National Cinema Day.jpg", title: "Poster Design 6" },
+        { src: "/Graphic Designes/Posters/BOD Physically Challenged Poster Page 3.jpg", title: "Poster Design 7" },
+        { src: "/Graphic Designes/Posters/BOD Raksha_Bandhan.jpg", title: "Poster Design 8" },
+        { src: "/Graphic Designes/Posters/BOD World Physo Day.jpg", title: "Poster Design 9" },
+        { src: "/Graphic Designes/Posters/BOD મિત્રતા - એક સંબંધ.jpg", title: "Poster Design 10" }
     ]
 };
 
