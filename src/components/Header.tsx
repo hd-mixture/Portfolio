@@ -64,11 +64,13 @@ export default function Header() {
       return;
     }
     
+    const scrollY = window.scrollY;
     document.documentElement.style.setProperty('--x', `5vw`);
     document.documentElement.style.setProperty('--y', `5vh`);
 
     // @ts-ignore
     document.startViewTransition(() => {
+        window.scrollTo(0, scrollY);
         setTheme(newTheme);
     });
   }
