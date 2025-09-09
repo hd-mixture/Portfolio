@@ -57,14 +57,15 @@ export default function Header() {
 
   const handleThemeToggle = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
-    
+    const scrollY = window.scrollY;
+
     // @ts-ignore
     if (!document.startViewTransition) {
       setTheme(newTheme);
+      window.scrollTo(0, scrollY);
       return;
     }
     
-    const scrollY = window.scrollY;
     document.documentElement.style.setProperty('--x', `5vw`);
     document.documentElement.style.setProperty('--y', `5vh`);
 
@@ -90,18 +91,13 @@ export default function Header() {
   };
   
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // A normal click (not a long press)
     if (longPressTimer.current) {
+      // It's a short click, clear the timer and proceed with click action.
       clearTimeout(longPressTimer.current);
       longPressTimer.current = null;
-    } else {
-      // This is to prevent navigation if the timer was cleared by handlePressEnd but the click event still fires.
-      // A null timer indicates a long press has already occurred.
-      if (e.currentTarget.className.includes('logo')) {
-          // It's the desktop logo, allow navigation or other click actions
-          window.location.href = '#home';
-      }
+      window.location.href = '#home'; // Manually navigate for short clicks
     }
+    // If longPressTimer.current is null, it means the long press action already fired, so do nothing.
   };
 
 
@@ -119,9 +115,7 @@ export default function Header() {
             onClick={handleClick}
             title="Long press to toggle theme"
           >
-            <Link href="#home">
-              <Image src="/Logos/hd_logo.png" alt="Logo" width={60} height={60} data-ai-hint="logo monogram" />
-            </Link>
+            <Image src="/Logos/hd_logo.png" alt="Logo" width={60} height={60} data-ai-hint="logo monogram" />
           </div>
           <NavLinks />
         </div>
