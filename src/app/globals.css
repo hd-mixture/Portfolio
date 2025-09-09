@@ -50,7 +50,7 @@
     --contact-section-bg: #1a1a1a;
     --contact-form-bg: #1F1F1F;
     --contact-social-bg: #333;
-    --footer-bg: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%);
+    --footer-bg: linear-gradient(90deg, #1a1a1a 0%, #2a2a_a 100%);
     --mobile-nav-bg: rgba(26, 26, 26, 0.8);
     --mobile-nav-icon: #E0E0E0;
 }
@@ -1426,31 +1426,10 @@ li a:hover {
   -ms-user-select: none; /* IE 10+ */
   user-select: none; /* Standard syntax */
 }
-
-.watermark {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9999999;
-  display: flex;
-  flex-wrap: wrap;
-  overflow: hidden;
-}
-
-.watermark-text {
-  font-size: 2rem;
-  color: rgba(128, 128, 128, 0.15);
-  transform: rotate(-35deg);
-  white-space: nowrap;
-  padding: 5rem;
-  flex-shrink: 0;
-}
     
 
     
+
 
 
 

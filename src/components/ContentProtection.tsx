@@ -2,14 +2,6 @@
 
 import React, { useEffect } from 'react';
 
-const Watermark = () => (
-  <div className="watermark">
-    {Array.from({ length: 100 }).map((_, i) => (
-      <div key={i} className="watermark-text">© MyWebsite</div>
-    ))}
-  </div>
-);
-
 export default function ContentProtection({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
@@ -57,7 +49,6 @@ export default function ContentProtection({ children }: { children: React.ReactN
 
   return (
     <>
-      <Watermark />
       {children}
     </>
   );
