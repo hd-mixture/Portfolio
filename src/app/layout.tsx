@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "Darshan Prajapati - Creative Developer & Graphic Designer",
     description:
       "Explore the portfolio of Darshan Prajapati, a creative developer and graphic designer specializing in building innovative web/mobile apps and stunning visual designs.",
-    images: [{ url: "/Logos/hd_logo.png" }],
+    images: [{ url: "/Logos/favicon.png" }],
     url: "https://darshan-prajapati.com", // Replace with your actual domain
   },
   twitter: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "Darshan Prajapati - Creative Developer & Graphic Designer",
     description:
       "Explore the portfolio of Darshan Prajapati, a creative developer and graphic designer specializing in building innovative web/mobile apps and stunning visual designs.",
-    images: ["/Logos/hd_logo.png"],
+    images: ["/Logos/favicon.png"],
   },
 };
 
@@ -51,8 +51,8 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        <link rel="icon" type="image/png" href="/Logos/hd_logo.png" />
-        <link rel="apple-touch-icon" href="/Logos/hd_logo.png" />
+        <link rel="icon" type="image/png" href="/Logos/favicon.png" />
+        <link rel="apple-touch-icon" href="/Logos/favicon.png" />
         <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.7.1/dist/dotlottie-wc.js" type="module"></script>
       </head>
       <body>
