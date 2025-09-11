@@ -9,7 +9,7 @@ export const testimonials = [
         "Darshan has demonstrated exceptional creativity and design skill in his work for UPL University. His graphics are not only visually striking but also align perfectly with the university's branding. Each design reflects a strong understanding of layout, color harmony, and purpose. The attention to detail and originality in his work clearly set him apart. His ability to communicate ideas effectively through design is commendable. Overall, Darshan's portfolio showcases professional-level talent and dedication.",
       name: "Rupali Attarde",
       designation: "Assistant Professor at UPL University of Sustainable Technology",
-      src: "/Testimonials Photos/Rupali Ma'am.png",
+      src: "/Testimonials Photos/Rupali Ma'am.png?v=2",
     },
     {
       quote:

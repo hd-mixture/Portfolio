@@ -1243,6 +1243,7 @@ li a:hover {
     max-width: 100%;
     white-space: pre-wrap;
     word-wrap: break-word;
+    overflow-wrap: anywhere;
     font-family: 'Poppins', sans-serif;
   }
 
