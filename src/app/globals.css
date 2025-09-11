@@ -1239,9 +1239,8 @@ li a:hover {
   line-height: 1.75rem;
   color: var(--text-muted);
   max-width: 100%;
-  white-space: normal;
-  overflow-wrap: normal;
-  word-break: normal;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .testimonial-nav-buttons {
@@ -1454,6 +1453,7 @@ li a:hover {
     visibility: visible;
 }
     
+
 
 
 
