@@ -133,6 +133,7 @@ header.header-hidden {
     opacity: 0;
     animation: leftSideAni 1s ease forwards;
     cursor: pointer;
+    position: relative;
 }
 
 .logo img {
@@ -1239,7 +1240,7 @@ li a:hover {
   color: var(--text-muted);
   max-width: 100%;
   white-space: normal;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
   word-break: normal;
 }
 
@@ -1428,8 +1429,32 @@ li a:hover {
   user-select: none; /* Standard syntax */
 }
     
+/* Theme Change Hint */
+.theme-hint-popup {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-dark);
+    color: var(--background);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
 
+.theme-hint-popup.visible {
+    opacity: 1;
+    visibility: visible;
+}
     
+
 
 
 
