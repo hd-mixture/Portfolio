@@ -1216,7 +1216,7 @@ li a:hover {
   padding-bottom: 1rem;
   text-align: left;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: visible;
 }
 
 .testimonial-name {
@@ -1224,24 +1224,27 @@ li a:hover {
   line-height: 2rem;
   font-weight: 700;
   color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
 }
 
 .testimonial-designation {
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--text-muted);
+  font-family: 'Poppins', sans-serif;
 }
 
 
 .testimonial-quote {
-  margin-top: 2rem;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  color: var(--text-muted);
-  max-width: 100%;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
+    margin-top: 2rem;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    color: var(--text-muted);
+    max-width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Poppins', sans-serif;
+  }
 
 .testimonial-nav-buttons {
   display: flex;
@@ -1453,6 +1456,7 @@ li a:hover {
     visibility: visible;
 }
     
+
 
 
 
