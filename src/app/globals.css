@@ -1253,15 +1253,15 @@ li a:hover {
 
 
 .testimonial-quote {
-    margin-top: 2rem;
-    font-size: 1rem;
-    line-height: 1.75rem;
-    color: var(--text-muted);
-    max-width: 100%;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    font-family: 'Poppins', sans-serif;
-  }
+  margin-top: 2rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  color: var(--text-muted);
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Poppins', sans-serif;
+}
 
 .testimonial-nav-buttons {
   display: flex;
@@ -1475,6 +1475,7 @@ li a:hover {
 
 @keyframes shine {
   0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
   100% { background-position: 200% 50%; }
 }
 
@@ -1492,17 +1493,45 @@ li a:hover {
   }
   100% {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
+.portfolio-title span {
+  display: inline-block;
+  position: relative;
+  opacity: 0;
+  transform: translateY(100px);
+  background: linear-gradient(120deg,
+    #222 0%,
+    #555 20%,
+    #888 40%,
+    #bbb 50%,
+    #888 60%,
+    #555 80%,
+    #222 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wave-entry 1s ease forwards, shine 3s linear infinite;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 15px rgba(170, 170, 170, 0.3),
+    0 0 30px rgba(100, 100, 100, 0.2);
+}
+
+
 .portfolio-title span:nth-child(1) { animation-delay: 0s, 0s; }
-.portfolio-title span:nth-child(2) { animation-delay: 0.1s, 0.1s; }
-.portfolio-title span:nth-child(3) { animation-delay: 0.2s, 0.2s; }
-.portfolio-title span:nth-child(4) { animation-delay: 0.3s, 0.3s; }
-.portfolio-title span:nth-child(5) { animation-delay: 0.4s, 0.4s; }
-.portfolio-title span:nth-child(6) { animation-delay: 0.5s, 0.5s; }
-.portfolio-title span:nth-child(7) { animation-delay: 0.6s, 0.6s; }
-.portfolio-title span:nth-child(8) { animation-delay: 0.7s, 0.7s; }
-.portfolio-title span:nth-child(9) { animation-delay: 0.8s, 0.8s; }
+.portfolio-title span:nth-child(2) { animation-delay: 0.2s, 0.2s; }
+.portfolio-title span:nth-child(3) { animation-delay: 0.4s, 0.4s; }
+.portfolio-title span:nth-child(4) { animation-delay: 0.6s, 0.6s; }
+.portfolio-title span:nth-child(5) { animation-delay: 0.8s, 0.8s; }
+.portfolio-title span:nth-child(6) { animation-delay: 1s, 1s; }
+.portfolio-title span:nth-child(7) { animation-delay: 1.2s, 1.2s; }
+.portfolio-title span:nth-child(8) { animation-delay: 1.4s, 1.4s; }
+.portfolio-title span:nth-child(9) { animation-delay: 1.6s, 1.6s; }
     
+
 
