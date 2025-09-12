@@ -1,4 +1,4 @@
-# Darshan Prajapati's Portfolio
+# [Darshan Prajapati's](https://www.hdmixture.site) Portfolio
 
 This is the source code for my personal portfolio website, built with Firebase Studio. It showcases my skills and projects as a Creative Developer and Graphic Designer.
 
