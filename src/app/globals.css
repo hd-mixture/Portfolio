@@ -450,11 +450,17 @@ li a:hover {
       font-weight: 700;
       color: var(--foreground);
       display: flex;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .portfolio-title span {
       opacity: 0;
-      transform: translateY(15px);
-      animation: cinematic-fade-in 0.5s ease-out forwards;
+      position: relative;
+    }
+    .portfolio-title span:nth-child(odd) {
+        animation: slide-from-left 0.8s ease-out forwards;
+    }
+    .portfolio-title span:nth-child(even) {
+        animation: slide-from-right 0.8s ease-out forwards;
     }
     .share-button {
         background: transparent;
@@ -1462,14 +1468,25 @@ li a:hover {
     visibility: visible;
 }
 
-@keyframes cinematic-fade-in {
+@keyframes slide-from-left {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateX(-20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-from-right {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
     
