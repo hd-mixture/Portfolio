@@ -1243,15 +1243,17 @@ li a:hover {
 
 
 .testimonial-quote {
-  margin-top: 2rem;
-  font-size: 1rem;
-  line-height: 1.75rem;
-  color: var(--text-muted);
-  max-width: 100%;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  font-family: 'Poppins', sans-serif;
-}
+    margin-top: 2rem;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    color: var(--text-muted);
+    max-width: 100%;
+    white-space: normal;
+    word-break: keep-all; /* <-- Yahan change karein */
+    overflow-wrap: anywhere;
+    hyphens: none; /* <-- Yeh bhi add kar dena, agar pehle nahi kiya */
+    font-family: 'Poppins', sans-serif;
+  }
 
 .testimonial-nav-buttons {
   display: flex;

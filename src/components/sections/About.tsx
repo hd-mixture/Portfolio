@@ -37,7 +37,7 @@ export default function About() {
           <div className="about-download-btn">
             <a 
               className={`download-resume-icon ${isDownloading ? 'success' : ''}`}
-              href="/Darshan CV_8d3ff4d89fa4d8988cba31337f895c82.pdf" 
+              href="/Darshan Prajapati_Resume_8d3ff4d89fa4d8988cba31337f895c82.pdf" 
               download 
               aria-label="Download Resume"
               onClick={handleDownloadClick}
