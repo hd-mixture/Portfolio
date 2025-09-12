@@ -15,7 +15,7 @@ export const testimonials = [
       quote:
         "The graphic design work Darshan created for our marketing campaign was exceptional. His creative vision and technical execution brought our brand to life in ways we hadn't imagined. The designs were not only beautiful but also strategically effective in reaching our target audience.",
       name: "Anup Sharma",
-      designation: "Business Man",
+      designation: "Entrepreneur & Business Owner",
       src: "/Testimonials Photos/Anup.png",
     },
   ];
