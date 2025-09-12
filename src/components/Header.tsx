@@ -55,7 +55,12 @@ export default function Header() {
     }
   };
 
-  const handleThemeToggle = () => {
+  const handleThemeToggle = (event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>) => {
+    const target = event.currentTarget as HTMLElement;
+    const rect = target.getBoundingClientRect();
+    const x = event.type.includes('mouse') ? (event as React.MouseEvent).clientX : (event as React.TouchEvent).touches[0].clientX;
+    const y = event.type.includes('mouse') ? (event as React.MouseEvent).clientY : (event as React.TouchEvent).touches[0].clientY;
+
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     const scrollY = window.scrollY;
 
@@ -66,8 +71,8 @@ export default function Header() {
       return;
     }
     
-    document.documentElement.style.setProperty('--x', `5vw`);
-    document.documentElement.style.setProperty('--y', `5vh`);
+    document.documentElement.style.setProperty('--x', `${x}px`);
+    document.documentElement.style.setProperty('--y', `${y}px`);
 
     // @ts-ignore
     document.startViewTransition(() => {
@@ -76,9 +81,11 @@ export default function Header() {
     });
   }
 
-  const handlePressStart = () => {
+  const handlePressStart = (event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>) => {
+    // Clone the event object to preserve its properties for the setTimeout
+    const eventClone = { ...event };
     longPressTimer.current = setTimeout(() => {
-        handleThemeToggle();
+        handleThemeToggle(eventClone);
         longPressTimer.current = null; // Prevent click after long press
     }, 800); // 800ms for long press
   };
@@ -138,7 +145,13 @@ export default function Header() {
           >
             <Image src="/Logos/hd_logo.png" alt="Logo" width={40} height={40} className="mobile-header-logo" data-ai-hint="logo monogram" />
           </div>
-          <span className="portfolio-title">PORTFOLIO</span>
+          <div className="portfolio-title">
+            {'PORTFOLIO'.split('').map((char, index) => (
+              <span key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+                {char}
+              </span>
+            ))}
+          </div>
           <button onClick={handleShare} className="share-button" aria-label="Share portfolio">
             <Share2 size={20} />
           </button>
