@@ -449,23 +449,13 @@ li a:hover {
     .portfolio-title {
       font-size: 1.2rem;
       font-weight: 700;
-      color: var(--foreground);
+      color: var(--text-primary);
       display: flex;
     }
     .portfolio-title span {
       opacity: 0;
       position: relative;
-      background-image: linear-gradient(
-        90deg,
-        var(--primary-color),
-        var(--accent-color),
-        var(--primary-color)
-      );
-      background-size: 200% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: wave-entry 1.2s ease-out forwards, shine 3s linear infinite;
+      animation: wave-entry 1.2s ease-out forwards;
     }
     .share-button {
         background: transparent;
@@ -1502,24 +1492,7 @@ li a:hover {
   position: relative;
   opacity: 0;
   transform: translateY(100px);
-  background: linear-gradient(120deg,
-    #222 0%,
-    #555 20%,
-    #888 40%,
-    #bbb 50%,
-    #888 60%,
-    #555 80%,
-    #222 100%
-  );
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: wave-entry 1s ease forwards, shine 3s linear infinite;
-  text-shadow:
-    0 0 5px rgba(255, 255, 255, 0.4),
-    0 0 15px rgba(170, 170, 170, 0.3),
-    0 0 30px rgba(100, 100, 100, 0.2);
+  animation: wave-entry 1s ease forwards;
 }
 
 
@@ -1533,5 +1506,6 @@ li a:hover {
 .portfolio-title span:nth-child(8) { animation-delay: 1.4s, 1.4s; }
 .portfolio-title span:nth-child(9) { animation-delay: 1.6s, 1.6s; }
     
+
 
 
