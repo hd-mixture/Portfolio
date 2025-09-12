@@ -10,7 +10,7 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
     const pageHeader = document.querySelector('.page-header') as HTMLElement;
     const desktopNavLinks = document.querySelectorAll('.desktop-nav li a');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav li a');
-    const allLinks = [...desktopNavLinks, ...mobileNavLinks];
+    const allLinks = [...desktopNavLinks, ...mobileNavLinks] as HTMLAnchorElement[];
     const sections = Array.from(document.querySelectorAll('section[id]'));
     
     let isClickScrolling = false;
@@ -42,7 +42,7 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
 
       let currentSectionId = '';
       sections.forEach(section => {
-        const sectionTop = section.offsetTop;
+        const sectionTop = (section as HTMLElement).offsetTop;
         if (window.scrollY >= sectionTop - 150) {
           currentSectionId = section.getAttribute('id') || '';
         }
@@ -57,15 +57,28 @@ export default function ClientLogic({ children }: { children: React.ReactNode })
     };
     
     allLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        isClickScrolling = true;
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          isClickScrolling = false;
-        }, 1000);
-        
-        allLinks.forEach(l => l.classList.remove('active'));
-        document.querySelectorAll(`a[href="${link.getAttribute('href')}"]`).forEach(l => l.classList.add('active'));
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetElement = targetId ? document.querySelector(targetId) : null;
+
+        if (targetElement) {
+          isClickScrolling = true;
+          
+          const offsetTop = (targetElement as HTMLElement).offsetTop;
+          window.scrollTo({
+            top: offsetTop - 80, // Adjust for fixed header
+            behavior: 'smooth'
+          });
+          
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isClickScrolling = false;
+          }, 1000);
+          
+          allLinks.forEach(l => l.classList.remove('active'));
+          document.querySelectorAll(`a[href="${targetId}"]`).forEach(l => l.classList.add('active'));
+        }
       });
     });
 
