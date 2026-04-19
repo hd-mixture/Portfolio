@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-const internships = [
+const experiences = [
   {
     role: "Digital Repair Specialist Executive",
     company: "Reliance Jio, Ahmedabad",
@@ -23,37 +23,41 @@ const internships = [
 
 export default function Internship() {
   return (
-    <section id="internship" className="internship-section section-reveal">
-      <h2>Internship</h2>
-      <div className="internship-container">
-        {internships.map((item, index) => (
-          <div key={index} className="internship-card">
-            <div className="internship-role">
-              <span className="internship-logo-wrap">
-                <Image 
+    <section id="internship" className="experience-section section-reveal">
+      <h2>Internship & Job</h2>
+      <div className="experience-timeline">
+        {experiences.map((item, index) => (
+          <div key={index} className="experience-item">
+            <div className="experience-dot"></div>
+            <div className="experience-card">
+              <div className="experience-header">
+                <div className="experience-logo-wrap">
+                  <Image 
                     src={item.logo} 
                     alt={`${item.company} Logo`} 
-                    className="internship-android-logo"
-                    width={38}
-                    height={38}
+                    width={40}
+                    height={40}
                     data-ai-hint="company logo"
-                />
-              </span>
-              <span className="internship-title">{item.role}</span>
-            </div>
-            <a href={item.companyUrl} target="_blank" rel="noopener noreferrer" className="internship-company" style={{textDecoration: 'none'}}>
-              <i className="fa-solid fa-building"></i>
-              {item.company}
-            </a>
-            <div className="internship-date">
-              <i className="fa-regular fa-calendar"></i>
-              {item.date}
-            </div>
-            <div className="internship-desc">
-              <i className="fa-solid fa-circle-info"></i>
-              <span>
-                {item.description}
-              </span>
+                  />
+                </div>
+                <h3 className="experience-role">{item.role}</h3>
+              </div>
+              
+              <div className="experience-meta">
+                <a href={item.companyUrl} target="_blank" rel="noopener noreferrer" className="experience-badge">
+                  <i className="fa-solid fa-building"></i>
+                  {item.company}
+                </a>
+                <div className="experience-badge date">
+                  <i className="fa-regular fa-calendar"></i>
+                  {item.date}
+                </div>
+              </div>
+
+              <div className="experience-description-box">
+                <i className="fa-solid fa-circle-info"></i>
+                <p>{item.description}</p>
+              </div>
             </div>
           </div>
         ))}
