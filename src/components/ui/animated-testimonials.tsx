@@ -109,7 +109,7 @@ export const AnimatedTestimonials = ({
             <p className="testimonial-designation">
               {testimonials[active].designation}
             </p>
-            <motion.p className="testimonial-quote">
+            <div className="testimonial-quote">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
@@ -133,18 +133,20 @@ export const AnimatedTestimonials = ({
                   {word}&nbsp;
                 </motion.span>
               ))}
-            </motion.p>
+            </div>
           </motion.div>
           <div className="testimonial-nav-buttons">
             <button
               onClick={handlePrev}
               className="testimonial-nav-button testimonial-nav-prev"
+              suppressHydrationWarning
             >
               <IconArrowLeft className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
             </button>
             <button
               onClick={handleNext}
               className="testimonial-nav-button testimonial-nav-next"
+              suppressHydrationWarning
             >
               <IconArrowRight className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
             </button>

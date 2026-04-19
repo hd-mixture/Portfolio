@@ -60,13 +60,34 @@ export default function Contact() {
         <section id="contact" className="contact-section section-reveal">
             <h2>Contact</h2>
             <form ref={formRef} className="contact-form" onSubmit={sendEmail}>
-                <input type="text" name="name" placeholder="Your Name" required />
-                <input type="email" name="email" placeholder="Your Email" required />
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit" disabled={status === 'sending'} 
-                  style={{
-                    backgroundColor: status === 'sent' ? '#4CAF50' : status === 'error' ? '#f44336' : '',
-                  }}>
+                <input 
+                    type="text" 
+                    name="name" 
+                    placeholder="Your Name" 
+                    required 
+                    suppressHydrationWarning 
+                />
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Your Email" 
+                    required 
+                    suppressHydrationWarning 
+                />
+                <textarea 
+                    name="message" 
+                    placeholder="Your Message" 
+                    required 
+                    suppressHydrationWarning 
+                ></textarea>
+                <button 
+                    type="submit" 
+                    disabled={status === 'sending'} 
+                    suppressHydrationWarning
+                    style={{
+                        backgroundColor: status === 'sent' ? '#4CAF50' : status === 'error' ? '#f44336' : '',
+                    }}
+                >
                     {getButtonContent()}
                 </button>
             </form>
