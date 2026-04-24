@@ -128,7 +128,7 @@ export const AnimatedTestimonials = ({
                     ease: "easeInOut",
                     delay: 0.02 * index,
                   }}
-                  className="inline-block"
+                  className="inline-flex"
                 >
                   {word}&nbsp;
                 </motion.span>
@@ -141,14 +141,14 @@ export const AnimatedTestimonials = ({
               className="testimonial-nav-button testimonial-nav-prev"
               suppressHydrationWarning
             >
-              <IconArrowLeft className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
+              <IconArrowLeft className="h-4 w-4" />
             </button>
             <button
               onClick={handleNext}
               className="testimonial-nav-button testimonial-nav-next"
               suppressHydrationWarning
             >
-              <IconArrowRight className="h-3.5 w-3.5 text-black dark:text-neutral-400" />
+              <IconArrowRight className="h-4 w-4" />
             </button>
           </div>
         </div>
