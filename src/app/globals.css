@@ -1497,3 +1497,76 @@ li a:hover {
         text-align: center;
     }
 }
+
+/* Back to Top Button Premium Styling */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    z-index: 999;
+    transition: all 0.3s cubic-bezier(.4,2,.6,1), opacity 0.3s, visibility 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 4px 15px rgba(82, 72, 156, 0.3);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--accent-color);
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 87, 34, 0.4);
+}
+
+.back-to-top i {
+    font-size: 1.3rem;
+    transition: transform 0.3s;
+}
+
+.back-to-top:hover i {
+    transform: translateY(-2px);
+}
+
+.back-to-top .tooltip {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #23243a;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+
+.back-to-top:hover .tooltip {
+    opacity: 1;
+    right: 65px;
+}
+
+@media screen and (max-width: 600px) {
+    .back-to-top {
+        bottom: 90px; /* Position above the mobile nav bar */
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
