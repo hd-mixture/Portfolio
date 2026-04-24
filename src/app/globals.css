@@ -547,7 +547,8 @@ li a:hover {
       margin-bottom: 1.5rem !important;
     }
     .testimonials-section h2,
-    .contact-section h2 {
+    .contact-section h2,
+    .experience-section h2 {
       font-size: 1.5rem !important;
       text-align: center !important;
       margin-left: 0 !important;
@@ -996,6 +997,18 @@ li a:hover {
     padding: 4rem 0;
     max-width: 900px;
     margin: 0 auto;
+}
+
+.experience-section h2 {
+    text-align: center;
+    width: 100%;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    border-left: none !important;
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    margin-bottom: 3.5rem;
+    font-weight: 700;
 }
 
 .career-timeline-container {
