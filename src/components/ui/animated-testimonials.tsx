@@ -58,7 +58,7 @@ export const AnimatedTestimonials = ({
                 opacity: 1,
                 scale: 1,
                 rotate: 0,
-                y: [0, -40, 0],
+                y: [0, -20, 0],
               }}
               exit={{
                 opacity: 0,
@@ -110,45 +110,25 @@ export const AnimatedTestimonials = ({
               {testimonials[active].designation}
             </p>
             <div className="testimonial-quote">
-              {testimonials[active].quote.split(" ").map((word, index) => (
-                <motion.span
-                  key={index}
-                  initial={{
-                    filter: "blur(10px)",
-                    opacity: 0,
-                    y: 5,
-                  }}
-                  animate={{
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeInOut",
-                    delay: 0.02 * index,
-                  }}
-                  className="inline-flex"
-                >
-                  {word}&nbsp;
-                </motion.span>
-              ))}
+              {testimonials[active].quote}
             </div>
           </motion.div>
           <div className="testimonial-nav-buttons">
             <button
               onClick={handlePrev}
-              className="testimonial-nav-button testimonial-nav-prev"
+              className="testimonial-nav-button"
               suppressHydrationWarning
+              aria-label="Previous testimonial"
             >
-              <IconArrowLeft className="h-4 w-4" />
+              <IconArrowLeft className="h-5 w-5" />
             </button>
             <button
               onClick={handleNext}
-              className="testimonial-nav-button testimonial-nav-next"
+              className="testimonial-nav-button"
               suppressHydrationWarning
+              aria-label="Next testimonial"
             >
-              <IconArrowRight className="h-4 w-4" />
+              <IconArrowRight className="h-5 w-5" />
             </button>
           </div>
         </div>
