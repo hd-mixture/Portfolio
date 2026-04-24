@@ -1428,12 +1428,14 @@ li a:hover {
     font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 0.2rem;
+    text-align: left;
 }
 
 .testimonial-designation {
     font-size: 1rem;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .testimonial-quote {
@@ -1445,6 +1447,7 @@ li a:hover {
     width: 100%;
     word-wrap: break-word;
     white-space: normal;
+    text-align: justify;
 }
 
 .testimonial-nav-buttons {
@@ -1486,5 +1489,11 @@ li a:hover {
     }
     .testimonial-nav-buttons {
         justify-content: center;
+    }
+    .testimonial-name, .testimonial-designation {
+        text-align: center;
+    }
+    .testimonial-quote {
+        text-align: center;
     }
 }
