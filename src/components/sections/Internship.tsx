@@ -7,52 +7,6 @@ import { Calendar, MapPin, Info, ChevronRight, ChevronLeft } from 'lucide-react'
 
 const experiences = [
   {
-    id: 'narmada',
-    role: "Executive Supervisor",
-    company: "Narmada Clean Tech",
-    type: "Job",
-    location: "Ankleshwar, Gujarat",
-    date: "Apr 2020 – Jun 2021",
-    status: "completed",
-    description: "Managed daily operations, supervising staff, and ensuring workflow efficiency in an industrial setting. Focused on operational excellence and team management.",
-    skills: ["Supervision", "Operations", "Team Handling", "Industrial Workflow", "Management"],
-    logo: "https://www.nctc.co.in/images/logo.png",
-    color: "#0056b3",
-    gapToNext: "1.1 Years Gap",
-    gapWeight: 1.1 // Relative visual weight for spacing
-  },
-  {
-    id: 'riseup',
-    role: "Android Developer",
-    company: "RiseUp Infotech",
-    type: "Internship",
-    location: "Surat, Gujarat",
-    date: "Aug 2022 – Sep 2023",
-    status: "completed",
-    description: "Developed and maintained Android applications. Collaborated with teams to implement mobile features and optimized app performance using Java and SQLite.",
-    skills: ["Android Studio", "Java", "XML", "SQLite"],
-    logo: "https://media.licdn.com/dms/image/v2/C4D0BAQFFrMKiwR45wg/company-logo_200_200/company-logo_200_200/0/1658907156557/riseupinfotech_logo?e=2147483647&v=beta&t=k4tRyTKDAokJD3mEbcQntQB6n6BSsMNYwKtsKtsbD4A",
-    color: "#FF5722",
-    gapToNext: "1.3 Years Gap",
-    gapWeight: 1.3
-  },
-  {
-    id: 'md-enterprise',
-    role: "Technician",
-    company: "M D Enterprise",
-    type: "Job",
-    location: "Valia, Bharuch, Gujarat",
-    date: "Jan 2025 – Aug 2025",
-    status: "completed",
-    description: "Worked as a Technician handling repair, maintenance, and technical support tasks. Known for dedication, sincerity, and professional attitude.",
-    skills: ["Electrical Work", "Repairing", "Maintenance", "Technical Support", "Field Work"],
-    logo: "/md_logo_placeholder.png", // Fallback, will handle custom rendering
-    isCustomLogo: true,
-    color: "#333",
-    gapToNext: "Concurrent Experience",
-    gapWeight: 0.4
-  },
-  {
     id: 'digiteq',
     role: "Web Developer",
     company: "Digiteq Solution",
@@ -79,6 +33,52 @@ const experiences = [
     skills: ["CRM", "SAP", "Operations", "Customer Handling", "Coordination"],
     logo: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Reliance_Jio_Logo.svg",
     color: "#52489C",
+    gapToNext: "Sequential Transition",
+    gapWeight: 0.4
+  },
+  {
+    id: 'md-enterprise',
+    role: "Technician",
+    company: "M D Enterprise",
+    type: "Job",
+    location: "Valia, Bharuch, Gujarat",
+    date: "Jan 2025 – Aug 2025",
+    status: "completed",
+    description: "Worked as a Technician handling repair, maintenance, and technical support tasks. Known for dedication, sincerity, and professional attitude.",
+    skills: ["Electrical Work", "Repairing", "Maintenance", "Technical Support", "Field Work"],
+    logo: "/md_logo_placeholder.png", 
+    isCustomLogo: true,
+    color: "#333",
+    gapToNext: "1.3 Years Gap",
+    gapWeight: 1.3
+  },
+  {
+    id: 'riseup',
+    role: "Android Developer",
+    company: "RiseUp Infotech",
+    type: "Internship",
+    location: "Surat, Gujarat",
+    date: "Aug 2022 – Sep 2023",
+    status: "completed",
+    description: "Developed and maintained Android applications. Collaborated with teams to implement mobile features and optimized app performance using Java and SQLite.",
+    skills: ["Android Studio", "Java", "XML", "SQLite"],
+    logo: "https://media.licdn.com/dms/image/v2/C4D0BAQFFrMKiwR45wg/company-logo_200_200/company-logo_200_200/0/1658907156557/riseupinfotech_logo?e=2147483647&v=beta&t=k4tRyTKDAokJD3mEbcQntQB6n6BSsMNYwKtsKtsbD4A",
+    color: "#FF5722",
+    gapToNext: "1.1 Years Gap",
+    gapWeight: 1.1
+  },
+  {
+    id: 'narmada',
+    role: "Executive Supervisor",
+    company: "Narmada Clean Tech",
+    type: "Job",
+    location: "Ankleshwar, Gujarat",
+    date: "Apr 2020 – Jun 2021",
+    status: "completed",
+    description: "Managed daily operations, supervising staff, and ensuring workflow efficiency in an industrial setting. Focused on operational excellence and team management.",
+    skills: ["Supervision", "Operations", "Team Handling", "Industrial Workflow", "Management"],
+    logo: "https://www.nctc.co.in/images/logo.png",
+    color: "#0056b3",
     gapWeight: 0
   }
 ];
@@ -181,12 +181,6 @@ export default function Internship() {
                       className="exp-logo"
                     />
                   )}
-                  {activeExp.status === 'current' && (
-                    <div className="live-badge-container desktop-only">
-                      <span className="live-pulse"></span>
-                      <span className="live-text">Currently Working</span>
-                    </div>
-                  )}
                 </div>
                 
                 <div className="exp-title-info">
@@ -195,15 +189,16 @@ export default function Internship() {
                     <span className={`exp-status-pill ${activeExp.status}`}>
                       {activeExp.status === 'current' ? 'Active' : 'Completed'}
                     </span>
-                    {activeExp.status === 'current' && (
-                      <div className="live-badge-mobile">
-                        <span className="live-pulse"></span>
-                        <span>Currently Working</span>
-                      </div>
-                    )}
                   </div>
                   <h3 className="exp-role-title">{activeExp.role}</h3>
                   <h4 className="exp-company-name">{activeExp.company}</h4>
+                  
+                  {activeExp.status === 'current' && (
+                    <div className="live-badge-mobile">
+                      <span className="live-pulse"></span>
+                      <span>Currently Working</span>
+                    </div>
+                  )}
                 </div>
               </div>
 
