@@ -308,6 +308,19 @@ li a:hover {
   }
 }
 
+/* Typewriter Styles */
+.typewriter-container {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.typewriter-text {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-left: 5px;
+}
+
 /* Animation */
 @keyframes leftSideAni { 0% { transform: translateX(-100px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
 @keyframes navani { 0% { transform: translateY(100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
@@ -364,7 +377,7 @@ li a:hover {
     .project-card .project-links { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1rem !important; margin-top: 1.5rem !important; width: 100% !important; }
     .project-card .project-link { width: 100% !important; text-align: center !important; padding: 0.8rem 0.5rem !important; font-size: 0.9rem !important; }
     .typewriter-text, .static-text {
-        font-size: 0.8rem !important;
+        font-size: 1rem !important;
     }
     .marquee-content {
         gap: 3rem;
@@ -1290,8 +1303,24 @@ li a:hover {
 }
 .next-exp-btn:hover { transform: translateX(5px); }
 
-@media (max-width: 768px) {
-    .testimonial-quote-vertical {
+@media (max-width: 1024px) {
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    .testimonial-image-container {
+        height: 300px;
+        width: 300px;
+        margin: 0 auto;
+    }
+    .testimonial-nav-buttons {
+        justify-content: center;
+    }
+    .testimonial-name, .testimonial-designation {
+        text-align: center;
+    }
+    .testimonial-quote {
         text-align: center;
     }
 }
@@ -1487,28 +1516,6 @@ li a:hover {
     background: var(--primary-color);
     color: white;
     transform: scale(1.1);
-}
-
-@media (max-width: 1024px) {
-    .testimonial-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-    }
-    .testimonial-image-container {
-        height: 300px;
-        width: 300px;
-        margin: 0 auto;
-    }
-    .testimonial-nav-buttons {
-        justify-content: center;
-    }
-    .testimonial-name, .testimonial-designation {
-        text-align: center;
-    }
-    .testimonial-quote {
-        text-align: center;
-    }
 }
 
 /* Back to Top Button Premium Styling */
