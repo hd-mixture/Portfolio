@@ -139,16 +139,17 @@ export default function Internship() {
                     <span className={`exp-status-pill ${activeExp.status}`}>
                       {activeExp.status === 'current' ? 'Active' : 'Completed'}
                     </span>
-                    {/* Mobile-only live badge to avoid logo overlap */}
-                    {activeExp.status === 'current' && (
-                      <div className="live-badge-mobile mobile-only">
-                        <span className="live-pulse"></span>
-                        <span className="live-text">Currently Working</span>
-                      </div>
-                    )}
                   </div>
                   <h3 className="exp-role-title">{activeExp.role}</h3>
                   <h4 className="exp-company-name">{activeExp.company}</h4>
+                  
+                  {/* Mobile-only live badge positioned below company name like the screenshot */}
+                  {activeExp.status === 'current' && (
+                    <div className="live-badge-mobile mobile-only">
+                      <span className="live-pulse"></span>
+                      <span className="live-text">Currently Working</span>
+                    </div>
+                  )}
                 </div>
               </div>
 
