@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -21,7 +20,7 @@ const experiences = [
     color: "#4CAF50",
     gapToNext: "Concurrent Experience",
     gapWeight: 0.3,
-    letter: null // Blocked as requested
+    letter: null
   },
   {
     id: 'jio',
@@ -315,10 +314,10 @@ export default function Internship() {
                 </div>
                 <iframe 
                   src={`${showLetter}#toolbar=0&navpanes=0&scrollbar=0`}
-                  className="w-full h-full min-h-[80vh] border-none"
+                  className="w-full h-full min-h-[80vh] bg-white"
+                  style={{ border: 'none' }}
                   title="Experience Letter"
                 />
-                <div className="absolute inset-0 z-20 pointer-events-none" style={{ background: 'rgba(255,255,255,0.01)' }}></div>
               </div>
             </motion.div>
           </div>
