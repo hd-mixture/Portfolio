@@ -21,7 +21,7 @@ const experiences = [
     color: "#4CAF50",
     gapToNext: "Concurrent Experience",
     gapWeight: 0.3,
-    letter: "/Letters/digiteq_internship.jpg"
+    letter: null // Blocked as requested
   },
   {
     id: 'jio',
@@ -37,7 +37,7 @@ const experiences = [
     color: "#52489C",
     gapToNext: "Sequential Transition",
     gapWeight: 0.4,
-    letter: "/Letters/jio_job.jpg"
+    letter: "/assets/Experience/Reliance Jio Infocomm limited Exp Letter.pdf"
   },
   {
     id: 'md-enterprise',
@@ -54,7 +54,7 @@ const experiences = [
     color: "#333",
     gapToNext: "1.3 Years Gap",
     gapWeight: 1.3,
-    letter: "/Letters/md_technician.jpg"
+    letter: "/assets/Experience/MD Enterprise Exp Letter.pdf"
   },
   {
     id: 'riseup',
@@ -70,7 +70,7 @@ const experiences = [
     color: "#FF5722",
     gapToNext: "1.1 Years Gap",
     gapWeight: 1.1,
-    letter: "/Letters/riseup_android.jpg"
+    letter: "/assets/Experience/RiseUp Infotech Intern Letter.pdf"
   },
   {
     id: 'narmada',
@@ -85,7 +85,7 @@ const experiences = [
     logo: "https://www.nctc.co.in/images/logo.png",
     color: "#0056b3",
     gapWeight: 0,
-    letter: "/Letters/narmada_supervisor.jpg"
+    letter: "/assets/Experience/Narmada Exp Letter.pdf"
   }
 ];
 
@@ -94,7 +94,6 @@ export default function Internship() {
   const [showLetter, setShowLetter] = useState<string | null>(null);
   const activeExp = experiences[activeIndex];
 
-  // Calculate dynamic progress percentage based on cumulative gap weights
   const progressPercentage = useMemo(() => {
     const totalWeight = experiences.reduce((acc, exp) => acc + (exp.gapWeight || 0), 0);
     if (totalWeight === 0) return 0;
@@ -109,7 +108,6 @@ export default function Internship() {
   const handlePrev = () => setActiveIndex((prev) => (prev > 0 ? prev - 1 : experiences.length - 1));
   const handleNext = () => setActiveIndex((prev) => (prev < experiences.length - 1 ? prev + 1 : 0));
 
-  // Disable context menu on the modal to protect content
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
       if (showLetter) e.preventDefault();
@@ -122,7 +120,6 @@ export default function Internship() {
     <section id="internship" className="experience-section section-reveal">
       <h2 className="text-center w-full mb-10 text-3xl font-bold text-primary">Internship & Job</h2>
       
-      {/* Mobile-Only Tab Selector */}
       <div className="mobile-only-exp-nav">
         {experiences.map((exp, index) => (
           <button
@@ -142,7 +139,6 @@ export default function Internship() {
       </div>
 
       <div className="career-timeline-container">
-        {/* Desktop Timeline Navigation */}
         <div className="timeline-nav desktop-only">
           <div className="timeline-line">
             <motion.div 
@@ -170,7 +166,6 @@ export default function Internship() {
                   </div>
                 </div>
                 
-                {/* Visual Spacing based on Duration Gap */}
                 {index < experiences.length - 1 && (
                   <div 
                     className="timeline-gap-indicator" 
@@ -185,7 +180,6 @@ export default function Internship() {
           </div>
         </div>
 
-        {/* Focused Card Display */}
         <div className="experience-display">
           <AnimatePresence mode="wait">
             <motion.div
@@ -196,14 +190,15 @@ export default function Internship() {
               transition={{ duration: 0.3 }}
               className="experience-focus-card"
             >
-              {/* Experience Letter View Icon */}
-              <button 
-                className="letter-view-btn" 
-                onClick={() => setShowLetter(activeExp.letter)}
-                title="View Experience Letter"
-              >
-                <FileText size={20} />
-              </button>
+              {activeExp.letter && (
+                <button 
+                  className="letter-view-btn" 
+                  onClick={() => setShowLetter(activeExp.letter)}
+                  title="View Experience Letter"
+                >
+                  <FileText size={20} />
+                </button>
+              )}
 
               <div className="exp-card-header">
                 <div className="exp-logo-container">
@@ -275,7 +270,6 @@ export default function Internship() {
                 </div>
               </div>
 
-              {/* Desktop Navigation Button */}
               <button 
                 className="next-exp-btn hidden md:flex" 
                 onClick={handleNext}
@@ -284,7 +278,6 @@ export default function Internship() {
                 Next Experience <ChevronRight size={18} />
               </button>
 
-              {/* Mobile Navigation Controls */}
               <div className="exp-nav-controls">
                 <button className="nav-ctrl-btn" onClick={handlePrev}>
                   <ChevronLeft size={20} />
@@ -303,7 +296,6 @@ export default function Internship() {
         </div>
       </div>
 
-      {/* Experience Letter Secure Viewer Modal */}
       <AnimatePresence>
         {showLetter && (
           <div className="letter-modal-overlay" onClick={() => setShowLetter(null)}>
@@ -318,17 +310,15 @@ export default function Internship() {
                 <X size={24} />
               </button>
               <div className="letter-image-wrapper">
-                {/* Watermark Overlay */}
                 <div className="letter-watermark">
-                  <span className="watermark-text">Official Document</span>
+                  <span className="watermark-text">Official Document - Darshan Prajapati</span>
                 </div>
-                <img 
-                  src={showLetter} 
-                  alt="Experience Letter" 
-                  className="letter-img"
-                  onContextMenu={(e) => e.preventDefault()}
-                  draggable="false"
+                <iframe 
+                  src={`${showLetter}#toolbar=0&navpanes=0&scrollbar=0`}
+                  className="w-full h-full min-h-[80vh] border-none"
+                  title="Experience Letter"
                 />
+                <div className="absolute inset-0 z-20 pointer-events-none" style={{ background: 'rgba(255,255,255,0.01)' }}></div>
               </div>
             </motion.div>
           </div>
