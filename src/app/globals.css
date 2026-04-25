@@ -1746,6 +1746,10 @@ li a:hover {
         display: flex;
         gap: 6px;
     }
+    .nav-indicator {
+        display: flex;
+        gap: 6px;
+    }
     .nav-dot {
         width: 8px;
         height: 8px;
@@ -1758,10 +1762,37 @@ li a:hover {
         width: 20px;
         border-radius: 4px;
     }
+
+    /* Fixed overlapping live badge for mobile */
+    .live-badge-mobile {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(76, 175, 80, 0.1);
+        color: #4CAF50;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 6px;
+        border: 1px solid rgba(76, 175, 80, 0.2);
+    }
+    .live-badge-mobile .live-pulse {
+        width: 6px;
+        height: 6px;
+        background: #4CAF50;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #4CAF50;
+    }
+    .exp-logo-container .live-badge-container {
+        display: none !important;
+    }
 }
 
 @media screen and (min-width: 601px) {
     .exp-nav-controls {
+        display: none;
+    }
+    .live-badge-mobile {
         display: none;
     }
 }

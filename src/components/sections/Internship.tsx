@@ -56,7 +56,7 @@ export default function Internship() {
 
   return (
     <section id="internship" className="experience-section section-reveal">
-      <h2>Internship & Job</h2>
+      <h2 className="text-center w-full mb-10 text-3xl font-bold text-primary">Internship & Job</h2>
       
       {/* Mobile-Only Tab Selector */}
       <div className="mobile-only-exp-nav">
@@ -74,7 +74,7 @@ export default function Internship() {
       </div>
 
       <div className="career-timeline-container">
-        {/* Desktop Timeline Navigation (Hidden on Mobile via CSS) */}
+        {/* Desktop Timeline Navigation */}
         <div className="timeline-nav desktop-only">
           <div className="timeline-line">
             <motion.div 
@@ -126,7 +126,7 @@ export default function Internship() {
                     data-ai-hint="company logo"
                   />
                   {activeExp.status === 'current' && (
-                    <div className="live-badge-container">
+                    <div className="live-badge-container desktop-only">
                       <span className="live-pulse"></span>
                       <span className="live-text">Currently Working</span>
                     </div>
@@ -139,6 +139,13 @@ export default function Internship() {
                     <span className={`exp-status-pill ${activeExp.status}`}>
                       {activeExp.status === 'current' ? 'Active' : 'Completed'}
                     </span>
+                    {/* Mobile-only live badge to avoid logo overlap */}
+                    {activeExp.status === 'current' && (
+                      <div className="live-badge-mobile mobile-only">
+                        <span className="live-pulse"></span>
+                        <span className="live-text">Currently Working</span>
+                      </div>
+                    )}
                   </div>
                   <h3 className="exp-role-title">{activeExp.role}</h3>
                   <h4 className="exp-company-name">{activeExp.company}</h4>
@@ -177,7 +184,7 @@ export default function Internship() {
 
               {/* Mobile Navigation Controls */}
               <div className="exp-nav-controls">
-                <button className="nav-ctrl-btn" onClick={handlePrev}>
+                <button className="nav-ctrl-btn" onClick={handlePrev} aria-label="Previous experience">
                   <ChevronLeft size={20} />
                 </button>
                 <div className="nav-indicator">
@@ -185,7 +192,7 @@ export default function Internship() {
                     <div key={i} className={`nav-dot ${i === activeIndex ? 'active' : ''}`} />
                   ))}
                 </div>
-                <button className="nav-ctrl-btn" onClick={handleNext}>
+                <button className="nav-ctrl-btn" onClick={handleNext} aria-label="Next experience">
                   <ChevronRight size={20} />
                 </button>
               </div>
