@@ -1,10 +1,15 @@
-
 "use client";
 
 import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, MapPin, Info, ChevronRight, ChevronLeft, FileText, X } from 'lucide-react';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const experiences = [
   {
@@ -117,213 +122,229 @@ export default function Internship() {
   }, [showLetter]);
 
   return (
-    <section id="internship" className="experience-section section-reveal">
-      <h2 className="text-center w-full mb-10 text-3xl font-bold text-primary">Internship & Job</h2>
-      
-      <div className="mobile-only-exp-nav">
-        {experiences.map((exp, index) => (
-          <button
-            key={exp.id}
-            onClick={() => setActiveIndex(index)}
-            className={`mobile-nav-item ${index === activeIndex ? 'active' : ''}`}
-          >
-            <div className="mobile-nav-logo">
-              {exp.isCustomLogo ? (
-                <div className="w-full h-full bg-slate-800 text-white rounded-full flex items-center justify-center font-bold text-xs">MD</div>
-              ) : (
-                <Image src={exp.logo} alt={exp.company} width={32} height={32} />
-              )}
-            </div>
-          </button>
-        ))}
-      </div>
-
-      <div className="career-timeline-container">
-        <div className="timeline-nav desktop-only">
-          <div className="timeline-line">
-            <motion.div 
-              className="timeline-progress"
-              animate={{ height: `${progressPercentage}%` }}
-              transition={{ type: 'spring', stiffness: 80, damping: 20 }}
-            />
-          </div>
-          
-          <div className="timeline-dots">
-            {experiences.map((exp, index) => (
-              <React.Fragment key={exp.id}>
-                <div className="dot-wrapper">
-                  <button
-                    onClick={() => setActiveIndex(index)}
-                    className={`timeline-dot-interactive ${index === activeIndex ? 'active' : ''} ${exp.status === 'current' ? 'live' : ''}`}
-                  >
-                    <span className="dot-inner"></span>
-                  </button>
-                  
-                  <div className="dot-tooltip">
-                    <p className="tooltip-company">{exp.company}</p>
-                    <p className="tooltip-role">{exp.role}</p>
-                    <p className="tooltip-date">{exp.date}</p>
-                  </div>
-                </div>
-                
-                {index < experiences.length - 1 && (
-                  <div 
-                    className="timeline-gap-indicator" 
-                    data-duration={exp.gapToNext}
-                    style={{ minHeight: `${exp.gapWeight * 45}px`, flex: exp.gapWeight }}
-                  >
-                    <div className="gap-dot"></div>
-                  </div>
+    <TooltipProvider delayDuration={100}>
+      <section id="internship" className="experience-section section-reveal">
+        <h2 className="text-center w-full mb-10 text-3xl font-bold text-primary">Internship & Job</h2>
+        
+        <div className="mobile-only-exp-nav">
+          {experiences.map((exp, index) => (
+            <button
+              key={exp.id}
+              onClick={() => setActiveIndex(index)}
+              className={`mobile-nav-item ${index === activeIndex ? 'active' : ''}`}
+            >
+              <div className="mobile-nav-logo">
+                {exp.isCustomLogo ? (
+                  <div className="w-full h-full bg-slate-800 text-white rounded-full flex items-center justify-center font-bold text-xs">MD</div>
+                ) : (
+                  <Image src={exp.logo} alt={exp.company} width={32} height={32} />
                 )}
-              </React.Fragment>
-            ))}
-          </div>
+              </div>
+            </button>
+          ))}
         </div>
 
-        <div className="experience-display">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeExp.id}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className="experience-focus-card"
-            >
-              {activeExp.letter && (
-                <button 
-                  className="letter-view-btn" 
-                  onClick={() => setShowLetter(activeExp.letter)}
-                  title="View Experience Letter"
-                >
-                  <FileText size={20} />
-                </button>
-              )}
-
-              <div className="exp-card-header">
-                <div className="exp-logo-container">
-                  {activeExp.isCustomLogo ? (
-                    <div className="w-full h-full bg-slate-900 text-white rounded-xl flex items-center justify-center font-bold text-2xl shadow-inner">MD</div>
-                  ) : (
-                    <Image 
-                      src={activeExp.logo} 
-                      alt={activeExp.company} 
-                      width={80} 
-                      height={80} 
-                      className="exp-logo"
-                    />
-                  )}
-                  {activeExp.status === 'current' && (
-                    <div className="live-badge-container">
-                      <span className="live-pulse"></span>
-                      Currently Working
+        <div className="career-timeline-container">
+          <div className="timeline-nav desktop-only">
+            <div className="timeline-line">
+              <motion.div 
+                className="timeline-progress"
+                animate={{ height: `${progressPercentage}%` }}
+                transition={{ type: 'spring', stiffness: 80, damping: 20 }}
+              />
+            </div>
+            
+            <div className="timeline-dots">
+              {experiences.map((exp, index) => (
+                <React.Fragment key={exp.id}>
+                  <div className="dot-wrapper">
+                    <button
+                      onClick={() => setActiveIndex(index)}
+                      className={`timeline-dot-interactive ${index === activeIndex ? 'active' : ''} ${exp.status === 'current' ? 'live' : ''}`}
+                    >
+                      <span className="dot-inner"></span>
+                    </button>
+                    
+                    <div className="dot-tooltip">
+                      <p className="tooltip-company">{exp.company}</p>
+                      <p className="tooltip-role">{exp.role}</p>
+                      <p className="tooltip-date">{exp.date}</p>
                     </div>
-                  )}
-                </div>
-                
-                <div className="exp-title-info">
-                  <div className="exp-type-row">
-                    <span className="exp-type-badge">{activeExp.type}</span>
-                    <span className={`exp-status-pill ${activeExp.status === 'current' ? 'current' : 'completed'}`}>
-                      {activeExp.status === 'current' ? 'Active' : 'Completed'}
-                    </span>
                   </div>
-                  <h3 className="exp-role-title">{activeExp.role}</h3>
-                  <h4 className="exp-company-name">{activeExp.company}</h4>
                   
-                  {activeExp.status === 'current' && (
-                    <div className="live-badge-mobile">
-                      <span className="live-pulse"></span>
-                      <span>Currently Working</span>
+                  {index < experiences.length - 1 && (
+                    <div 
+                      className="timeline-gap-indicator" 
+                      data-duration={exp.gapToNext}
+                      style={{ minHeight: `${exp.gapWeight * 45}px`, flex: exp.gapWeight }}
+                    >
+                      <div className="gap-dot"></div>
                     </div>
                   )}
-                </div>
-              </div>
-
-              <div className="exp-meta-grid">
-                <div className="exp-meta-item">
-                  <Calendar size={18} className="text-primary" />
-                  <span>{activeExp.date}</span>
-                </div>
-                <div className="exp-meta-item">
-                  <MapPin size={18} className="text-primary" />
-                  <span>{activeExp.location}</span>
-                </div>
-              </div>
-
-              <div className="exp-description">
-                <div className="desc-header">
-                  <Info size={18} />
-                  <span>Summary</span>
-                </div>
-                <p>{activeExp.description}</p>
-              </div>
-
-              <div className="exp-skills-section">
-                <p className="skills-label">Core Competencies:</p>
-                <div className="skills-tags">
-                  {activeExp.skills.map((skill) => (
-                    <span key={skill} className="skill-tag">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <button 
-                className="next-exp-btn hidden md:flex" 
-                onClick={handleNext}
-                aria-label="Next Experience"
-              >
-                Next Experience <ChevronRight size={18} />
-              </button>
-
-              <div className="exp-nav-controls">
-                <button className="nav-ctrl-btn" onClick={handlePrev}>
-                  <ChevronLeft size={20} />
-                </button>
-                <div className="nav-indicator">
-                  {experiences.map((_, i) => (
-                    <div key={i} className={`nav-dot ${i === activeIndex ? 'active' : ''}`} />
-                  ))}
-                </div>
-                <button className="nav-ctrl-btn" onClick={handleNext}>
-                  <ChevronRight size={20} />
-                </button>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {showLetter && (
-          <div className="letter-modal-overlay" onClick={() => setShowLetter(null)}>
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="letter-modal-content"
-              onClick={e => e.stopPropagation()}
-            >
-              <button className="letter-close-btn" onClick={() => setShowLetter(null)}>
-                <X size={24} />
-              </button>
-              <div className="letter-image-wrapper">
-                <div className="letter-watermark">
-                  <span className="watermark-text">Official Document - Darshan Prajapati</span>
-                </div>
-                <iframe 
-                  src={`${showLetter}#toolbar=0`}
-                  className="w-full h-full bg-white"
-                  style={{ border: 'none', minHeight: '600px' }}
-                  title="Experience Letter"
-                />
-              </div>
-            </motion.div>
+                </React.Fragment>
+              ))}
+            </div>
           </div>
-        )}
-      </AnimatePresence>
-    </section>
+
+          <div className="experience-display">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeExp.id}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="experience-focus-card"
+              >
+                {activeExp.letter && (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button 
+                        className="letter-view-btn" 
+                        onClick={() => setShowLetter(activeExp.letter)}
+                        aria-label="View Experience Letter"
+                      >
+                        <FileText size={20} />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent side="left">
+                      <p>View Experience Letter</p>
+                    </TooltipContent>
+                  </Tooltip>
+                )}
+
+                <div className="exp-card-header">
+                  <div className="exp-logo-container">
+                    {activeExp.isCustomLogo ? (
+                      <div className="w-full h-full bg-slate-900 text-white rounded-xl flex items-center justify-center font-bold text-2xl shadow-inner">MD</div>
+                    ) : (
+                      <Image 
+                        src={activeExp.logo} 
+                        alt={activeExp.company} 
+                        width={80} 
+                        height={80} 
+                        className="exp-logo"
+                      />
+                    )}
+                    {activeExp.status === 'current' && (
+                      <div className="live-badge-container">
+                        <span className="live-pulse"></span>
+                        Currently Working
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="exp-title-info">
+                    <div className="exp-type-row">
+                      <span className="exp-type-badge">{activeExp.type}</span>
+                      <span className={`exp-status-pill ${activeExp.status === 'current' ? 'current' : 'completed'}`}>
+                        {activeExp.status === 'current' ? 'Active' : 'Completed'}
+                      </span>
+                    </div>
+                    <h3 className="exp-role-title">{activeExp.role}</h3>
+                    <h4 className="exp-company-name">{activeExp.company}</h4>
+                    
+                    {activeExp.status === 'current' && (
+                      <div className="live-badge-mobile">
+                        <span className="live-pulse"></span>
+                        <span>Currently Working</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="exp-meta-grid">
+                  <div className="exp-meta-item">
+                    <Calendar size={18} className="text-primary" />
+                    <span>{activeExp.date}</span>
+                  </div>
+                  <div className="exp-meta-item">
+                    <MapPin size={18} className="text-primary" />
+                    <span>{activeExp.location}</span>
+                  </div>
+                </div>
+
+                <div className="exp-description">
+                  <div className="desc-header">
+                    <Info size={18} />
+                    <span>Summary</span>
+                  </div>
+                  <p>{activeExp.description}</p>
+                </div>
+
+                <div className="exp-skills-section">
+                  <p className="skills-label">Core Competencies:</p>
+                  <div className="skills-tags">
+                    {activeExp.skills.map((skill) => (
+                      <span key={skill} className="skill-tag">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button 
+                      className="next-exp-btn hidden md:flex" 
+                      onClick={handleNext}
+                      aria-label="Next Experience"
+                    >
+                      Next Experience <ChevronRight size={18} />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>View Next Journey</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                <div className="exp-nav-controls">
+                  <button className="nav-ctrl-btn" onClick={handlePrev}>
+                    <ChevronLeft size={20} />
+                  </button>
+                  <div className="nav-indicator">
+                    {experiences.map((_, i) => (
+                      <div key={i} className={`nav-dot ${i === activeIndex ? 'active' : ''}`} />
+                    ))}
+                  </div>
+                  <button className="nav-ctrl-btn" onClick={handleNext}>
+                    <ChevronRight size={20} />
+                  </button>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {showLetter && (
+            <div className="letter-modal-overlay" onClick={() => setShowLetter(null)}>
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                className="letter-modal-content"
+                onClick={e => e.stopPropagation()}
+              >
+                <button className="letter-close-btn" onClick={() => setShowLetter(null)}>
+                  <X size={24} />
+                </button>
+                <div className="letter-image-wrapper">
+                  <div className="letter-watermark">
+                    <span className="watermark-text">Official Document - Darshan Prajapati</span>
+                  </div>
+                  <iframe 
+                    src={`${showLetter}#toolbar=0`}
+                    className="w-full h-full bg-white"
+                    style={{ border: 'none', minHeight: '600px' }}
+                    title="Experience Letter"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+      </section>
+    </TooltipProvider>
   );
 }
