@@ -1590,3 +1590,30 @@ li a:hover {
         height: 45px;
     }
 }
+
+/* Project Status Indicator Styles */
+.timeline-dot.live::after,
+.project-card .project-icon.live::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #4CAF50;
+    border-radius: 50%;
+    animation: projectPulse 2s infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.timeline-dot.live {
+    border-color: #4CAF50 !important;
+}
+
+.timeline-dot.live .timeline-dot-icon {
+    color: #4CAF50 !important;
+}
+
+@keyframes projectPulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
