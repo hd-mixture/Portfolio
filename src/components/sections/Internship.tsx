@@ -283,20 +283,13 @@ export default function Internship() {
                   </div>
                 </div>
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <button 
-                      className="next-exp-btn hidden md:flex" 
-                      onClick={handleNext}
-                      aria-label="Next Experience"
-                    >
-                      Next Experience <ChevronRight size={18} />
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>View Next Journey</p>
-                  </TooltipContent>
-                </Tooltip>
+                <button 
+                  className="next-exp-btn hidden md:flex" 
+                  onClick={handleNext}
+                  aria-label="Next Experience"
+                >
+                  Next Experience <ChevronRight size={18} />
+                </button>
 
                 <div className="exp-nav-controls">
                   <button className="nav-ctrl-btn" onClick={handlePrev}>
