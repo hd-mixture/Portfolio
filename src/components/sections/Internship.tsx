@@ -16,13 +16,13 @@ const experiences = [
     status: "current",
     description: "Developing responsive web applications using the MERN stack. Focused on creating user-centric interfaces and integrating Firebase services for real-time functionality.",
     skills: ["MERN Stack", "Firebase", "React", "UI/UX", "Git"],
-    logo: "https://static.wixstatic.com/media/8daa46_27928d25b66747e599750879b7a4b939~mv2.png/v1/fill/w_378,h_80,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Group%20129965.png",
+    logo: "https://static.wixstatic.com/media/8daa46_6ca56cecc3a143c78f1453d2f2b71293~mv2.png/v1/fill/w_68,h_68,q_85,usm_0.66_1.00_0.01/8daa46_6ca56cecc3a143c78f1453d2f2b71293~mv2.png",
     color: "#4CAF50"
   },
   {
     id: 'jio',
     role: "Digital Repair Specialist Executive",
-    company: "Reliance Jio",
+    company: "Reliance Jio Infocomm limited",
     type: "Job",
     location: "Ahmedabad, Gujarat",
     date: "Sep 2025 – Mar 2026",
