@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, Info, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin, Info, ChevronRight, ChevronLeft } from 'lucide-react';
 
 const experiences = [
   {
@@ -51,13 +51,31 @@ export default function Internship() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeExp = experiences[activeIndex];
 
+  const handlePrev = () => setActiveIndex((prev) => (prev > 0 ? prev - 1 : experiences.length - 1));
+  const handleNext = () => setActiveIndex((prev) => (prev < experiences.length - 1 ? prev + 1 : 0));
+
   return (
     <section id="internship" className="experience-section section-reveal">
       <h2>Internship & Job</h2>
       
+      {/* Mobile-Only Tab Selector */}
+      <div className="mobile-only-exp-nav">
+        {experiences.map((exp, index) => (
+          <button
+            key={exp.id}
+            onClick={() => setActiveIndex(index)}
+            className={`mobile-nav-item ${index === activeIndex ? 'active' : ''}`}
+          >
+            <div className="mobile-nav-logo">
+              <Image src={exp.logo} alt={exp.company} width={32} height={32} />
+            </div>
+          </button>
+        ))}
+      </div>
+
       <div className="career-timeline-container">
-        {/* Timeline Navigation */}
-        <div className="timeline-nav">
+        {/* Desktop Timeline Navigation (Hidden on Mobile via CSS) */}
+        <div className="timeline-nav desktop-only">
           <div className="timeline-line">
             <motion.div 
               className="timeline-progress"
@@ -91,9 +109,9 @@ export default function Internship() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeExp.id}
-              initial={{ opacity: 0, x: 20, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -20, scale: 0.95 }}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="experience-focus-card"
             >
@@ -157,14 +175,20 @@ export default function Internship() {
                 </div>
               </div>
 
-              {activeIndex < experiences.length - 1 && (
-                <button 
-                  className="next-exp-btn"
-                  onClick={() => setActiveIndex(activeIndex + 1)}
-                >
-                  Next Experience <ChevronRight size={18} />
+              {/* Mobile Navigation Controls */}
+              <div className="exp-nav-controls">
+                <button className="nav-ctrl-btn" onClick={handlePrev}>
+                  <ChevronLeft size={20} />
                 </button>
-              )}
+                <div className="nav-indicator">
+                  {experiences.map((_, i) => (
+                    <div key={i} className={`nav-dot ${i === activeIndex ? 'active' : ''}`} />
+                  ))}
+                </div>
+                <button className="nav-ctrl-btn" onClick={handleNext}>
+                  <ChevronRight size={20} />
+                </button>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
