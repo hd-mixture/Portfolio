@@ -1307,21 +1307,37 @@ li a:hover {
     .testimonial-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-        text-align: center;
+        text-align: left;
     }
     .testimonial-image-container {
-        height: 300px;
-        width: 300px;
-        margin: 0 auto;
+        height: auto;
+        width: 100%;
+        margin: 0 auto 1.5rem auto;
+        max-width: none;
+    }
+    .testimonial-image {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 32px;
     }
     .testimonial-nav-buttons {
         justify-content: center;
+        margin-top: 2rem;
     }
-    .testimonial-name, .testimonial-designation {
-        text-align: center;
+    .testimonial-name {
+        text-align: left;
+        font-size: 1.8rem;
+    }
+    .testimonial-designation {
+        text-align: left;
+        font-size: 1rem;
     }
     .testimonial-quote {
-        text-align: center;
+        text-align: justify;
+        font-size: 1.1rem;
+        width: 100%;
+        max-width: none;
+        padding-bottom: 1rem;
     }
 }
 
