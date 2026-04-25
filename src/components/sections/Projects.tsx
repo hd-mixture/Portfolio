@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -13,7 +12,7 @@ export const projectsData = [
     description: "CyberAegXs is an AI-powered PDF Security and Management Platform designed for secure and smart document handling. It combines advanced PDF productivity tools with modern authentication, cloud storage, and premium subscription access.",
     liveLink: "https://cyberaegxs.hdmixture.site/",
     codeLink: "https://github.com/hd-mixture/CyberAegXs.git",
-    icon: <i className="fa-solid fa-shield-halved" style={{ color: '#52489C' }}></i>,
+    icon: <Image src="https://cyberaegxs.hdmixture.site/CyberAegXs%20Logo.png" alt="CyberAegXs Logo" width={48} height={48} data-ai-hint="security logo" />,
     timelineIcon: <i className="fa-solid fa-file-shield"></i>,
     status: 'completed' as ProjectStatus,
   },
