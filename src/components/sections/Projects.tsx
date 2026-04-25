@@ -8,6 +8,16 @@ type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
 export const projectsData = [
   {
+    date: "Feb 2026 - Apr 2026",
+    title: "CyberAegXs",
+    description: "CyberAegXs is an AI-powered PDF Security and Management Platform designed for secure and smart document handling. It combines advanced PDF productivity tools with modern authentication, cloud storage, and premium subscription access.",
+    liveLink: "https://cyberaegxs.hdmixture.site/",
+    codeLink: "https://github.com/hd-mixture/CyberAegXs.git",
+    icon: <i className="fa-solid fa-shield-halved" style={{ color: '#52489C' }}></i>,
+    timelineIcon: <i className="fa-solid fa-file-shield"></i>,
+    status: 'completed' as ProjectStatus,
+  },
+  {
     date: "Jul 2025 - Ongoing",
     title: "DevTeXhHub",
     description: "DevTeXhHub is a modern, full-featured project management application designed to streamline workflows for software development teams. It provides distinct, role-based dashboards for Admins, Managers, Developers, QAs, and Designers, ensuring that every team member has the tools they need to be productive.",
