@@ -1,6 +1,7 @@
+
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, MapPin, Info, ChevronRight, ChevronLeft } from 'lucide-react';
@@ -87,6 +88,18 @@ export default function Internship() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeExp = experiences[activeIndex];
 
+  // Calculate dynamic progress percentage based on cumulative gap weights
+  const progressPercentage = useMemo(() => {
+    const totalWeight = experiences.reduce((acc, exp) => acc + (exp.gapWeight || 0), 0);
+    if (totalWeight === 0) return 0;
+    
+    let currentWeight = 0;
+    for (let i = 0; i < activeIndex; i++) {
+      currentWeight += experiences[i].gapWeight || 0;
+    }
+    return (currentWeight / totalWeight) * 100;
+  }, [activeIndex]);
+
   const handlePrev = () => setActiveIndex((prev) => (prev > 0 ? prev - 1 : experiences.length - 1));
   const handleNext = () => setActiveIndex((prev) => (prev < experiences.length - 1 ? prev + 1 : 0));
 
@@ -119,8 +132,8 @@ export default function Internship() {
           <div className="timeline-line">
             <motion.div 
               className="timeline-progress"
-              animate={{ height: `${(activeIndex / (experiences.length - 1)) * 100}%` }}
-              transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+              animate={{ height: `${progressPercentage}%` }}
+              transition={{ type: 'spring', stiffness: 80, damping: 20 }}
             />
           </div>
           
@@ -147,7 +160,7 @@ export default function Internship() {
                   <div 
                     className="timeline-gap-indicator" 
                     data-duration={exp.gapToNext}
-                    style={{ minHeight: `${exp.gapWeight * 40}px`, flex: exp.gapWeight }}
+                    style={{ minHeight: `${exp.gapWeight * 45}px`, flex: exp.gapWeight }}
                   >
                     <div className="gap-dot"></div>
                   </div>
@@ -181,12 +194,18 @@ export default function Internship() {
                       className="exp-logo"
                     />
                   )}
+                  {activeExp.status === 'current' && (
+                    <div className="live-badge-container">
+                      <span className="live-pulse"></span>
+                      Currently Working
+                    </div>
+                  )}
                 </div>
                 
                 <div className="exp-title-info">
                   <div className="exp-type-row">
                     <span className="exp-type-badge">{activeExp.type}</span>
-                    <span className={`exp-status-pill ${activeExp.status}`}>
+                    <span className={`exp-status-pill ${activeExp.status === 'current' ? 'current' : 'completed'}`}>
                       {activeExp.status === 'current' ? 'Active' : 'Completed'}
                     </span>
                   </div>

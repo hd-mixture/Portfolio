@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Roboto:wght@100;300;400&display=swap');
 
@@ -1090,6 +1091,7 @@ li a:hover {
     width: 100%;
     background: var(--primary-color);
     box-shadow: 0 0 15px var(--primary-color);
+    transition: height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .timeline-dots {
