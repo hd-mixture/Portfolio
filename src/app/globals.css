@@ -2027,5 +2027,3 @@ li a:hover {
     }
     .letter-modal-overlay { padding: 1rem; }
 }
-
-.about-accent { position: absolute; top: -40px; left: -60px; width: 220px; height: 220px; background: radial-gradient(circle at 60% 40%, #ff5722 0%, #52489C 100%); opacity: 0.13; border-radius: 50%; z-index: 0; pointer-events: none; }

@@ -37,7 +37,7 @@ const experiences = [
     color: "#52489C",
     gapToNext: "Sequential Transition",
     gapWeight: 0.4,
-    letter: "/assets/Experience/Reliance Jio Infocomm limited Exp Letter.pdf"
+    letter: "/Experience/Reliance Jio Infocomm limited Exp Letter.pdf"
   },
   {
     id: 'md-enterprise',
@@ -54,7 +54,7 @@ const experiences = [
     color: "#333",
     gapToNext: "1.3 Years Gap",
     gapWeight: 1.3,
-    letter: "/assets/Experience/MD Enterprise Exp Letter.pdf"
+    letter: "/Experience/MD Enterprise Exp Letter.pdf"
   },
   {
     id: 'riseup',
@@ -70,7 +70,7 @@ const experiences = [
     color: "#FF5722",
     gapToNext: "1.1 Years Gap",
     gapWeight: 1.1,
-    letter: "/assets/Experience/RiseUp Infotech Intern Letter.pdf"
+    letter: "/Experience/RiseUp Infotech Intern Letter.pdf"
   },
   {
     id: 'narmada',
@@ -85,7 +85,7 @@ const experiences = [
     logo: "https://www.nctc.co.in/images/logo.png",
     color: "#0056b3",
     gapWeight: 0,
-    letter: "/assets/Experience/Narmada Exp Letter.pdf"
+    letter: "/Experience/Narmada Exp Letter.pdf"
   }
 ];
 
