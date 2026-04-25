@@ -1,10 +1,10 @@
 
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, Info, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Calendar, MapPin, Info, ChevronRight, ChevronLeft, FileText, X } from 'lucide-react';
 
 const experiences = [
   {
@@ -20,7 +20,8 @@ const experiences = [
     logo: "https://static.wixstatic.com/media/8daa46_6ca56cecc3a143c78f1453d2f2b71293~mv2.png/v1/fill/w_68,h_68,q_85,usm_0.66_1.00_0.01/8daa46_6ca56cecc3a143c78f1453d2f2b71293~mv2.png",
     color: "#4CAF50",
     gapToNext: "Concurrent Experience",
-    gapWeight: 0.3
+    gapWeight: 0.3,
+    letter: "/Letters/digiteq_internship.jpg"
   },
   {
     id: 'jio',
@@ -35,7 +36,8 @@ const experiences = [
     logo: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Reliance_Jio_Logo.svg",
     color: "#52489C",
     gapToNext: "Sequential Transition",
-    gapWeight: 0.4
+    gapWeight: 0.4,
+    letter: "/Letters/jio_job.jpg"
   },
   {
     id: 'md-enterprise',
@@ -51,7 +53,8 @@ const experiences = [
     isCustomLogo: true,
     color: "#333",
     gapToNext: "1.3 Years Gap",
-    gapWeight: 1.3
+    gapWeight: 1.3,
+    letter: "/Letters/md_technician.jpg"
   },
   {
     id: 'riseup',
@@ -66,7 +69,8 @@ const experiences = [
     logo: "https://media.licdn.com/dms/image/v2/C4D0BAQFFrMKiwR45wg/company-logo_200_200/company-logo_200_200/0/1658907156557/riseupinfotech_logo?e=2147483647&v=beta&t=k4tRyTKDAokJD3mEbcQntQB6n6BSsMNYwKtsKtsbD4A",
     color: "#FF5722",
     gapToNext: "1.1 Years Gap",
-    gapWeight: 1.1
+    gapWeight: 1.1,
+    letter: "/Letters/riseup_android.jpg"
   },
   {
     id: 'narmada',
@@ -80,12 +84,14 @@ const experiences = [
     skills: ["Supervision", "Operations", "Team Handling", "Industrial Workflow", "Management"],
     logo: "https://www.nctc.co.in/images/logo.png",
     color: "#0056b3",
-    gapWeight: 0
+    gapWeight: 0,
+    letter: "/Letters/narmada_supervisor.jpg"
   }
 ];
 
 export default function Internship() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showLetter, setShowLetter] = useState<string | null>(null);
   const activeExp = experiences[activeIndex];
 
   // Calculate dynamic progress percentage based on cumulative gap weights
@@ -97,12 +103,20 @@ export default function Internship() {
     for (let i = 0; i < activeIndex; i++) {
       currentWeight += experiences[i].gapWeight || 0;
     }
-    // progress line goes to the center of the active dot
     return (currentWeight / totalWeight) * 100;
   }, [activeIndex]);
 
   const handlePrev = () => setActiveIndex((prev) => (prev > 0 ? prev - 1 : experiences.length - 1));
   const handleNext = () => setActiveIndex((prev) => (prev < experiences.length - 1 ? prev + 1 : 0));
+
+  // Disable context menu on the modal to protect content
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      if (showLetter) e.preventDefault();
+    };
+    document.addEventListener('contextmenu', handleContextMenu);
+    return () => document.removeEventListener('contextmenu', handleContextMenu);
+  }, [showLetter]);
 
   return (
     <section id="internship" className="experience-section section-reveal">
@@ -182,6 +196,15 @@ export default function Internship() {
               transition={{ duration: 0.3 }}
               className="experience-focus-card"
             >
+              {/* Experience Letter View Icon */}
+              <button 
+                className="letter-view-btn" 
+                onClick={() => setShowLetter(activeExp.letter)}
+                title="View Experience Letter"
+              >
+                <FileText size={20} />
+              </button>
+
               <div className="exp-card-header">
                 <div className="exp-logo-container">
                   {activeExp.isCustomLogo ? (
@@ -279,6 +302,38 @@ export default function Internship() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Experience Letter Secure Viewer Modal */}
+      <AnimatePresence>
+        {showLetter && (
+          <div className="letter-modal-overlay" onClick={() => setShowLetter(null)}>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="letter-modal-content"
+              onClick={e => e.stopPropagation()}
+            >
+              <button className="letter-close-btn" onClick={() => setShowLetter(null)}>
+                <X size={24} />
+              </button>
+              <div className="letter-image-wrapper">
+                {/* Watermark Overlay */}
+                <div className="letter-watermark">
+                  <span className="watermark-text">Official Document</span>
+                </div>
+                <img 
+                  src={showLetter} 
+                  alt="Experience Letter" 
+                  className="letter-img"
+                  onContextMenu={(e) => e.preventDefault()}
+                  draggable="false"
+                />
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
