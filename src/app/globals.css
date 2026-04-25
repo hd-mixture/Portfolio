@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Roboto:wght@100;300;400&display=swap');
 
@@ -908,6 +909,10 @@ li a:hover {
   will-change: transform;
 }
 
+.marquee-container {
+  animation-play-state: running;
+}
+
 .marquee-container:hover {
   animation-play-state: paused;
 }
@@ -1337,8 +1342,8 @@ li a:hover {
 
 @media (max-width: 1024px) {
     .testimonial-grid {
-        display: flex !important;
-        flex-direction: column !important;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
         gap: 2rem !important;
         text-align: left !important;
     }
@@ -1951,15 +1956,16 @@ li a:hover {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .letter-modal-content {
     background: white;
-    max-width: 800px;
-    width: 100%;
-    max-height: 90vh;
+    max-width: 900px;
+    width: 95%;
+    height: 90vh;
     border-radius: 20px;
     position: relative;
     overflow: hidden;
     box-shadow: 0 25px 50px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
+    z-index: 10000001;
 }
 .letter-image-wrapper {
     position: relative;
@@ -1967,6 +1973,7 @@ li a:hover {
     height: 100%;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background: #fff;
 }
@@ -2020,3 +2027,5 @@ li a:hover {
     }
     .letter-modal-overlay { padding: 1rem; }
 }
+
+.about-accent { position: absolute; top: -40px; left: -60px; width: 220px; height: 220px; background: radial-gradient(circle at 60% 40%, #ff5722 0%, #52489C 100%); opacity: 0.13; border-radius: 50%; z-index: 0; pointer-events: none; }

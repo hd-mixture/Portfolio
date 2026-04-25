@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -299,9 +300,9 @@ export default function Internship() {
         {showLetter && (
           <div className="letter-modal-overlay" onClick={() => setShowLetter(null)}>
             <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
               className="letter-modal-content"
               onClick={e => e.stopPropagation()}
             >
@@ -313,9 +314,9 @@ export default function Internship() {
                   <span className="watermark-text">Official Document - Darshan Prajapati</span>
                 </div>
                 <iframe 
-                  src={`${showLetter}#toolbar=0&navpanes=0&scrollbar=0`}
-                  className="w-full h-full min-h-[80vh] bg-white"
-                  style={{ border: 'none' }}
+                  src={`${showLetter}#toolbar=0`}
+                  className="w-full h-full bg-white"
+                  style={{ border: 'none', minHeight: '600px' }}
                   title="Experience Letter"
                 />
               </div>
