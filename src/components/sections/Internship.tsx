@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, Briefcase, Info, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, MapPin, Info, ChevronRight } from 'lucide-react';
 
 const experiences = [
   {
@@ -16,7 +16,7 @@ const experiences = [
     status: "current",
     description: "Developing responsive web applications using the MERN stack. Focused on creating user-centric interfaces and integrating Firebase services for real-time functionality.",
     skills: ["MERN Stack", "Firebase", "React", "UI/UX", "Git"],
-    logo: "https://picsum.photos/seed/digiteq/100/100",
+    logo: "https://static.wixstatic.com/media/8daa46_27928d25b66747e599750879b7a4b939~mv2.png/v1/fill/w_378,h_80,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Group%20129965.png",
     color: "#4CAF50"
   },
   {
@@ -42,15 +42,13 @@ const experiences = [
     status: "completed",
     description: "Developed and maintained Android applications. Collaborated with teams to implement mobile features and optimized app performance using Java and SQLite.",
     skills: ["Android Studio", "Java", "XML", "SQLite"],
-    logo: "https://picsum.photos/seed/riseup/100/100",
+    logo: "https://media.licdn.com/dms/image/v2/C4D0BAQFFrMKiwR45wg/company-logo_200_200/company-logo_200_200/0/1658907156557/riseupinfotech_logo?e=2147483647&v=beta&t=k4tRyTKDAokJD3mEbcQntQB6n6BSsMNYwKtsKtsbD4A",
     color: "#FF5722"
   }
 ];
 
 export default function Internship() {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  // Auto switch logic can be added here if needed, but manual/scroll focus is better
   const activeExp = experiences[activeIndex];
 
   return (
@@ -58,7 +56,7 @@ export default function Internship() {
       <h2>Internship & Job</h2>
       
       <div className="career-timeline-container">
-        {/* Timeline Navigation (Desktop Left, Mobile Top) */}
+        {/* Timeline Navigation */}
         <div className="timeline-nav">
           <div className="timeline-line">
             <motion.div 
@@ -78,7 +76,6 @@ export default function Internship() {
                   <span className="dot-inner"></span>
                 </button>
                 
-                {/* Mini Tooltip */}
                 <div className="dot-tooltip">
                   <p className="tooltip-company">{exp.company}</p>
                   <p className="tooltip-role">{exp.role}</p>
@@ -100,7 +97,6 @@ export default function Internship() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="experience-focus-card"
             >
-              {/* Card Header */}
               <div className="exp-card-header">
                 <div className="exp-logo-container">
                   <Image 
@@ -131,7 +127,6 @@ export default function Internship() {
                 </div>
               </div>
 
-              {/* Card Meta */}
               <div className="exp-meta-grid">
                 <div className="exp-meta-item">
                   <Calendar size={18} className="text-primary" />
@@ -143,7 +138,6 @@ export default function Internship() {
                 </div>
               </div>
 
-              {/* Card Content */}
               <div className="exp-description">
                 <div className="desc-header">
                   <Info size={18} />
@@ -152,7 +146,6 @@ export default function Internship() {
                 <p>{activeExp.description}</p>
               </div>
 
-              {/* Skills Tags */}
               <div className="exp-skills-section">
                 <p className="skills-label">Core Competencies:</p>
                 <div className="skills-tags">
@@ -164,7 +157,6 @@ export default function Internship() {
                 </div>
               </div>
 
-              {/* Next Button for Engagement */}
               {activeIndex < experiences.length - 1 && (
                 <button 
                   className="next-exp-btn"
