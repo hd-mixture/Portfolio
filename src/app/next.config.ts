@@ -51,6 +51,12 @@ const nextConfig: NextConfig = {
         hostname: 'cyberaegxs.hdmixture.site',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.nctc.co.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
