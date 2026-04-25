@@ -1,9 +1,10 @@
+
 "use client";
 
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, Info, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Calendar, MapPin, Info, ChevronRight, ChevronLeft, Clock } from 'lucide-react';
 
 const experiences = [
   {
@@ -17,7 +18,8 @@ const experiences = [
     description: "Developing responsive web applications using the MERN stack. Focused on creating user-centric interfaces and integrating Firebase services for real-time functionality.",
     skills: ["MERN Stack", "Firebase", "React", "UI/UX", "Git"],
     logo: "https://static.wixstatic.com/media/8daa46_6ca56cecc3a143c78f1453d2f2b71293~mv2.png/v1/fill/w_68,h_68,q_85,usm_0.66_1.00_0.01/8daa46_6ca56cecc3a143c78f1453d2f2b71293~mv2.png",
-    color: "#4CAF50"
+    color: "#4CAF50",
+    gapToNext: "3 Months Gap"
   },
   {
     id: 'jio',
@@ -30,7 +32,8 @@ const experiences = [
     description: "Managed end-to-end service operations including CRM, installation scheduling, and technician coordination. Specialized in SAP data management and troubleshooting for Jio AirFiber.",
     skills: ["CRM", "SAP", "Operations", "Customer Handling", "Coordination"],
     logo: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Reliance_Jio_Logo.svg",
-    color: "#52489C"
+    color: "#52489C",
+    gapToNext: "1.5 Years Gap"
   },
   {
     id: 'riseup',
@@ -86,20 +89,29 @@ export default function Internship() {
           
           <div className="timeline-dots">
             {experiences.map((exp, index) => (
-              <div key={exp.id} className="dot-wrapper">
-                <button
-                  onClick={() => setActiveIndex(index)}
-                  className={`timeline-dot-interactive ${index === activeIndex ? 'active' : ''} ${exp.status === 'current' ? 'live' : ''}`}
-                >
-                  <span className="dot-inner"></span>
-                </button>
-                
-                <div className="dot-tooltip">
-                  <p className="tooltip-company">{exp.company}</p>
-                  <p className="tooltip-role">{exp.role}</p>
-                  <p className="tooltip-date">{exp.date}</p>
+              <React.Fragment key={exp.id}>
+                <div className="dot-wrapper">
+                  <button
+                    onClick={() => setActiveIndex(index)}
+                    className={`timeline-dot-interactive ${index === activeIndex ? 'active' : ''} ${exp.status === 'current' ? 'live' : ''}`}
+                  >
+                    <span className="dot-inner"></span>
+                  </button>
+                  
+                  <div className="dot-tooltip">
+                    <p className="tooltip-company">{exp.company}</p>
+                    <p className="tooltip-role">{exp.role}</p>
+                    <p className="tooltip-date">{exp.date}</p>
+                  </div>
                 </div>
-              </div>
+                
+                {/* Gap duration marker between dots */}
+                {index < experiences.length - 1 && (
+                  <div className="timeline-gap-indicator" data-duration={exp.gapToNext}>
+                    <div className="gap-dot"></div>
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -142,14 +154,6 @@ export default function Internship() {
                   </div>
                   <h3 className="exp-role-title">{activeExp.role}</h3>
                   <h4 className="exp-company-name">{activeExp.company}</h4>
-                  
-                  {/* Mobile-only live badge positioned below company name like the screenshot */}
-                  {activeExp.status === 'current' && (
-                    <div className="live-badge-mobile mobile-only">
-                      <span className="live-pulse"></span>
-                      <span className="live-text">Currently Working</span>
-                    </div>
-                  )}
                 </div>
               </div>
 

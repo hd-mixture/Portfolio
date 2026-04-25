@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Roboto:wght@100;300;400&display=swap');
 
@@ -2096,3 +2097,60 @@ li a:hover {
     .next-btn { right: 10px; }
     .close-full-image { top: 20px; right: 20px; font-size: 35px; }
 }
+
+/* Timeline Gap Interactive Styles */
+.timeline-gap-indicator {
+    position: relative;
+    width: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+    z-index: 5;
+}
+
+.gap-dot {
+    width: 8px;
+    height: 8px;
+    background: #e0e0e0;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dark .gap-dot {
+    background: #333;
+    border-color: #1a1a1a;
+}
+
+.timeline-gap-indicator:hover .gap-dot {
+    transform: scale(1.6);
+    background: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.timeline-gap-indicator::after {
+    content: attr(data-duration);
+    position: absolute;
+    left: 30px;
+    background: var(--primary-dark);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.timeline-gap-indicator:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
