@@ -5,6 +5,11 @@ import Link from 'next/link';
 
 type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
+interface TechStackItem {
+  icon: string;
+  name: string;
+}
+
 export const projectsData = [
   {
     date: "Feb 2026 - Apr 2026",
@@ -15,6 +20,12 @@ export const projectsData = [
     icon: <Image src="https://cyberaegxs.hdmixture.site/CyberAegXs%20Logo.png" alt="CyberAegXs Logo" width={48} height={48} data-ai-hint="security logo" />,
     timelineIcon: <i className="fa-solid fa-file-shield"></i>,
     status: 'completed' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-react', name: 'React' },
+      { icon: 'fa-solid fa-fire', name: 'Firebase' },
+      { icon: 'fa-brands fa-js', name: 'JavaScript' },
+      { icon: 'fa-solid fa-brain', name: 'AI' }
+    ]
   },
   {
     date: "Jul 2025 - Ongoing",
@@ -25,6 +36,12 @@ export const projectsData = [
     icon: <Image src="/Project Logo/DevTeXhHub Logo.png" alt="DevTeXhHub Logo" width={48} height={48} data-ai-hint="modern logo" />,
     timelineIcon: <i className="fa-solid fa-tasks"></i>,
     status: 'ongoing' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-react', name: 'React' },
+      { icon: 'fa-brands fa-node-js', name: 'Node.js' },
+      { icon: 'fa-solid fa-database', name: 'MongoDB' },
+      { icon: 'fa-brands fa-js', name: 'JavaScript' }
+    ]
   },
   {
     date: "Jun 2025 - Jul 2025",
@@ -35,6 +52,12 @@ export const projectsData = [
     icon: <Image src="/Project Logo/Cardify Logo.png" alt="Cardify Logo" width={48} height={48} data-ai-hint="visiting card" />,
     timelineIcon: <i className="fa-solid fa-address-card"></i>,
     status: 'completed' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-html5', name: 'HTML5' },
+      { icon: 'fa-brands fa-css3-alt', name: 'CSS3' },
+      { icon: 'fa-brands fa-js', name: 'JavaScript' },
+      { icon: 'fa-brands fa-react', name: 'React' }
+    ]
   },
   {
     date: "Mar 2020 - Ongoing",
@@ -45,76 +68,117 @@ export const projectsData = [
     icon: <i className="fa-solid fa-palette"></i>,
     timelineIcon: <i className="fa-solid fa-palette"></i>,
     status: 'ongoing' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-figma', name: 'Figma' },
+      { icon: 'fa-solid fa-palette', name: 'Graphic Design' },
+      { icon: 'fa-solid fa-pen-nib', name: 'Illustrator' }
+    ]
   },
   {
     date: "Jan 2025 - May 2025",
-    title: "Campus Cuisine 2.0 – Web Application (Enhanced Version)",
+    title: "Campus Cuisine 2.0",
     description: "Upgraded the UI/UX, added real-time ordering features, and role-based admin functionalities.",
     liveLink: "https://hd-mixture.github.io/Campus-Cuisine-2/",
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine-2",
     icon: <Image src="/Project Logo/Campus_Cuisine_Logo_.2.0.png" alt="Campus Cuisine 2.0 Logo" width={48} height={48} data-ai-hint="modern food" />,
     timelineIcon: <i className="fa-solid fa-utensils"></i>,
     status: 'completed' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-react', name: 'React' },
+      { icon: 'fa-brands fa-node-js', name: 'Node.js' },
+      { icon: 'fa-solid fa-fire', name: 'Firebase' },
+      { icon: 'fa-brands fa-js', name: 'JavaScript' }
+    ]
   },
   {
     date: "Feb 2025 - Apr 2025",
-    title: "Save & Share – PHP-Based Donation Platform",
-    description: "Designed a donation network connecting food donors, NGOs, and volunteers.",
+    title: "Save & Share",
+    description: "Designed a donation network connecting food donors, NGOs, and volunteers using PHP.",
     liveLink: "https://github.com/100rabx23/Save-Share.git",
     codeLink: "https://github.com/100rabx23/Save-Share.git",
     icon: <Image src="/Project Logo/save_share_logo.png" alt="Save & Share Logo" width={48} height={48} data-ai-hint="charity logo" />,
     timelineIcon: <i className="fa-solid fa-hand-holding-heart"></i>,
     status: 'completed' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-php', name: 'PHP' },
+      { icon: 'fa-solid fa-database', name: 'MySQL' },
+      { icon: 'fa-brands fa-html5', name: 'HTML5' }
+    ]
   },
   {
     date: "Oct 2024 - Present",
-    title: "ABHAR : AI-Based Home Automation Robot – Group Project (G-Code, C++)",
-    description: "Built an automation robot to control home appliances via voice commands and sensors. Programmed using G-Code and C++ with smart features for real-time response.",
+    title: "ABHAR : AI-Home Robot",
+    description: "Built an automation robot to control home appliances via voice commands and sensors. Programmed using G-Code and C++.",
     liveLink: "https://epicpjm05.github.io/ABHAR/WEb",
     codeLink: "https://github.com/EPICPJM05/ABHAR.git",
     icon: <Image src="/Project Logo/ABHAR Orange Resize Logo.png" alt="ABHAR Logo" width={48} height={48} data-ai-hint="robot logo" />,
     timelineIcon: <i className="fa-solid fa-robot"></i>,
     status: 'live' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-solid fa-microchip', name: 'Hardware' },
+      { icon: 'fa-solid fa-code', name: 'C++' },
+      { icon: 'fa-solid fa-robot', name: 'Robotics' }
+    ]
   },
   {
     date: "Apr 2025 - Apr 2025",
-    title: "BitTRiX AI : Automated Test Agent – Group Project (Python)",
-    description: "Developed a smart testing system to generate and integrate with CI/CD tools.",
+    title: "BitTRiX AI : Automated Test Agent",
+    description: "Developed a smart testing system to generate and integrate with CI/CD tools using Python.",
     liveLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
     codeLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
     icon: <Image src="/Project Logo/BitTRix Logo.jpg" alt="BitTRiX AI Logo" width={48} height={48} data-ai-hint="ai logo" />,
     timelineIcon: <i className="fa-solid fa-microchip"></i>,
     status: 'completed' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-python', name: 'Python' },
+      { icon: 'fa-solid fa-brain', name: 'AI' },
+      { icon: 'fa-brands fa-github', name: 'CI/CD' }
+    ]
   },
   {
     date: "Mar 2024 - Jun 2024",
-    title: "Campus Cuisine – Web Application (Initial Version)",
+    title: "Campus Cuisine",
     description: "Built a web app for students to discover and review affordable meals on campus.",
     liveLink: "https://hd-mixture.github.io/Campus-Cuisine/",
     codeLink: "https://github.com/hd-mixture/Campus-Cuisine.git",
     icon: <Image src="/Project Logo/Campus Cuisin Logo Black.png" alt="Campus Cuisine Logo" width={48} height={48} data-ai-hint="food logo" />,
     timelineIcon: <i className="fa-solid fa-utensils"></i>,
     status: 'completed' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-html5', name: 'HTML5' },
+      { icon: 'fa-brands fa-css3-alt', name: 'CSS3' },
+      { icon: 'fa-brands fa-js', name: 'JavaScript' }
+    ]
   },
   {
     date: "Aug 2023 - Sep 2023",
-    title: "Driving Licence Application – Mobile Application",
+    title: "Driving Licence App",
     description: "Designed a user-friendly interface to apply, check documents, and track driving licence.",
     liveLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
     codeLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
     icon: <Image src="/Project Logo/Driving Licence App Logo.png" alt="Driving Licence App Logo" width={48} height={48} data-ai-hint="card document" />,
     timelineIcon: <i className="fa-solid fa-id-card"></i>,
     status: 'completed' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-android', name: 'Android' },
+      { icon: 'fa-brands fa-java', name: 'Java' },
+      { icon: 'fa-solid fa-database', name: 'SQLite' }
+    ]
   },
   {
     date: "Aug 2022 - Sep 2022",
-    title: "Nearby Places – Mobile Application",
-    description: "Created an Android app using Google Maps API to display nearby essential locations like ATMs, hospitals, and restaurants.",
+    title: "Nearby Places",
+    description: "Created an Android app using Google Maps API to display nearby essential locations.",
     liveLink: "https://github.com/hd-mixture/Nearby-Places.git",
     codeLink: "https://github.com/hd-mixture/Nearby-Places.git",
     icon: <Image src="/Project Logo/Nearby Place Logo.png?v=2" alt="Nearby Places Logo" width={48} height={48} data-ai-hint="location pin" />,
     timelineIcon: <i className="fa-solid fa-location-dot"></i>,
     status: 'completed' as ProjectStatus,
+    techStack: [
+      { icon: 'fa-brands fa-android', name: 'Android' },
+      { icon: 'fa-brands fa-google', name: 'Google Maps API' },
+      { icon: 'fa-solid fa-location-dot', name: 'GPS' }
+    ]
   }
 ];
 
@@ -364,8 +428,17 @@ export default function Projects() {
                                         <div className="timeline-col left">
                                             <div className="project-card-zoom">
                                                 <div className="timeline-content section-reveal">
-                                                    <div className={`project-icon ${side}`}>{project.icon}</div>
+                                                    <div className={`project-icon ${side} ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}>{project.icon}</div>
                                                     <div className="project-date-badge">{project.date}</div>
+                                                    {project.techStack && (
+                                                        <div className="project-tech-stack">
+                                                            {project.techStack.map((tech, i) => (
+                                                                <div key={i} className="tech-icon-small" title={tech.name}>
+                                                                    <i className={tech.icon}></i>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    )}
                                                     <div className="project-info">
                                                         <h3>{project.title}</h3>
                                                         <p>{project.description}</p>
@@ -386,8 +459,17 @@ export default function Projects() {
                                         <div className="timeline-col right">
                                             <div className="project-card-zoom">
                                                 <div className="timeline-content section-reveal">
-                                                    <div className={`project-icon ${side}`}>{project.icon}</div>
+                                                    <div className={`project-icon ${side} ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}>{project.icon}</div>
                                                     <div className="project-date-badge">{project.date}</div>
+                                                    {project.techStack && (
+                                                        <div className="project-tech-stack">
+                                                            {project.techStack.map((tech, i) => (
+                                                                <div key={i} className="tech-icon-small" title={tech.name}>
+                                                                    <i className={tech.icon}></i>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    )}
                                                     <div className="project-info">
                                                         <h3>{project.title}</h3>
                                                         <p>{project.description}</p>
@@ -410,6 +492,15 @@ export default function Projects() {
                         <div key={index} className="project-card">
                             <div className={`project-icon ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}>{project.icon}</div>
                             <div className="project-date-badge">{project.date}</div>
+                            {project.techStack && (
+                                <div className="project-tech-stack" style={{ justifyContent: 'flex-start' }}>
+                                    {project.techStack.map((tech, i) => (
+                                        <div key={i} className="tech-icon-small" title={tech.name}>
+                                            <i className={tech.icon}></i>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                             <h3>{project.title}</h3>
                             <p>{project.description}</p>
                             <div className="project-links">

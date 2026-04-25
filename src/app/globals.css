@@ -987,13 +987,44 @@ li a:hover {
 .timeline-event[data-side="right"] .timeline-content.section-reveal.visible { animation: zigzagInRight 0.9s cubic-bezier(0.4, 0, 0.2, 1) both; }
 @keyframes zigzagInLeft { 0% { opacity: 0; transform: translateX(-80px) scale(0.97); } 100% { opacity: 1; transform: translateX(0) scale(1); } }
 @keyframes zigzagInRight { 0% { opacity: 0; transform: translateX(80px) scale(0.97); } 100% { opacity: 1; transform: translateX(0) scale(1); } }
-.project-date-badge { display: inline-block; background: var(--primary-color); color: #fff; font-size: 0.95rem; font-weight: 600; border-radius: 12px; padding: 0.3rem 1rem; margin-bottom: 1rem; letter-spacing: 0.01em; box-shadow: 0 2px 8px rgba(82,72,156,0.15); }
+.project-date-badge { display: inline-block; background: var(--primary-color); color: #fff; font-size: 0.95rem; font-weight: 600; border-radius: 12px; padding: 0.3rem 1rem; margin-bottom: 0.5rem; letter-spacing: 0.01em; box-shadow: 0 2px 8px rgba(82,72,156,0.15); }
 .project-info { display: flex; flex-direction: column; width: 100%; }
 .project-info h3 { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 700; letter-spacing: 0.01em; }
 .project-info p { color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.2rem; line-height: 1.6; font-weight: 500; }
 .project-links { display: flex; gap: 1rem; margin-top: 1.2rem; width: 100%; flex-wrap: nowrap; }
 .timeline-event[data-side="left"] .project-links { justify-content: flex-end; }
 .timeline-event[data-side="right"] .project-links { justify-content: flex-start; }
+
+/* New Tech Stack Icons for Projects */
+.project-tech-stack {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.timeline-event[data-side="left"] .project-tech-stack { justify-content: flex-end; }
+.timeline-event[data-side="right"] .project-tech-stack { justify-content: flex-start; }
+
+.tech-icon-small {
+    width: 28px;
+    height: 28px;
+    background: var(--card-bg);
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s, background 0.2s, color 0.2s;
+    cursor: help;
+}
+.tech-icon-small:hover {
+    transform: scale(1.2);
+    background: var(--primary-color);
+    color: white;
+}
 
 @media (max-width: 1024px) {
     .projects-grid.mobile-only {
