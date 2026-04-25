@@ -97,6 +97,7 @@ export default function Internship() {
     for (let i = 0; i < activeIndex; i++) {
       currentWeight += experiences[i].gapWeight || 0;
     }
+    // progress line goes to the center of the active dot
     return (currentWeight / totalWeight) * 100;
   }, [activeIndex]);
 
@@ -250,6 +251,15 @@ export default function Internship() {
                   ))}
                 </div>
               </div>
+
+              {/* Desktop Navigation Button */}
+              <button 
+                className="next-exp-btn hidden md:flex" 
+                onClick={handleNext}
+                aria-label="Next Experience"
+              >
+                Next Experience <ChevronRight size={18} />
+              </button>
 
               {/* Mobile Navigation Controls */}
               <div className="exp-nav-controls">
