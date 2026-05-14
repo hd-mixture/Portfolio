@@ -19,19 +19,23 @@ export default function Contact() {
         
         // Ensure EmailJS script is loaded from layout.tsx
         if (typeof window.emailjs === 'undefined') {
-            console.log('EmailJS script not loaded yet');
+            console.log('EmailJS script not loaded yet. Please ensure the CDN script in layout.tsx is correct.');
             setStatus('error');
             return;
         }
 
         setStatus('sending');
 
-        // Explicitly initialize with Public Key to ensure connection
+        // Explicitly initialize with Public Key (User should ensure this key is correct for their account)
         window.emailjs.init('lGrdPZlqH_eXVNyV0');
 
-        // Send the form using Service ID and Template ID
-        window.emailjs.sendForm('service_0x9isti', 'template_pn7n1mc', formRef.current)
-            .then(() => {
+        // Using the Service ID and Template ID provided by the user
+        const serviceID = 'service_0x9isti';
+        const templateID = 'template_pn7n1mc';
+
+        window.emailjs.sendForm(serviceID, templateID, formRef.current)
+            .then((response: any) => {
+                console.log('EmailJS Success:', response.status, response.text);
                 setStatus('sent');
                 formRef.current?.reset();
                 // Reset to idle after 4 seconds
@@ -39,9 +43,7 @@ export default function Contact() {
             })
             .catch((error: any) => {
                 // Using console.log instead of console.error to avoid Next.js Red Screen Overlay
-                // Detailed error info for debugging:
-                console.log('EmailJS Error Details:', error?.text || error || 'Check Service/Template IDs');
-                
+                console.log('EmailJS Error Details:', error?.text || error || 'Connection Failed');
                 setStatus('error');
                 // Reset to idle after 4 seconds to allow retry
                 setTimeout(() => setStatus('idle'), 4000);
