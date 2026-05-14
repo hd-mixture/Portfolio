@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
@@ -236,7 +237,7 @@ const designData = {
         { src: "/Graphic Designs/Posters/BOD Physically Challenged Poster Page 3.jpg", title: "Rotaract Medical Camp Post" },
         { src: "/Graphic Designs/Posters/BOD Raksha_Bandhan.jpg", title: "Rotaract Raksha Bhandhan Post" },
         { src: "/Graphic Designs/Posters/BOD World Physo Day.jpg", title: "Rotaract Word Physo Day Post" },
-        { src: "/Graphic Designs/Posters/BOD મિત્રતા - એક સંબંધ.jpg", title: "Rotaract મિત્રતા - એક સંબંધ Post" }
+        { src: "/Graphic Designs/Posters/BOD મિત્રતા - એક संबंध.jpg", title: "Rotaract મિત્રતા - એક संबंध Post" }
     ]
 };
 
@@ -297,7 +298,7 @@ const FullImageSlider = ({ images, startIndex, onClose }: { images: {src: string
           onTouchEnd={onTouchEnd}
         >
             <div className="full-image-content" onClick={e => e.stopPropagation()}>
-                <button className="slider-nav prev-btn" onClick={goToPrev}><i className="fa-solid fa-chevron-left"></i></button>
+                <button className="slider-nav prev-btn" onClick={goToPrev}><ChevronLeft /></button>
                 <div className="slider-container">
                     {images.map((img, index) => (
                         <div key={index} className={`slider-item ${index === currentIndex ? 'active' : ''}`} style={{ transform: `translateX(${(index - currentIndex) * 100}%)`}}>
@@ -306,8 +307,8 @@ const FullImageSlider = ({ images, startIndex, onClose }: { images: {src: string
                         </div>
                     ))}
                 </div>
-                <button className="slider-nav next-btn" onClick={goToNext}><i className="fa-solid fa-chevron-right"></i></button>
-                <button className="close-full-image" onClick={onClose}>&times;</button>
+                <button className="slider-nav next-btn" onClick={goToNext}><ChevronRight /></button>
+                <button className="close-full-image" onClick={onClose} aria-label="Close full view"><X /></button>
             </div>
         </div>
     );
@@ -331,7 +332,7 @@ const DesignGalleryModal = ({ onClose }: { onClose: () => void }) => {
         <>
             <div className="design-modal" style={{display: 'block'}}>
                 <div className="design-modal-content">
-                    <button className="design-modal-close" onClick={onClose}>&times;</button>
+                    <button className="design-modal-close" onClick={onClose} aria-label="Close gallery"><X /></button>
                     <div className="design-categories">
                         <button className={`category-btn ${category === 'all' ? 'active' : ''}`} onClick={() => handleFilter('all')}>All</button>
                         {Object.keys(designData).map(cat => (
@@ -343,7 +344,7 @@ const DesignGalleryModal = ({ onClose }: { onClose: () => void }) => {
                     <div className="design-gallery">
                         {images.map((design, index) => (
                             <div key={index} className="design-item" onClick={() => setFullImage({images: images, index: index})}>
-                                <Image src={design.src} alt={design.title} width={250} height={200} data-ai-hint="abstract design"/>
+                                <Image src={design.src} alt={design.title} width={400} height={300} data-ai-hint="graphic design"/>
                                 <div className="design-item-overlay"><h4>{design.title}</h4></div>
                             </div>
                         ))}
