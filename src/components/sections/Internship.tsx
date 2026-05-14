@@ -284,7 +284,7 @@ export default function Internship() {
                 </div>
 
                 <button 
-                  className="next-exp-btn hidden md:flex" 
+                  className="next-exp-btn !hidden md:!flex" 
                   onClick={handleNext}
                   aria-label="Next Experience"
                 >
