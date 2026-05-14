@@ -283,13 +283,16 @@ export default function Internship() {
                   </div>
                 </div>
 
-                <button 
-                  className="next-exp-btn !hidden md:!flex" 
-                  onClick={handleNext}
-                  aria-label="Next Experience"
-                >
-                  Next Experience <ChevronRight size={18} />
-                </button>
+                {/* Wrapped in a div that hides on mobile (md breakpoint) */}
+                <div className="hidden md:block">
+                  <button 
+                    className="next-exp-btn" 
+                    onClick={handleNext}
+                    aria-label="Next Experience"
+                  >
+                    Next Experience <ChevronRight size={18} />
+                  </button>
+                </div>
 
                 <div className="exp-nav-controls">
                   <button className="nav-ctrl-btn" onClick={handlePrev}>
