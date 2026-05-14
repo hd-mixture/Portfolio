@@ -16,23 +16,35 @@ export default function Contact() {
         e.preventDefault();
         
         if (!formRef.current || status === 'sending') return;
+        
+        // Ensure EmailJS script is loaded from layout.tsx
         if (typeof window.emailjs === 'undefined') {
-            console.error('EmailJS script not loaded');
+            console.log('EmailJS script not loaded yet');
             setStatus('error');
             return;
         }
 
         setStatus('sending');
 
-        window.emailjs.sendForm('service_0x9isti', 'template_pn7n1mc', formRef.current, 'lGrdPZlqH_eXVNyV0')
+        // Explicitly initialize with Public Key to ensure connection
+        window.emailjs.init('lGrdPZlqH_eXVNyV0');
+
+        // Send the form using Service ID and Template ID
+        window.emailjs.sendForm('service_0x9isti', 'template_pn7n1mc', formRef.current)
             .then(() => {
                 setStatus('sent');
                 formRef.current?.reset();
-                setTimeout(() => setStatus('idle'), 3000);
-            }, (error: any) => {
-                console.error('EmailJS error:', error);
+                // Reset to idle after 4 seconds
+                setTimeout(() => setStatus('idle'), 4000);
+            })
+            .catch((error: any) => {
+                // Using console.log instead of console.error to avoid Next.js Red Screen Overlay
+                // Detailed error info for debugging:
+                console.log('EmailJS Error Details:', error?.text || error || 'Check Service/Template IDs');
+                
                 setStatus('error');
-                setTimeout(() => setStatus('idle'), 3000);
+                // Reset to idle after 4 seconds to allow retry
+                setTimeout(() => setStatus('idle'), 4000);
             });
     };
 
@@ -41,7 +53,7 @@ export default function Contact() {
             case 'sending':
                 return (
                     <>
-                        <span className="sending-spinner">
+                        <span className="sending-spinner mr-2">
                             <i className="fa-solid fa-spinner fa-spin"></i>
                         </span>
                         Sending...
@@ -84,6 +96,7 @@ export default function Contact() {
                     type="submit" 
                     disabled={status === 'sending'} 
                     suppressHydrationWarning
+                    className="transition-all duration-300"
                     style={{
                         backgroundColor: status === 'sent' ? '#4CAF50' : status === 'error' ? '#f44336' : '',
                     }}
