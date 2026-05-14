@@ -1803,14 +1803,14 @@ li a:hover {
         display: flex;
         gap: 6px;
     }
-    .nav-dot {
+    .nav-indicator .nav-dot {
         width: 8px;
         height: 8px;
         background: var(--border-color);
         border-radius: 50%;
         transition: all 0.3s ease;
     }
-    .nav-dot.active {
+    .nav-indicator .nav-dot.active {
         background: var(--primary-color);
         width: 20px;
         border-radius: 4px;
@@ -1864,7 +1864,7 @@ li a:hover {
     z-index: 5;
 }
 
-.gap-dot {
+.timeline-gap-indicator .gap-dot {
     width: 8px;
     height: 8px;
     background: #e0e0e0;
@@ -1873,7 +1873,7 @@ li a:hover {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.dark .gap-dot {
+.dark .timeline-gap-indicator .gap-dot {
     background: #333;
     border-color: #1a1a1a;
 }
@@ -2023,7 +2023,7 @@ li a:hover {
 .design-modal {
     display: none;
     position: fixed;
-    z-index: 1000000;
+    z-index: 10000000;
     left: 0;
     top: 0;
     width: 100%;
@@ -2150,7 +2150,7 @@ li a:hover {
 .full-image-modal {
     display: none;
     position: fixed;
-    z-index: 1000001;
+    z-index: 10000001;
     left: 0;
     top: 0;
     width: 100%;
