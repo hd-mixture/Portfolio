@@ -341,13 +341,15 @@ const DesignGalleryModal = ({ onClose }: { onClose: () => void }) => {
                             </button>
                         ))}
                     </div>
-                    <div className="design-gallery">
-                        {images.map((design, index) => (
-                            <div key={index} className="design-item" onClick={() => setFullImage({images: images, index: index})}>
-                                <Image src={design.src} alt={design.title} width={400} height={300} data-ai-hint="graphic design"/>
-                                <div className="design-item-overlay"><h4>{design.title}</h4></div>
-                            </div>
-                        ))}
+                    <div className="design-gallery-container">
+                      <div className="design-gallery">
+                          {images.map((design, index) => (
+                              <div key={index} className="design-item" onClick={() => setFullImage({images: images, index: index})}>
+                                  <Image src={design.src} alt={design.title} width={400} height={300} data-ai-hint="graphic design"/>
+                                  <div className="design-item-overlay"><h4>{design.title}</h4></div>
+                              </div>
+                          ))}
+                      </div>
                     </div>
                 </div>
             </div>
