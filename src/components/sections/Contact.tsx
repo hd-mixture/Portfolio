@@ -17,19 +17,16 @@ export default function Contact() {
         
         if (!formRef.current || status === 'sending') return;
         
-        // Ensure EmailJS script is loaded from layout.tsx
         if (typeof window.emailjs === 'undefined') {
-            console.log('EmailJS script not loaded yet. Please ensure the CDN script in layout.tsx is correct.');
             setStatus('error');
             return;
         }
 
         setStatus('sending');
 
-        // Explicitly initialize with Public Key (User should ensure this key is correct for their account)
+        // Explicitly initialize with Public Key provided by user
         window.emailjs.init('lGrdPZlqH_eXVNyV0');
 
-        // Using the Service ID and Template ID provided by the user
         const serviceID = 'service_0x9isti';
         const templateID = 'template_pn7n1mc';
 
@@ -38,14 +35,12 @@ export default function Contact() {
                 console.log('EmailJS Success:', response.status, response.text);
                 setStatus('sent');
                 formRef.current?.reset();
-                // Reset to idle after 4 seconds
                 setTimeout(() => setStatus('idle'), 4000);
             })
             .catch((error: any) => {
-                // Using console.log instead of console.error to avoid Next.js Red Screen Overlay
-                console.log('EmailJS Error Details:', error?.text || error || 'Connection Failed');
+                // Use console.log to avoid Next.js Red Error Overlay
+                console.log('EmailJS Error:', error?.text || error || 'Connection Failed');
                 setStatus('error');
-                // Reset to idle after 4 seconds to allow retry
                 setTimeout(() => setStatus('idle'), 4000);
             });
     };
@@ -107,10 +102,10 @@ export default function Contact() {
                 </button>
             </form>
             <div className="contact-socials">
-                <a href="https://www.linkedin.com/in/hdmixture/" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/hd_mixture/ss" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a>
-                <a href="https://github.com/hd-mixture" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i></a>
-                <a href="https://wa.link/ey6lzx" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/hdmixture/" target="_blank" rel="noopener noreferrer" suppressHydrationWarning><i className="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/hd_mixture/ss" target="_blank" rel="noopener noreferrer" suppressHydrationWarning><i className="fa-brands fa-instagram"></i></a>
+                <a href="https://github.com/hd-mixture" target="_blank" rel="noopener noreferrer" suppressHydrationWarning><i className="fa-brands fa-github"></i></a>
+                <a href="https://wa.link/ey6lzx" target="_blank" rel="noopener noreferrer" suppressHydrationWarning><i className="fa-brands fa-whatsapp"></i></a>
             </div>
         </section>
     );

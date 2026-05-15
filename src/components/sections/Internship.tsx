@@ -132,6 +132,7 @@ export default function Internship() {
               key={exp.id}
               onClick={() => setActiveIndex(index)}
               className={`mobile-nav-item ${index === activeIndex ? 'active' : ''}`}
+              suppressHydrationWarning
             >
               <div className="mobile-nav-logo">
                 {exp.isCustomLogo ? (
@@ -161,6 +162,7 @@ export default function Internship() {
                     <button
                       onClick={() => setActiveIndex(index)}
                       className={`timeline-dot-interactive ${index === activeIndex ? 'active' : ''} ${exp.status === 'current' ? 'live' : ''}`}
+                      suppressHydrationWarning
                     >
                       <span className="dot-inner"></span>
                     </button>
@@ -203,6 +205,7 @@ export default function Internship() {
                         className="letter-view-btn" 
                         onClick={() => setShowLetter(activeExp.letter)}
                         aria-label="View Experience Letter"
+                        suppressHydrationWarning
                       >
                         <FileText size={20} />
                       </button>
@@ -283,19 +286,19 @@ export default function Internship() {
                   </div>
                 </div>
 
-                {/* Fixed: Only show Next Experience button on desktop screens */}
                 <div className="hidden md:block">
                   <button 
                     className="next-exp-btn" 
                     onClick={handleNext}
                     aria-label="Next Experience"
+                    suppressHydrationWarning
                   >
                     Next Experience <ChevronRight size={18} />
                   </button>
                 </div>
 
                 <div className="exp-nav-controls">
-                  <button className="nav-ctrl-btn" onClick={handlePrev}>
+                  <button className="nav-ctrl-btn" onClick={handlePrev} suppressHydrationWarning>
                     <ChevronLeft size={20} />
                   </button>
                   <div className="nav-indicator">
@@ -303,7 +306,7 @@ export default function Internship() {
                       <div key={i} className={`nav-dot ${i === activeIndex ? 'active' : ''}`} />
                     ))}
                   </div>
-                  <button className="nav-ctrl-btn" onClick={handleNext}>
+                  <button className="nav-ctrl-btn" onClick={handleNext} suppressHydrationWarning>
                     <ChevronRight size={20} />
                   </button>
                 </div>
@@ -322,7 +325,7 @@ export default function Internship() {
                 className="letter-modal-content"
                 onClick={e => e.stopPropagation()}
               >
-                <button className="letter-close-btn" onClick={() => setShowLetter(null)}>
+                <button className="letter-close-btn" onClick={() => setShowLetter(null)} suppressHydrationWarning>
                   <X size={24} />
                 </button>
                 <div className="letter-image-wrapper">
