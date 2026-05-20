@@ -1,3 +1,4 @@
+
 "use client";
 import React from 'react';
 
@@ -26,6 +27,9 @@ export default function About() {
     }, 1200);
   };
 
+  // URL encoded the space for the filename to prevent 404
+  const resumeUrl = "/Darshan%20Prajapati_Resume_8d3ff4d89fa4d8988cba31337f895c82.pdf";
+
   return (
     <section id="about" className="about-section section-reveal">
       <div className="about-accent"></div>
@@ -37,10 +41,11 @@ export default function About() {
           <div className="about-download-btn">
             <a 
               className={`download-resume-icon ${isDownloading ? 'success' : ''}`}
-              href="/Darshan Prajapati_Resume_8d3ff4d89fa4d8988cba31337f895c82.pdf" 
+              href={resumeUrl} 
               download 
               aria-label="Download Resume"
               onClick={handleDownloadClick}
+              suppressHydrationWarning
             >
               <span className="download-tooltip">Download Resume</span>
               <div className="download-icon">

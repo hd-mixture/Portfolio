@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { FormEvent, useRef, useState } from 'react';
@@ -18,6 +19,7 @@ export default function Contact() {
         if (!formRef.current || status === 'sending') return;
         
         if (typeof window.emailjs === 'undefined') {
+            console.log('EmailJS SDK not loaded');
             setStatus('error');
             return;
         }
@@ -39,7 +41,7 @@ export default function Contact() {
             })
             .catch((error: any) => {
                 // Use console.log to avoid Next.js Red Error Overlay
-                console.log('EmailJS Error:', error?.text || error || 'Connection Failed');
+                console.log('EmailJS Error Detail:', error?.text || error || 'Connection Failed');
                 setStatus('error');
                 setTimeout(() => setStatus('idle'), 4000);
             });
