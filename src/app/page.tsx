@@ -7,9 +7,11 @@ import Achievements from "@/components/sections/Achievements";
 import TechStack from "@/components/sections/TechStack";
 import Testimonials from "@/components/sections/Testimonials";
 import Skills from "@/components/sections/Skills";
+import PortfolioSwitcher from "@/components/PortfolioSwitcher";
+import DesignerLayout from "@/components/designer/DesignerLayout";
 
 export default function Home() {
-  return (
+  const developerContent = (
     <>
       <Hero />
       <About />
@@ -21,5 +23,14 @@ export default function Home() {
       <Contact />
       <Testimonials />
     </>
+  );
+
+  const designerContent = <DesignerLayout />;
+
+  return (
+    <PortfolioSwitcher 
+      developerContent={developerContent} 
+      designerContent={designerContent} 
+    />
   );
 }

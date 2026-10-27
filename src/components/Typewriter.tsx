@@ -2,19 +2,29 @@
 
 import { useState, useEffect } from 'react';
 
-const phrases = [
-    "Design the Unseen",
-    "Develop the Unbuilt",
-    "Deliver the Unforgettable"
-];
+interface TypewriterProps {
+    phrases?: string[];
+    speed?: number;
+    delay?: number;
+    loop?: boolean;
+    className?: string;
+}
 
-export default function Typewriter() {
+export default function Typewriter({ 
+    phrases = ["Design the Unseen", "Develop the Unbuilt", "Deliver the Unforgettable"],
+    speed = 80,
+    delay = 1500,
+    loop = true,
+    className = "typewriter-text"
+}: TypewriterProps) {
     const [text, setText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);
-    const [typingSpeed, setTypingSpeed] = useState(150);
+    const [typingSpeed, setTypingSpeed] = useState(speed);
 
     useEffect(() => {
+        if (!phrases || phrases.length === 0) return;
+
         const handleType = () => {
             const i = loopNum % phrases.length;
             const fullText = phrases[i];
@@ -26,13 +36,16 @@ export default function Typewriter() {
             );
             
             if (isDeleting) {
-                setTypingSpeed(30);
+                setTypingSpeed(speed / 2); // Deleting is usually faster
             } else {
-                setTypingSpeed(150);
+                setTypingSpeed(speed);
             }
 
             if (!isDeleting && text === fullText) {
-                setTimeout(() => setIsDeleting(true), 1000);
+                if (!loop && loopNum === phrases.length - 1) {
+                    return; // Stop at the end if not looping
+                }
+                setTimeout(() => setIsDeleting(true), delay);
             } else if (isDeleting && text === '') {
                 setIsDeleting(false);
                 setLoopNum(loopNum + 1);
@@ -40,9 +53,8 @@ export default function Typewriter() {
         };
 
         const timer = setTimeout(handleType, typingSpeed);
-
         return () => clearTimeout(timer);
-    }, [text, isDeleting, loopNum, typingSpeed]);
+    }, [text, isDeleting, loopNum, typingSpeed, phrases, speed, delay, loop]);
 
-    return <span className="typewriter-text">{text}</span>;
+    return <span className={className}>{text}</span>;
 }

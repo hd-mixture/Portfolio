@@ -2,246 +2,38 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 
-type ProjectStatus = 'completed' | 'ongoing' | 'live';
+export type ProjectStatus = 'completed' | 'ongoing' | 'live';
 
-interface TechStackItem {
+export interface TechStackItem {
   icon: string;
   name: string;
 }
 
-export const projectsData = [
-  {
-    date: "Feb 2026 - Apr 2026",
-    title: "CyberAegXs",
-    description: "CyberAegXs is an AI-powered PDF Security and Management Platform designed for secure and smart document handling. It combines advanced PDF productivity tools with modern authentication, cloud storage, and premium subscription access.",
-    liveLink: "https://cyberaegxs.hdmixture.site/",
-    codeLink: "https://github.com/hd-mixture/CyberAegXs.git",
-    icon: <Image src="https://cyberaegxs.hdmixture.site/CyberAegXs%20Logo.png" alt="CyberAegXs Logo" width={48} height={48} data-ai-hint="security logo" />,
-    timelineIcon: <i className="fa-solid fa-file-shield"></i>,
-    status: 'completed' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-react', name: 'React' },
-      { icon: 'fa-solid fa-fire', name: 'Firebase' },
-      { icon: 'fa-brands fa-js', name: 'JavaScript' },
-      { icon: 'fa-solid fa-brain', name: 'AI' }
-    ]
-  },
-  {
-    date: "Jul 2025 - Ongoing",
-    title: "DevTeXhHub",
-    description: "DevTeXhHub is a modern, full-featured project management application designed to streamline workflows for software development teams. It provides distinct, role-based dashboards for Admins, Managers, Developers, QAs, and Designers, ensuring that every team member has the tools they need to be productive.",
-    liveLink: null,
-    codeLink: null,
-    icon: <Image src="/Project Logo/DevTeXhHub Logo.png" alt="DevTeXhHub Logo" width={48} height={48} data-ai-hint="modern logo" />,
-    timelineIcon: <i className="fa-solid fa-tasks"></i>,
-    status: 'ongoing' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-react', name: 'React' },
-      { icon: 'fa-brands fa-node-js', name: 'Node.js' },
-      { icon: 'fa-solid fa-database', name: 'MongoDB' },
-      { icon: 'fa-brands fa-js', name: 'JavaScript' }
-    ]
-  },
-  {
-    date: "Jun 2025 - Jul 2025",
-    title: "Cardify",
-    description: "Cardify is a modern, web-based application that allows users to effortlessly create, customize, and download professional virtual visiting cards. With a live preview and a wide range of customization options, creating your perfect digital card has never been easier.",
-    liveLink: "https://cardify.hdmixture.site",
-    codeLink: "https://github.com/hd-mixture/Cardify.git",
-    icon: <Image src="/Project Logo/Cardify Logo.png" alt="Cardify Logo" width={48} height={48} data-ai-hint="visiting card" />,
-    timelineIcon: <i className="fa-solid fa-address-card"></i>,
-    status: 'completed' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-html5', name: 'HTML5' },
-      { icon: 'fa-brands fa-css3-alt', name: 'CSS3' },
-      { icon: 'fa-brands fa-js', name: 'JavaScript' },
-      { icon: 'fa-brands fa-react', name: 'React' }
-    ]
-  },
-  {
-    date: "Mar 2020 - Ongoing",
-    title: "Graphic Designs",
-    description: "A showcase of my creative graphic design works, including posters, banners, logos, and more.",
-    portfolioLink: true,
-    behanceLink: "https://www.behance.net/hd_mixture",
-    icon: <i className="fa-solid fa-palette"></i>,
-    timelineIcon: <i className="fa-solid fa-palette"></i>,
-    status: 'ongoing' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-figma', name: 'Figma' },
-      { icon: 'fa-solid fa-palette', name: 'Graphic Design' },
-      { icon: 'fa-solid fa-pen-nib', name: 'Illustrator' }
-    ]
-  },
-  {
-    date: "Jan 2025 - May 2025",
-    title: "Campus Cuisine 2.0",
-    description: "Upgraded the UI/UX, added real-time ordering features, and role-based admin functionalities.",
-    liveLink: "https://hd-mixture.github.io/Campus-Cuisine-2/",
-    codeLink: "https://github.com/hd-mixture/Campus-Cuisine-2",
-    icon: <Image src="/Project Logo/Campus_Cuisine_Logo_.2.0.png" alt="Campus Cuisine 2.0 Logo" width={48} height={48} data-ai-hint="modern food" />,
-    timelineIcon: <i className="fa-solid fa-utensils"></i>,
-    status: 'completed' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-react', name: 'React' },
-      { icon: 'fa-brands fa-node-js', name: 'Node.js' },
-      { icon: 'fa-solid fa-fire', name: 'Firebase' },
-      { icon: 'fa-brands fa-js', name: 'JavaScript' }
-    ]
-  },
-  {
-    date: "Feb 2025 - Apr 2025",
-    title: "Save & Share",
-    description: "Designed a donation network connecting food donors, NGOs, and volunteers using PHP.",
-    liveLink: "https://github.com/100rabx23/Save-Share.git",
-    codeLink: "https://github.com/100rabx23/Save-Share.git",
-    icon: <Image src="/Project Logo/save_share_logo.png" alt="Save & Share Logo" width={48} height={48} data-ai-hint="charity logo" />,
-    timelineIcon: <i className="fa-solid fa-hand-holding-heart"></i>,
-    status: 'completed' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-php', name: 'PHP' },
-      { icon: 'fa-solid fa-database', name: 'MySQL' },
-      { icon: 'fa-brands fa-html5', name: 'HTML5' }
-    ]
-  },
-  {
-    date: "Oct 2024 - Present",
-    title: "ABHAR : AI-Home Robot",
-    description: "Built an automation robot to control home appliances via voice commands and sensors. Programmed using G-Code and C++.",
-    liveLink: "https://epicpjm05.github.io/ABHAR/WEb",
-    codeLink: "https://github.com/EPICPJM05/ABHAR.git",
-    icon: <Image src="/Project Logo/ABHAR Orange Resize Logo.png" alt="ABHAR Logo" width={48} height={48} data-ai-hint="robot logo" />,
-    timelineIcon: <i className="fa-solid fa-robot"></i>,
-    status: 'live' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-solid fa-microchip', name: 'Hardware' },
-      { icon: 'fa-solid fa-code', name: 'C++' },
-      { icon: 'fa-solid fa-robot', name: 'Robotics' }
-    ]
-  },
-  {
-    date: "Apr 2025 - Apr 2025",
-    title: "BitTRiX AI : Automated Test Agent",
-    description: "Developed a smart testing system to generate and integrate with CI/CD tools using Python.",
-    liveLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
-    codeLink: "https://github.com/EPICPJM05/NU-Thon-Bittrix.git",
-    icon: <Image src="/Project Logo/BitTRix Logo.jpg" alt="BitTRiX AI Logo" width={48} height={48} data-ai-hint="ai logo" />,
-    timelineIcon: <i className="fa-solid fa-microchip"></i>,
-    status: 'completed' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-python', name: 'Python' },
-      { icon: 'fa-solid fa-brain', name: 'AI' },
-      { icon: 'fa-brands fa-github', name: 'CI/CD' }
-    ]
-  },
-  {
-    date: "Mar 2024 - Jun 2024",
-    title: "Campus Cuisine",
-    description: "Built a web app for students to discover and review affordable meals on campus.",
-    liveLink: "https://hd-mixture.github.io/Campus-Cuisine/",
-    codeLink: "https://github.com/hd-mixture/Campus-Cuisine.git",
-    icon: <Image src="/Project Logo/Campus Cuisin Logo Black.png" alt="Campus Cuisine Logo" width={48} height={48} data-ai-hint="food logo" />,
-    timelineIcon: <i className="fa-solid fa-utensils"></i>,
-    status: 'completed' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-html5', name: 'HTML5' },
-      { icon: 'fa-brands fa-css3-alt', name: 'CSS3' },
-      { icon: 'fa-brands fa-js', name: 'JavaScript' }
-    ]
-  },
-  {
-    date: "Aug 2023 - Sep 2023",
-    title: "Driving Licence App",
-    description: "Designed a user-friendly interface to apply, check documents, and track driving licence.",
-    liveLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
-    codeLink: "https://github.com/hd-mixture/DrivingLicenceApplicaion.git",
-    icon: <Image src="/Project Logo/Driving Licence App Logo.png" alt="Driving Licence App Logo" width={48} height={48} data-ai-hint="card document" />,
-    timelineIcon: <i className="fa-solid fa-id-card"></i>,
-    status: 'completed' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-android', name: 'Android' },
-      { icon: 'fa-brands fa-java', name: 'Java' },
-      { icon: 'fa-solid fa-database', name: 'SQLite' }
-    ]
-  },
-  {
-    date: "Aug 2022 - Sep 2022",
-    title: "Nearby Places",
-    description: "Created an Android app using Google Maps API to display nearby essential locations.",
-    liveLink: "https://github.com/hd-mixture/Nearby-Places.git",
-    codeLink: "https://github.com/hd-mixture/Nearby-Places.git",
-    icon: <Image src="/Project Logo/Nearby Place Logo.png?v=2" alt="Nearby Places Logo" width={48} height={48} data-ai-hint="location pin" />,
-    timelineIcon: <i className="fa-solid fa-location-dot"></i>,
-    status: 'completed' as ProjectStatus,
-    techStack: [
-      { icon: 'fa-brands fa-android', name: 'Android' },
-      { icon: 'fa-brands fa-google', name: 'Google Maps API' },
-      { icon: 'fa-solid fa-location-dot', name: 'GPS' }
-    ]
-  }
-];
+export interface ProjectData {
+  _id?: string;
+  date: string;
+  title: string;
+  description: string;
+  liveLink: string | null;
+  codeLink: string | null;
+  portfolioLink?: boolean;
+  behanceLink?: string;
+  iconSrc?: string;
+  iconClass?: string;
+  timelineIconClass: string;
+  status: ProjectStatus;
+  techStack: TechStackItem[];
+}
 
-const designData = {
-    android: [
-        { src: "/Graphic Designs/Android_Screen_Images/IMG-20250408-WA0020.jpg", title: "Driving Licence Application Splash Screen" },
-        { src: "/Graphic Designs/Android_Screen_Images/IMG-20250408-WA0021.jpg", title: "Driving Licence Application Register Screen" },
-        { src: "/Graphic Designs/Android_Screen_Images/IMG-20250408-WA0022.jpg", title: "Driving Licence Application Login Screen" },
-        { src: "/Graphic Designs/Android_Screen_Images/IMG-20250408-WA0024.jpg", title: "Driving Licence Application Categories Screen" },
-        { src: "/Graphic Designs/Android_Screen_Images/IMG-20250408-WA0025.jpg", title: "Driving Licence Application Categories Screen " }
-    ],
-    web: [
-        { src: "/Graphic Designs/Web_Screen_Images/Webpage Design_1.png", title: "Campus Cuisine 2 Home Page" },
-        { src: "/Graphic Designs/Web_Screen_Images/Webpage Design_2.png", title: "Campus Cuisine 2 Login Page" },
-        { src: "/Graphic Designs/Web_Screen_Images/Webpage Design_3.png", title: "Campus Cuisine 2 Order Page" },
-        { src: "/Graphic Designs/Web_Screen_Images/Webpage Design_4.png", title: "Campus Cuisine 2 Order Checkout Page" },
-        { src: "/Graphic Designs/Web_Screen_Images/Webpage Design_5.png", title: "Campus Cuisine 2 Dashboard" },
-        { src: "/Graphic Designs/Web_Screen_Images/Webpage Design_6.png", title: "Campus Cuisine 2 Delivery Page" },
-        { src: "/Graphic Designs/Web_Screen_Images/Webpage Design_7.png", title: "Campus Cuisine 2 About Page" },
-        { src: "/Graphic Designs/Web_Screen_Images/Webpage Design_8.png", title: "Campus Cuisine 2 Contact Page" }
-    ],
-    banners: [
-        { src: "/Graphic Designs/Banner/Blood Donation E-Banner_.jpg", title: "UPL Blood Donation Banner" },
-        { src: "/Graphic Designs/Banner/BOD Navrati Banner.png", title: "UPL Navratri Banner" },
-        { src: "/Graphic Designs/Banner/Diploma Summer Result 2024 Banner.png", title: "UPL Result Standy Banner" },
-        { src: "/Graphic Designs/Banner/IMG-20250311-WA0023.jpg", title: "UPL Admission Banner 2025 - 26" },
-        { src: "/Graphic Designs/Banner/Main Banner.png", title: "UPL Ganpati Hostel Banner" },
-        { src: "/Graphic Designs/Banner/Sec- Tec Banner Graphic Poster Final Day.jpg", title: "UPL Sci - Technovation 2022 Graphic Banner" },
-        { src: "/Graphic Designs/Banner/Sec- Tec Game Banner.jpg", title: "UPL Sci - Technovation 2022 Mobile Game Banner" },
-        { src: "/Graphic Designs/Banner/σ Banner.jpg", title: "Sigma Night Standy Banner" }
-    ],
-    certificates: [
-        { src: "/Graphic Designs/Certificate/BOD Potery Certificate - 2.jpg", title: "UPL Certificate Design 1" },
-        { src: "/Graphic Designs/Certificate/Certificate on Webinar.jpg", title: "UPL Certificate Design 2" },
-        { src: "/Graphic Designs/Certificate/WordPrees Certificate_.jpg", title: "UPL Certificate Design 3" }
-    ],
-    logos: [
-        { src: "/Graphic Designs/Logos/ABHAR Orange Resize Logo.png", title: "ABHAR Logo" },
-        { src: "/Graphic Designs/Logos/BIttStock App Logo.png", title: "Bittstock Logo" },
-        { src: "/Graphic Designs/Logos/Campus Cuisin Logo.jpg", title: "Campus Cuisine Logo" },
-        { src: "/Graphic Designs/Logos/Driving Licence App Logo.png", title: "Driving Licence Logo" },
-        { src: "/Graphic Designs/Logos/Netflix Unlock Creative Logo.png", title: "COHORT Logo" },
-        { src: "/Graphic Designs/Logos/Neural Grafix Logo.png", title: "Neural Grafix Logo" },
-        { src: "/Graphic Designs/Logos/save_share_logo1.png", title: "Save & Share Logo" },
-        { src: "/Graphic Designs/Logos/YASHODA Logo.png", title: "Yashoda Furniture Logo" },
-        { src: "/Graphic Designs/Logos/K-Naturals Logo.jpg", title: "Krishna Naturals Logo" }
-    ],
-    posters: [
-        { src: "/Graphic Designs/Posters/BOD Blood Donation Poster.jpg", title: "Rotaract Rakt Kundali Post" },
-        { src: "/Graphic Designs/Posters/BOD Freshers Poster Beginning.jpg", title: "Rotaract Brizzy Night Post" },
-        { src: "/Graphic Designs/Posters/BOD Ganesh Mahotsav Poster.jpg", title: "Rotaract Ganpati Banner" },
-        { src: "/Graphic Designs/Posters/BOD Independence Day.jpg", title: "Rotaract 76th Independence Day Post" },
-        { src: "/Graphic Designs/Posters/BOD Letter Exchange PanColombo.jpg", title: "Rotaract Letterhead Poster" },
-        { src: "/Graphic Designs/Posters/BOD National Cinema Day.jpg", title: "Rotaract National Cinema Day Post" },
-        { src: "/Graphic Designs/Posters/BOD Physically Challenged Poster Page 3.jpg", title: "Rotaract Medical Camp Post" },
-        { src: "/Graphic Designs/Posters/BOD Raksha_Bandhan.jpg", title: "Rotaract Raksha Bhandhan Post" },
-        { src: "/Graphic Designs/Posters/BOD World Physo Day.jpg", title: "Rotaract Word Physo Day Post" },
-        { src: "/Graphic Designs/Posters/BOD મિત્રતા - એક संबंध.jpg", title: "Rotaract મિત્રતા - એક संबंध Post" }
-    ]
-};
-
-const allDesigns = Object.values(designData).flat();
+export interface DesignItem {
+  _id?: string;
+  category: string;
+  src: string;
+  title: string;
+}
 
 const FullImageSlider = ({ images, startIndex, onClose }: { images: {src: string, title: string}[], startIndex: number, onClose: () => void }) => {
     const [currentIndex, setCurrentIndex] = useState(startIndex);
@@ -261,7 +53,7 @@ const FullImageSlider = ({ images, startIndex, onClose }: { images: {src: string
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, []);
+    }, [images, onClose, goToPrev, goToNext]);
 
     const onTouchStart = (e: React.TouchEvent) => {
         setTouchEnd(null);
@@ -316,15 +108,34 @@ const FullImageSlider = ({ images, startIndex, onClose }: { images: {src: string
 
 const DesignGalleryModal = ({ onClose }: { onClose: () => void }) => {
     const [category, setCategory] = useState('all');
-    const [images, setImages] = useState(allDesigns);
+    const [allDesigns, setAllDesigns] = useState<DesignItem[]>([]);
+    const [images, setImages] = useState<DesignItem[]>([]);
     const [fullImage, setFullImage] = useState<{images: {src: string, title: string}[], index: number} | null>(null);
+    const [categories, setCategories] = useState<string[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/designs`)
+            .then(res => res.json())
+            .then(data => {
+                setAllDesigns(data);
+                setImages(data);
+                const uniqueCategories = Array.from(new Set(data.map((item: DesignItem) => item.category))) as string[];
+                setCategories(uniqueCategories);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+            });
+    }, []);
 
     const handleFilter = (cat: string) => {
         setCategory(cat);
         if (cat === 'all') {
             setImages(allDesigns);
         } else {
-            setImages((designData as any)[cat]);
+            setImages(allDesigns.filter(d => d.category === cat));
         }
     };
     
@@ -335,7 +146,7 @@ const DesignGalleryModal = ({ onClose }: { onClose: () => void }) => {
                     <button className="design-modal-close" onClick={onClose} aria-label="Close gallery"><X /></button>
                     <div className="design-categories">
                         <button className={`category-btn ${category === 'all' ? 'active' : ''}`} onClick={() => handleFilter('all')}>All</button>
-                        {Object.keys(designData).map(cat => (
+                        {categories.map(cat => (
                             <button key={cat} className={`category-btn ${category === cat ? 'active' : ''}`} onClick={() => handleFilter(cat)}>
                                 {cat.charAt(0).toUpperCase() + cat.slice(1)}
                             </button>
@@ -343,7 +154,7 @@ const DesignGalleryModal = ({ onClose }: { onClose: () => void }) => {
                     </div>
                     <div className="design-gallery-container">
                       <div className="design-gallery">
-                          {images.map((design, index) => (
+                          {loading ? <p>Loading designs...</p> : images.map((design, index) => (
                               <div key={index} className="design-item" onClick={() => setFullImage({images: images, index: index})}>
                                   <Image src={design.src} alt={design.title} width={400} height={300} data-ai-hint="graphic design"/>
                                   <div className="design-item-overlay"><h4>{design.title}</h4></div>
@@ -358,44 +169,344 @@ const DesignGalleryModal = ({ onClose }: { onClose: () => void }) => {
     );
 };
 
-const ProjectLinks = ({ project, openDesignModal }: { project: any, openDesignModal: (e: React.MouseEvent) => void }) => {
-    const disabledStyle = { cursor: 'not-allowed', opacity: 0.5 };
+
+
+const getBrandColor = (name: string) => {
+    const lowerName = name.toLowerCase();
+    if (lowerName.includes('react')) return { light: '#3b82f6', dark: '#60a5fa' };
+    if (lowerName.includes('node')) return { light: '#22c55e', dark: '#4ade80' };
+    if (lowerName.includes('express')) return { light: '#475569', dark: '#94a3b8' };
+    if (lowerName.includes('mongo')) return { light: '#16a34a', dark: '#4ade80' };
+    if (lowerName.includes('firebase')) return { light: '#f59e0b', dark: '#fbbf24' };
+    if (lowerName.includes('tailwind')) return { light: '#0ea5e9', dark: '#38bdf8' };
+    if (lowerName.includes('next')) return { light: '#000000', dark: '#ffffff' };
+    if (lowerName.includes('typescript')) return { light: '#2563eb', dark: '#60a5fa' };
+    if (lowerName.includes('javascript')) return { light: '#eab308', dark: '#fde047' };
+    if (lowerName.includes('python')) return { light: '#3b82f6', dark: '#60a5fa' };
+    if (lowerName.includes('html')) return { light: '#ea580c', dark: '#fb923c' };
+    if (lowerName.includes('css')) return { light: '#2563eb', dark: '#60a5fa' };
+    return { light: '#6C63FF', dark: '#818cf8' };
+};
+
+const hexToRgb = (hex: string) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `${r}, ${g}, ${b}`;
+};
+
+const PremiumProjectCard = ({ project, index, openDesignModal, activeIndex, setActiveIndex }: { project: ProjectData, index: number, openDesignModal: any, activeIndex: number | null, setActiveIndex: (i: number) => void }) => {
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { margin: "-40% 0px -40% 0px" });
+    const side = index % 2 === 0 ? 'right' : 'left';
     
-    if (project.portfolioLink) {
-        return (
-            <>
-                <a href="#" className="project-link" onClick={openDesignModal}><i className="fa-solid fa-image"></i> View Portfolio</a>
-                {project.behanceLink && <Link href={project.behanceLink} className="project-link" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-behance"></i> View Behance</Link>}
-            </>
-        );
-    }
+    useEffect(() => {
+        if (isInView) {
+            setActiveIndex(index);
+        }
+    }, [isInView, index, setActiveIndex]);
+
+    const isActive = activeIndex === index;
+    const isPrev = activeIndex !== null && index === activeIndex - 1;
+    const isNext = activeIndex !== null && index === activeIndex + 1;
+
+    const nodeTranslateY = isPrev ? 4 : isNext ? -4 : 0;
+    
+    const containerVariants = {
+        hidden: { opacity: 0, y: 60 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { 
+                duration: 0.7, 
+                ease: "easeOut",
+                staggerChildren: 0.1,
+                delayChildren: 0.3
+            } 
+        }
+    };
+
+    const getAutomaticIcon = (project: ProjectData) => {
+        const titleStr = project.title?.toLowerCase() || '';
+        const descStr = project.description?.toLowerCase() || '';
+        const techStr = project.techStack?.map(t => t.name.toLowerCase()).join(' ') || '';
+        const fullStr = `${titleStr} ${descStr} ${techStr}`;
+
+        if (fullStr.includes('e-commerce') || fullStr.includes('shop') || fullStr.includes('cart') || fullStr.includes('store')) return 'fa-solid fa-cart-shopping';
+        if (fullStr.includes('dashboard') || fullStr.includes('admin') || fullStr.includes('analytics')) return 'fa-solid fa-chart-line';
+        if (fullStr.includes('portfolio') || fullStr.includes('personal website') || fullStr.includes('resume')) return 'fa-solid fa-user-tie';
+        if (fullStr.includes('blog') || fullStr.includes('article') || fullStr.includes('content')) return 'fa-solid fa-blog';
+        if (fullStr.includes('social') || fullStr.includes('chat') || fullStr.includes('messaging') || fullStr.includes('connect')) return 'fa-solid fa-comments';
+        if (fullStr.includes('mobile') || fullStr.includes('app') || fullStr.includes('android') || fullStr.includes('ios')) return 'fa-solid fa-mobile-screen-button';
+        if (fullStr.includes('game') || fullStr.includes('gaming') || fullStr.includes('play')) return 'fa-solid fa-gamepad';
+        if (fullStr.includes('ai') || fullStr.includes('machine learning') || fullStr.includes('bot') || fullStr.includes('artificial intelligence')) return 'fa-solid fa-robot';
+        if (fullStr.includes('design') || fullStr.includes('ui/ux') || fullStr.includes('figma')) return 'fa-solid fa-pen-nib';
+        
+        return 'fa-solid fa-code'; // default fallback
+    };
+
+    const renderIcon = (proj: ProjectData) => {
+        // Use explicitly defined icons first
+        if (proj.timelineIconClass && proj.timelineIconClass !== 'fa-solid fa-code') {
+            return <i className={proj.timelineIconClass}></i>;
+        }
+        if (proj.iconClass && proj.iconClass !== 'fa-solid fa-code') {
+            return <i className={proj.iconClass}></i>;
+        }
+        
+        // Use automatic detection logic
+        return <i className={getAutomaticIcon(proj)}></i>;
+    };
+
+    const parts = project.description.split('. ');
+    const subtitle = parts.length > 1 ? parts[0] + '.' : 'Development Project';
+    const descBody = parts.length > 1 ? parts.slice(1).join('. ') : project.description;
 
     return (
-        <>
-            {project.liveLink ? (
-                <Link href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer">
-                    <i className="fa-solid fa-globe"></i> View Live
-                </Link>
-            ) : (
-                <span className="project-link" style={disabledStyle}>
-                    <i className="fa-solid fa-globe"></i> View Live
-                </span>
-            )}
-            {project.codeLink ? (
-                <Link href={project.codeLink} className="project-link" target="_blank" rel="noopener noreferrer">
-                    <i className="fa-brands fa-github"></i> View Code
-                </Link>
-            ) : (
-                <span className="project-link" style={disabledStyle}>
-                    <i className="fa-brands fa-github"></i> View Code
-                </span>
-            )}
-        </>
+        <div className={`premium-timeline-row ${side} ${isActive ? 'magnetic-active' : ''} ${isPrev ? 'magnetic-prev' : ''} ${isNext ? 'magnetic-next' : ''}`}>
+            {/* Left/Right Card Area */}
+            <div className="premium-timeline-col content-col">
+                <motion.div 
+                    ref={cardRef}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.1, margin: "-10%" }}
+                    whileHover={{ y: -10, rotateX: 2, rotateY: -2, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+                    style={{ perspective: 1000 }}
+                    className={`premium-project-card new-style ${isActive ? 'focused' : 'unfocused'} ${side === 'left' ? 'flipped' : ''}`}
+                >
+                    {project.iconSrc && (
+                        <div className="project-corner-logo">
+                            <img src={project.iconSrc} alt={`${project.title} logo`} />
+                        </div>
+                    )}
+                    <div className="card-top-badges">
+                        {index === 0 && <div className="featured-badge"><i className="fa-solid fa-star"></i></div>}
+                        <div className={`status-badge ${project.status}`}>
+                            <span className="status-dot"></span>
+                            {project.status === 'live' || project.status === 'ongoing' ? 'Ongoing' : 'Completed'}
+                        </div>
+                    </div>
+
+                    <div className="card-content-split">
+                        {project.liveLink ? (
+                            <div className="card-browser-preview">
+                                <div className="browser-header">
+                                    <div className="mac-dots"><span></span><span></span><span></span></div>
+                                    <div className="address-bar"><i className="fa-solid fa-lock"></i> {project.title.toLowerCase().replace(/\s/g, '')}.com</div>
+                                </div>
+                                <div className="browser-content">
+                                    <iframe src={project.liveLink} className="live-preview-iframe" tabIndex={-1} scrolling="no" />
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="card-browser-preview internal-mode">
+                                <div className="browser-header">
+                                    <div className="mac-dots"><span></span><span></span><span></span></div>
+                                    <div className="address-bar"><i className="fa-solid fa-lock"></i> internal-project.local</div>
+                                </div>
+                                <div className="browser-content internal-content">
+                                    <div className="glass-lock-container">
+                                        <div className="glass-lock-icon">
+                                            <i className="fa-solid fa-laptop-code"></i>
+                                        </div>
+                                        <h4 className="glass-lock-title">Preview Coming Soon</h4>
+                                        <p className="glass-lock-desc">The deployment environment is currently being configured. Please check back later.</p>
+                                    </div>
+                                    <div className="glass-ambient-blob blob-1"></div>
+                                    <div className="glass-ambient-blob blob-2"></div>
+                                </div>
+                            </div>
+                        )}
+                        
+                        <div className="card-project-info">
+                            <div className="info-main">
+                                <h3>{project.title}</h3>
+                                <h4>{subtitle}</h4>
+                                <p className="description">{descBody}</p>
+                            </div>
+                            
+                            <div className="info-divider"></div>
+                            
+                            {project.techStack && project.techStack.length > 0 && (
+                                <motion.div 
+                                    className="tech-stack-badges"
+                                    animate={isActive ? "visible" : "hidden"}
+                                    variants={{
+                                        hidden: { opacity: 0 },
+                                        visible: { opacity: 1, transition: { staggerChildren: 0.08 } }
+                                    }}
+                                >
+                                    {project.techStack.map((tech: TechStackItem, i: number) => {
+                                        const color = getBrandColor(tech.name);
+                                        const rgbLight = hexToRgb(color.light);
+                                        const rgbDark = hexToRgb(color.dark);
+                                        return (
+                                            <motion.div 
+                                                key={i} 
+                                                className="tech-badge" 
+                                                data-tooltip={tech.name}
+                                                variants={{
+                                                    hidden: { opacity: 0, y: 15 },
+                                                    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120, damping: 14 } }
+                                                }}
+                                                style={{
+                                                    '--badge-color-light': color.light,
+                                                    '--badge-color-dark': color.dark,
+                                                    '--badge-bg-light': `rgba(${rgbLight}, 0.08)`,
+                                                    '--badge-bg-dark': `rgba(${rgbDark}, 0.15)`,
+                                                    '--badge-border-light': `rgba(${rgbLight}, 0.2)`,
+                                                    '--badge-border-dark': `rgba(${rgbDark}, 0.3)`
+                                                } as React.CSSProperties}
+                                            >
+                                                <i className={tech.icon} style={{ flexShrink: 0 }}></i> <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{tech.name}</span>
+                                            </motion.div>
+                                        );
+                                    })}
+                                </motion.div>
+                            )}
+
+                            <motion.div 
+                                className="card-actions"
+                                animate={isActive ? "visible" : "hidden"}
+                                variants={{
+                                    hidden: { opacity: 0 },
+                                    visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.2 } }
+                                }}
+                            >
+                                <div className="primary-actions">
+                                    <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120, damping: 14 } } }}>
+                                        {project.liveLink ? (
+                                            <Link href={project.liveLink} className="premium-btn primary" target="_blank" rel="noopener noreferrer">
+                                                <i className="fa-solid fa-globe"></i> <span>Live Demo</span>
+                                                <ArrowRight size={16} className="btn-arrow" />
+                                            </Link>
+                                        ) : (
+                                            <span className="premium-btn primary disabled" style={{ cursor: 'not-allowed', opacity: 0.5 }}>
+                                                <i className="fa-solid fa-globe"></i> <span>Live Demo</span>
+                                            </span>
+                                        )}
+                                    </motion.div>
+                                    <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120, damping: 14 } } }}>
+                                        {project.codeLink ? (
+                                            <Link href={project.codeLink} className="premium-btn secondary-btn" target="_blank" rel="noopener noreferrer">
+                                                <i className="fa-brands fa-github"></i> <span>GitHub</span>
+                                            </Link>
+                                        ) : (
+                                            <span className="premium-btn secondary-btn disabled" style={{ cursor: 'not-allowed', opacity: 0.5 }}>
+                                                <i className="fa-brands fa-github"></i> <span>GitHub</span>
+                                            </span>
+                                        )}
+                                    </motion.div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+            
+            {/* Center Node Area */}
+            <div className="premium-timeline-col center-col">
+                <div className="timeline-connector"></div>
+                <div className={`premium-timeline-node ${isActive ? 'active' : 'idle'} group relative`}>
+                    <div className="node-glass-ring"></div>
+                    
+                    {isActive && (
+                        <>
+                            <div className="magnetic-field-glow"></div>
+                            <div className="magnetic-particles">
+                                <div className="particle p1"></div>
+                                <div className="particle p2"></div>
+                                <div className="particle p3"></div>
+                            </div>
+                        </>
+                    )}
+
+                    {project.status === 'live' && (
+                        <>
+                            <div className="live-ripple-1"></div>
+                            <div className="live-ripple-2"></div>
+                        </>
+                    )}
+                    
+                    <div className="node-white-circle">
+                        {renderIcon(project)}
+                    </div>
+                    
+                    {/* Hover Tooltip for Date */}
+                    <div className={`date-tooltip ${side === 'left' ? 'right' : 'left'}`}>
+                        <div className="tooltip-arrow"></div>
+                        <i className="fa-regular fa-calendar mr-1"></i> {project.date}
+                    </div>
+                </div>
+            </div>
+
+            {/* Empty space for alternating layout */}
+            <div className="premium-timeline-col empty-col"></div>
+        </div>
     );
+};
+
+const AnimatedCounter = ({ value, suffix = "+", kFormat = false }: { value: number, suffix?: string, kFormat?: boolean }) => {
+    const [count, setCount] = useState(0);
+    const nodeRef = useRef<HTMLSpanElement>(null);
+    const inView = useInView(nodeRef, { once: false, amount: "all" });
+
+    useEffect(() => {
+        if (inView) {
+            let start = 0;
+            const duration = 2000;
+            const startTime = performance.now();
+            
+            const updateCounter = (currentTime: number) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                setCount(Math.floor(easeProgress * value));
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    setCount(value);
+                }
+            };
+            requestAnimationFrame(updateCounter);
+        }
+    }, [inView, value]);
+
+    return <span ref={nodeRef} className="stat-val">{count}{kFormat ? 'K' : ''}{suffix}</span>;
 };
 
 export default function Projects() {
     const [showDesignModal, setShowDesignModal] = useState(false);
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const [projectsData, setProjectsData] = useState<ProjectData[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    const timelineRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: timelineRef,
+        offset: ["start center", "end center"]
+    });
+
+    const scaleY = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    useEffect(() => {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/projects`)
+            .then(res => res.json())
+            .then(data => {
+                setProjectsData(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error("Error fetching projects:", err);
+                setLoading(false);
+            });
+    }, []);
 
     const openDesignModal = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -410,107 +521,100 @@ export default function Projects() {
             }
             return new Date(datePart);
         };
-
         const dateA = getSortableDate(a.date);
         const dateB = getSortableDate(b.date);
-
         return dateB.getTime() - dateA.getTime();
     });
 
     return (
         <>
-            <section id="projects" className="projects-section section-reveal">
-                <h2>Projects</h2>
-                <div className="projects-timeline">
-                    {sortedProjects.map((project, index) => {
-                        const side = index % 2 === 0 ? 'right' : 'left';
-                        return (
-                            <div key={index} className="timeline-event" data-side={side}>
-                                {side === 'left' ? (
-                                    <>
-                                        <div className="timeline-col left">
-                                            <div className="project-card-zoom">
-                                                <div className="timeline-content section-reveal">
-                                                    <div className={`project-icon ${side} ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}>{project.icon}</div>
-                                                    <div className="project-date-badge">{project.date}</div>
-                                                    {project.techStack && (
-                                                        <div className="project-tech-stack">
-                                                            {project.techStack.map((tech, i) => (
-                                                                <div key={i} className="tech-icon-small" title={tech.name}>
-                                                                    <i className={tech.icon}></i>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    )}
-                                                    <div className="project-info">
-                                                        <h3>{project.title}</h3>
-                                                        <p>{project.description}</p>
-                                                        <div className="project-links">
-                                                          <ProjectLinks project={project} openDesignModal={openDesignModal} />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.timelineIcon}</span></div></div>
-                                        <div className="timeline-col right"></div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className="timeline-col left"></div>
-                                        <div className="timeline-col center"><div className={`timeline-dot section-reveal ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}><span className="timeline-dot-icon">{project.timelineIcon}</span></div></div>
-                                        <div className="timeline-col right">
-                                            <div className="project-card-zoom">
-                                                <div className="timeline-content section-reveal">
-                                                    <div className={`project-icon ${side} ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}>{project.icon}</div>
-                                                    <div className="project-date-badge">{project.date}</div>
-                                                    {project.techStack && (
-                                                        <div className="project-tech-stack">
-                                                            {project.techStack.map((tech, i) => (
-                                                                <div key={i} className="tech-icon-small" title={tech.name}>
-                                                                    <i className={tech.icon}></i>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    )}
-                                                    <div className="project-info">
-                                                        <h3>{project.title}</h3>
-                                                        <p>{project.description}</p>
-                                                        <div className="project-links">
-                                                            <ProjectLinks project={project} openDesignModal={openDesignModal} />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </>
-                                )}
-                            </div>
-                        )
-                    })}
+            <section id="projects" className="premium-projects-section">
+                {/* Background elements */}
+                <div className="premium-bg-elements">
+                    <div className="bg-blob blob-1"></div>
+                    <div className="bg-blob blob-2"></div>
+                    <div className="bg-particles"></div>
+                    <div className="bg-dotted-pattern"></div>
                 </div>
 
-                <div className="projects-grid mobile-only">
-                    {sortedProjects.map((project, index) => (
-                        <div key={index} className="project-card">
-                            <div className={`project-icon ${project.status === 'live' || project.status === 'ongoing' ? 'live' : ''}`}>{project.icon}</div>
-                            <div className="project-date-badge">{project.date}</div>
-                            {project.techStack && (
-                                <div className="project-tech-stack" style={{ justifyContent: 'flex-start' }}>
-                                    {project.techStack.map((tech, i) => (
-                                        <div key={i} className="tech-icon-small" title={tech.name}>
-                                            <i className={tech.icon}></i>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                            <h3>{project.title}</h3>
-                            <p>{project.description}</p>
-                            <div className="project-links">
-                                <ProjectLinks project={project} openDesignModal={openDesignModal} />
+                <div className="projects-container">
+                    <div className="premium-projects-header-wrapper" style={{ textAlign: 'left', marginBottom: '80px', maxWidth: '600px' }}>
+                        <div className="skills-title-wrapper">
+                            <span className="skills-title-line"></span>
+                            <h2>Projects</h2>
+                        </div>
+                        <p className="skills-desc">
+                            A timeline of projects that reflect my<br/>skills, creativity and passion for<br/>building digital experiences.
+                        </p>
+                        <div className="skills-header-underline"></div>
+                    </div>
+
+                    {loading ? (
+                        <div className="loading-state">Loading premium experience...</div>
+                    ) : (
+                        <div className="premium-timeline-container" ref={timelineRef}>
+                            <div className="timeline-line-background"></div>
+                            <motion.div 
+                                className="timeline-line-foreground"
+                                style={{ scaleY, x: "-50%", transformOrigin: "top" }}
+                            >
+                                {/* Animated Particle inside foreground line */}
+                                <div className="timeline-particle"></div>
+                            </motion.div>
+
+                            <div className="timeline-rows">
+                                {sortedProjects.map((project, index) => (
+                                    <PremiumProjectCard 
+                                        key={index} 
+                                        project={project} 
+                                        index={index} 
+                                        openDesignModal={openDesignModal} 
+                                        activeIndex={activeIndex}
+                                        setActiveIndex={setActiveIndex}
+                                    />
+                                ))}
                             </div>
                         </div>
-                    ))}
+                    )}
+                    
+                    {/* Bottom Statistics Card */}
+                    {!loading && (
+                        <div className="journey-stats-container">
+                            <div className="journey-stats-card">
+                                <div className="j-stat-item">
+                                    <div className="stat-icon purple"><i className="fa-solid fa-rocket"></i></div>
+                                    <div className="stat-info">
+                                        <AnimatedCounter value={sortedProjects.length} suffix="+" />
+                                        <span className="stat-label">Projects Completed</span>
+                                    </div>
+                                </div>
+                                <div className="j-stat-divider"></div>
+                                <div className="j-stat-item">
+                                    <div className="stat-icon green"><i className="fa-solid fa-code"></i></div>
+                                    <div className="stat-info">
+                                        <AnimatedCounter value={15} suffix="+" kFormat />
+                                        <span className="stat-label">Lines of Code</span>
+                                    </div>
+                                </div>
+                                <div className="j-stat-divider"></div>
+                                <div className="j-stat-item">
+                                    <div className="stat-icon orange"><i className="fa-solid fa-layer-group"></i></div>
+                                    <div className="stat-info">
+                                        <AnimatedCounter value={new Set(projectsData.flatMap(p => p.techStack.map(t => t.name))).size} suffix="+" />
+                                        <span className="stat-label">Technologies Used</span>
+                                    </div>
+                                </div>
+                                <div className="j-stat-divider"></div>
+                                <div className="j-stat-item">
+                                    <div className="stat-icon blue"><i className="fa-solid fa-trophy"></i></div>
+                                    <div className="stat-info">
+                                        <AnimatedCounter value={100} suffix="%" />
+                                        <span className="stat-label">Dedication</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
             {showDesignModal && <DesignGalleryModal onClose={() => setShowDesignModal(false)} />}

@@ -1,11 +1,22 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
+import "./tech_styles.css";
+import "./contact_styles.css";
+import "./journey_styles.css";
+import "./achievements.css";
+import "./testimonials_styles.css";
+import "./footer_styles.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientLogic from "@/components/ClientLogic";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { PersonaProvider } from "@/components/PersonaContext";
 import ContentProtection from "@/components/ContentProtection";
+import MainWrapper from "@/components/MainWrapper";
+import { Toaster } from "@/components/ui/toaster";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import VisionScrollbar from "@/components/VisionScrollbar";
 
 export const metadata: Metadata = {
   title: "Darshan Prajapati - Creative Developer & Graphic Designer",
@@ -55,23 +66,29 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/Logos/favicon.png" />
         <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.7.1/dist/dotlottie-wc.js" type="module"></script>
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
         >
-          <ContentProtection>
-            <ClientLogic>
-              <div className="flex flex-col min-h-screen">
-                <Header />
-                <main className="container flex-grow">
-                  {children}
-                </main>
-                <Footer />
-              </div>
-            </ClientLogic>
-          </ContentProtection>
+          <PersonaProvider>
+            <SmoothScrollProvider>
+              <ContentProtection>
+                <ClientLogic>
+                  <div className="flex flex-col min-h-screen">
+                    <Header />
+                    <MainWrapper>
+                      {children}
+                    </MainWrapper>
+                    <Footer />
+                  </div>
+                </ClientLogic>
+              </ContentProtection>
+              <VisionScrollbar />
+              <Toaster />
+            </SmoothScrollProvider>
+          </PersonaProvider>
         </ThemeProvider>
         <Script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" />
       </body>

@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
+**/node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -37,9 +38,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.genkit/*
-.env*
-
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# Internal & Environment
+.env*
+**/.env*
+.agents/
+.vscode/
+metadata.json
+skills-lock.json
+studio.json
